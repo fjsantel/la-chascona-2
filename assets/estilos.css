@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --mobile-viewport: 375px;
+    --right-menu-width: 24px;  
+    --photo-area-width: 351px; /* 375px - 24px menu */
+    --photo-spacing: 8px;
+    --banner-color: #EB3E0E;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Cinzel', serif;
+    background-color: #FFFFFF;
+    color: #000000;
+    overflow: hidden; /* No scroll en el body */
+}
+
+.mobile-container {
+    max-width: var(--mobile-viewport);
+    height: 100vh;
+    margin: 0; /* Sin margen para que toque los bordes */
+    overflow: hidden; /* Evita scroll en el contenedor */
+}
+
+.banner-superior {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 63px; 
+    background-color: var(--banner-color);
+    z-index: 1002;
+}
+
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 24px; /* Mismo ancho que el rectángulo naranja */
+    height: 100vh;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 63px; /* Espacio para el banner */
+    padding-bottom: 10px;
+    border-left: 1px solid transparent;
+    z-index: 1001;
+}
+
+.menu-lateral a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(90deg);
+    transform-origin: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 16px;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    width: 24px;
+    height: 24px;
+}
+
+.menu-lateral a:hover {
+    color: var(--banner-color);
+}
+
+.contenido-principal {
+    position: relative;
+    width: var(--photo-area-width);
+    height: 100vh; /* Altura completa de la ventana */
+    margin-left: 0;
+    padding: 0;
+    overflow-y: auto; /* Solo scroll vertical en el contenido */
+}
+
+.contenido-principal section {
+    /* Se elimina la altura de 100vh para que el contenido fluya naturalmente */
+    padding: 0; /* Sin padding para que las fotos toquen el borde */
+}
+
+.photo-item {
+    width: 100%;
+    height: auto; /* Mantiene la proporción */
+    display: block; /* Asegura que el margen funcione correctamente */
+    margin-bottom: var(--photo-spacing);
+    object-fit: cover; /* Previene la distorsión de la imagen */
+}
+
+#foto-principal {
+    position: absolute;
+    left: 0; /* x: 0 en Figma */
+    top: 152px; /* 138px + 10% (14px) = 152px */
+    width: 255px;
+    height: 366px;
+    object-fit: cover;
+}
+
+.photo-item:nth-child(2) {
+    position: absolute;
+    left: 113px; /* 117px - 3% (4px) = 113px */
+    top: 0; /* y: 0 en Figma */
+    width: 192px;
+    height: 284px;
+    object-fit: cover;
+}
+
+.pie-de-pagina {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f2f2f2;
+    width: var(--photo-area-width);
+}

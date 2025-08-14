@@ -1,0 +1,1 @@
+// Archivo para la lógica de la aplicación, como el scroll infinito.
