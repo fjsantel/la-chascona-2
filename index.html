@@ -527,22 +527,24 @@
         /* Animación para el símbolo 美 */
         @keyframes glow {
             0% {
-                background: var(--naranja);
-                color: var(--blanco);
+                background: var(--naranja) !important;
+                color: var(--blanco) !important;
+                border: none !important;
             }
             50% {
-                background: var(--blanco);
-                color: var(--naranja);
-                border: 2px solid var(--naranja);
+                background: var(--blanco) !important;
+                color: var(--naranja) !important;
+                border: 2px solid var(--naranja) !important;
             }
             100% {
-                background: var(--naranja);
-                color: var(--blanco);
+                background: var(--naranja) !important;
+                color: var(--blanco) !important;
+                border: none !important;
             }
         }
 
         .rectangulo-naranja.glow-animation {
-            animation: glow 2s ease-in-out;
+            animation: glow 2s ease-in-out !important;
         }
 
         /* Estilos del Pop-up */
