@@ -772,7 +772,7 @@
                     <button class="close-popup" type="button">&times;</button>
                 </div>
                 
-                <form id="agenda-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="agenda-form" action="https://formspree.io/f/xrblnepw" method="POST">
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
                         <input type="text" id="nombre" name="nombre" required>
@@ -820,7 +820,7 @@
                 
                 <div id="confirmation-message" class="confirmation-message" style="display: none;">
                     <h3>¡Cita Agendada!</h3>
-                    <p>Tu cita ha sido agendada exitosamente. Espera confirmación por WhatsApp o llamada telefónica.</p>
+                    <p>Gracias por tu preferencia. Recibirás la confirmación de tu hora en breve.</p>
                     <button class="close-confirmation" type="button">Cerrar</button>
                 </div>
             </div>
@@ -902,8 +902,8 @@
                 formData.append('servicio', servicio);
                 formData.append('_subject', 'Nueva cita agendada - La Chascona');
                 
-                // Enviar a Formspree (reemplaza YOUR_FORM_ID con tu ID real)
-                fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                // Enviar a Formspree
+                fetch('https://formspree.io/f/xrblnepw', {
                     method: 'POST',
                     body: formData,
                     headers: {
