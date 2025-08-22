@@ -155,24 +155,24 @@
         /* Imagen tijeras (2.png) */
         .imagen-tijeras {
             position: absolute;
-            left: calc((100vw - 24px) * 0.41); /* Solo posición responsive */
+            left: calc((100vw - 24px) * 0.31 + 2px); /* Solo posición responsive */
             top: 0;
             width: 207px; /* CAMBIO: MANTENER tamaño original mobile */
             height: 278px; /* CAMBIO: MANTENER tamaño original mobile */
-            background: url('assets/hero /2.png') center/cover;
-            object-fit: cover;
+            background: url('assets/hero /2.png') center/contain no-repeat;
+            object-fit: contain;
             z-index: 5;
         }
 
         /* Texto LA CHASCONA */
         .titulo-principal {
             position: absolute;
-            left: calc((100vw - 24px) * 0.41); /* Solo posición responsive */
+            left: calc((100vw - 24px) * 0.31 + 2px); /* Solo posición responsive */
             top: 286px;
             width: 192px; /* CAMBIO: MANTENER tamaño original mobile */
             height: 24px; /* CAMBIO: MANTENER tamaño original mobile */
             font-family: 'Cinzel', serif;
-            font-size: 26px; /* CAMBIO: MANTENER tamaño original mobile */
+            font-size: 28px; /* CAMBIO: MANTENER tamaño original mobile */
             font-weight: 400;
             color: var(--negro);
             display: flex;
@@ -226,6 +226,33 @@
         }
 
 
+        /* Mobile específico: 320px-375px */
+        @media (max-width: 375px) {
+            .grupo-texto-japones {
+                top: 10vh;
+            }
+            
+            .imagen-tijeras {
+                top: 10vh;
+            }
+            
+            .titulo-principal {
+                top: calc(286px + 10vh);
+            }
+            
+            .imagen-principal {
+                top: calc(136px + 10vh);
+            }
+            
+            .rectangulo-naranja {
+                top: calc(440px + 10vh);
+            }
+            
+            .imagen-modelo1 {
+                top: calc(530px + 10vh);
+            }
+        }
+
         /* Mobile escalado progresivo: 376px-599px */
         @media (min-width: 376px) and (max-width: 599px) {
             /* CAMBIO: Escalado simple del diseño mobile base */
@@ -238,6 +265,27 @@
             
             .contenido-area {
                 overflow-x: auto;
+            }
+            
+            .imagen-tijeras {
+                left: calc((100vw - 24px) * 0.51 + 2px); /* 20% más a la derecha: 0.31 + 0.20 = 0.51 */
+                width: 228px; /* 10% más grande: 207px * 1.10 = 228px */
+                height: 306px; /* 10% más grande: 278px * 1.10 = 306px */
+            }
+            
+            .titulo-principal {
+                left: calc((100vw - 24px) * 0.51 + 2px); /* 20% más a la derecha: 0.31 + 0.20 = 0.51 */
+                top: calc(286px + 5vh); /* 5% más abajo */
+                width: 211px; /* 10% más grande: 192px * 1.10 = 211px */
+                height: 26px; /* 10% más grande: 24px * 1.10 = 26px */
+                font-size: 30px; /* 10% más grande: 27px * 1.10 = 30px */
+            }
+            
+            .imagen-modelo1 {
+                left: calc((100vw - 24px) * 0.536); /* 7% a la izquierda: 0.606 - 0.07 = 0.536 */
+                top: calc(530px - 4vh); /* 4% hacia arriba (6% - 2% = 4%) */
+                width: 202px; /* 10% más grande: 184px * 1.10 = 202px */
+                height: 310px; /* 10% más grande: 282px * 1.10 = 310px */
             }
         }
 
@@ -259,7 +307,7 @@
                 top: 385px; /* Separado por cuadrado de grilla */
                 width: 264px;
                 height: 46px;
-                font-size: 32px; /* Escalado proporcional */
+                font-size: 36px; /* Escalado proporcional */
             }
 
             .imagen-principal {
@@ -286,7 +334,7 @@
         }
 
         /* Tablet coordenadas específicas */
-        @media (min-width: 768px) and (max-width: 1023px) {
+        @media (min-width: 768px) and (max-width: 779px) {
             .layout-mobile {
                 transform: none;
             }
@@ -329,7 +377,7 @@
                 top: 537px;
                 width: 360px;
                 height: 63px;
-                font-size: 45px;
+                font-size: 48px;
             }
 
             /* Imagen principal tablet */
@@ -359,9 +407,9 @@
             }
         }
 
-        /* Tablet escalado progresivo: 1024px-1439px */
+        /* Tablet escalado progresivo: 780px-1439px - ELIMINADO POR CONFLICTO 
         @media (min-width: 1024px) and (max-width: 1439px) {
-            /* CAMBIO: Escalado simple del diseño tablet hacia desktop */
+            CAMBIO: Escalado simple del diseño tablet hacia desktop
             .layout-mobile {
                 transform: scale(calc((100vw - 24px) / 744));
                 width: 744px;
@@ -373,19 +421,20 @@
                 overflow-x: auto;
             }
             
-            /* Mantener coordenadas tablet escaladas */
+            Mantener coordenadas tablet escaladas
             .grupo-texto-japones { left: 247px; }
             .cuadrado-negro { width: 67px; height: 56px; }
             .caracter-japones { width: 67px; height: 56px; font-size: 60px; }
             .imagen-tijeras { left: 368px; width: 362px; height: 527px; }
-            .titulo-principal { left: 368px; top: 537px; width: 360px; height: 63px; font-size: 45px; }
+            .titulo-principal { left: 368px; top: 537px; width: 360px; height: 63px; font-size: 48px; }
             .imagen-principal { top: 15px; width: 360px; height: 517px; }
             .rectangulo-naranja { left: -134px; width: 470px; height: 216px; font-size: 100px; }
             .imagen-modelo1 { left: 434px; top: 624px; width: 294px; height: 400px; }
         }
+        */
 
-        /* DESKTOP: 1440px+ - Coordenadas específicas web */
-        @media (min-width: 1440px) {
+        /* DESKTOP: 780px+ - Coordenadas específicas web */
+        @media (min-width: 780px) {
             .layout-mobile {
                 width: 100%;
                 height: 100%;
@@ -448,7 +497,7 @@
         }
 
         /* MEDIA QUERY SOLO PARA PANTALLAS MUY GRANDES */
-        @media (min-width: 2000px) {
+        @media (min-width: 1700px) {
             .main-container {
                 display: flex;
                 justify-content: center;
@@ -472,6 +521,182 @@
             
             .menu-completo {
                 right: max(0px, calc((100vw - 1440px) / 2));
+            }
+        }
+
+        /* Animación para el símbolo 美 */
+        @keyframes glow {
+            0% {
+                background: var(--naranja);
+                color: var(--blanco);
+            }
+            50% {
+                background: var(--blanco);
+                color: var(--naranja);
+                border: 2px solid var(--naranja);
+            }
+            100% {
+                background: var(--naranja);
+                color: var(--blanco);
+            }
+        }
+
+        .rectangulo-naranja.glow-animation {
+            animation: glow 2s ease-in-out;
+        }
+
+        /* Estilos del Pop-up */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: var(--blanco);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--naranja);
+            padding-bottom: 15px;
+        }
+
+        .popup-header h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--negro);
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .close-popup {
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: var(--negro);
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-popup:hover {
+            color: var(--naranja);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            color: var(--negro);
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            background: var(--blanco);
+            color: var(--negro);
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--naranja);
+            box-shadow: 0 0 0 3px rgba(235, 62, 14, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #d13408;
+        }
+
+        .confirmation-message {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .confirmation-message h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--naranja);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .confirmation-message p {
+            font-family: 'Cinzel', serif;
+            color: var(--negro);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .close-confirmation {
+            padding: 12px 30px;
+            background: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-confirmation:hover {
+            background: #d13408;
+        }
+
+        /* Responsive para el popup */
+        @media (max-width: 480px) {
+            .popup-content {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .popup-header h2 {
+                font-size: 20px;
             }
         }
 
@@ -538,6 +763,178 @@
                 </main>
             </div>
         </div>
+        
+        <!-- Pop-up para agendar cita -->
+        <div id="popup-agenda" class="popup-overlay" style="display: none;">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h2>Agendar Cita</h2>
+                    <button class="close-popup" type="button">&times;</button>
+                </div>
+                
+                <form id="agenda-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="hora">Hora:</label>
+                        <select id="hora" name="hora" required>
+                            <option value="">Seleccionar hora</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono">Número de contacto:</label>
+                        <input type="tel" id="telefono" name="telefono" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="servicio">Tipo de servicio:</label>
+                        <select id="servicio" name="servicio" required>
+                            <option value="">Seleccionar servicio</option>
+                            <option value="corte">Corte</option>
+                            <option value="color">Color</option>
+                            <option value="corte-color">Corte + Color</option>
+                            <option value="tratamiento">Tratamiento</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Agendar Cita</button>
+                </form>
+                
+                <div id="confirmation-message" class="confirmation-message" style="display: none;">
+                    <h3>¡Cita Agendada!</h3>
+                    <p>Tu cita ha sido agendada exitosamente. Espera confirmación por WhatsApp o llamada telefónica.</p>
+                    <button class="close-confirmation" type="button">Cerrar</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const agendaButton = document.querySelector('a[href="#agenda"]');
+            const simboloBi = document.querySelector('.rectangulo-naranja');
+            const popup = document.getElementById('popup-agenda');
+            const closeButton = document.querySelector('.close-popup');
+            const form = document.getElementById('agenda-form');
+            const confirmationMessage = document.getElementById('confirmation-message');
+            const closeConfirmation = document.querySelector('.close-confirmation');
+            
+            // Configurar fecha mínima (hoy)
+            const fechaInput = document.getElementById('fecha');
+            const today = new Date().toISOString().split('T')[0];
+            fechaInput.min = today;
+            
+            agendaButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remover animación si ya está activa
+                simboloBi.classList.remove('glow-animation');
+                
+                // Forzar reflow para reiniciar la animación
+                simboloBi.offsetHeight;
+                
+                // Añadir la clase de animación
+                simboloBi.classList.add('glow-animation');
+                
+                // Mostrar popup después de la animación
+                setTimeout(() => {
+                    popup.style.display = 'flex';
+                    simboloBi.classList.remove('glow-animation');
+                }, 2000);
+            });
+            
+            // Cerrar popup
+            closeButton.addEventListener('click', function() {
+                popup.style.display = 'none';
+                form.style.display = 'block';
+                confirmationMessage.style.display = 'none';
+            });
+            
+            // Cerrar popup al hacer click fuera
+            popup.addEventListener('click', function(e) {
+                if (e.target === popup) {
+                    popup.style.display = 'none';
+                    form.style.display = 'block';
+                    confirmationMessage.style.display = 'none';
+                }
+            });
+            
+            // Manejar envío del formulario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar formulario
+                const nombre = document.getElementById('nombre').value.trim();
+                const fecha = document.getElementById('fecha').value;
+                const hora = document.getElementById('hora').value;
+                const telefono = document.getElementById('telefono').value.trim();
+                const servicio = document.getElementById('servicio').value;
+                
+                if (!nombre || !fecha || !hora || !telefono || !servicio) {
+                    alert('Por favor completa todos los campos');
+                    return;
+                }
+                
+                // Crear FormData para Formspree
+                const formData = new FormData();
+                formData.append('nombre', nombre);
+                formData.append('fecha', fecha);
+                formData.append('hora', hora);
+                formData.append('telefono', telefono);
+                formData.append('servicio', servicio);
+                formData.append('_subject', 'Nueva cita agendada - La Chascona');
+                
+                // Enviar a Formspree (reemplaza YOUR_FORM_ID con tu ID real)
+                fetch('https://formspree.io/f/YOUR_FORM_ID', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Mostrar mensaje de confirmación
+                        form.style.display = 'none';
+                        confirmationMessage.style.display = 'block';
+                        
+                        // Limpiar formulario
+                        form.reset();
+                    } else {
+                        throw new Error('Error al enviar el formulario');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un error al agendar la cita. Por favor intenta nuevamente.');
+                });
+            });
+            
+            // Cerrar mensaje de confirmación
+            closeConfirmation.addEventListener('click', function() {
+                popup.style.display = 'none';
+                form.style.display = 'block';
+                confirmationMessage.style.display = 'none';
+            });
+        });
+    </script>
 </body>
 </html>
