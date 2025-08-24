@@ -1,0 +1,27 @@
+{
+  "name": "la-cahscona-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "serve": "serve . -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fjsantel/la-chascona-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fjsantel/la-chascona-2/issues"
+  },
+  "homepage": "https://github.com/fjsantel/la-chascona-2#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "serve": "^14.2.4"
+  }
+}
