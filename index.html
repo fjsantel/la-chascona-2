@@ -374,16 +374,16 @@
             /* Mostrar título regular, ocultar BP5 */
             .titulo-principal {
                 display: flex;
-                transform: translateX(20%); /* 20% a la derecha */
+                transform: translateX(5%); /* 15% a la derecha (-10% + 15% = 5%) */
             }
             
             .titulo-chascona-bp5 {
                 display: none;
             }
             
-            /* Imagen tijeras (2.png) - desplazada 20% derecha */
+            /* Imagen tijeras (2.png) - desplazada 5% derecha */
             .imagen-tijeras {
-                transform: translateX(20%); /* 20% a la derecha */
+                transform: translateX(5%); /* 15% a la derecha (-10% + 15% = 5%) */
             }
             
             /* Mostrar solo bloque ESTILO BP1 - alineado con margen superior del botón naranja + 50px derecha */
@@ -437,7 +437,7 @@
                 hyphens: auto;
                 overflow-wrap: break-word;
                 text-rendering: optimizeLegibility; /* AGREGADO: Mejor renderizado */
-                transform: translateX(calc(20% - 10px)) translateY(3%); /* 20% - 10px (neto 10px izq) + 3% abajo */
+                transform: translateX(calc(5% - 10px)) translateY(3%); /* 15% der: (5% - 10px) + 3% abajo */
             }
             
             /* Segundo párrafo ESTILO BP1 - directamente bajo el botón naranja + 5px derecha */
@@ -1497,8 +1497,8 @@
             pointer-events: none;
             border: 2px solid white; /* Borde blanco para mejor contraste */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
-            display: block !important; /* Forzar que siempre se muestre */
-            visibility: visible !important; /* Asegurar visibilidad */
+            display: none !important; /* Ocultar indicador */
+            visibility: hidden !important; /* Asegurar que no se vea */
         }
 
 
