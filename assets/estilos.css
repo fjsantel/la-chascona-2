@@ -7,9 +7,10 @@
 }
 
 :root {
-    --mobile-viewport: 375px;
+    --mobile-viewport: 100vw;
+    --max-viewport: 1024px; /* Extendido hasta desktop */
     --right-menu-width: 24px;  
-    --photo-area-width: 351px; /* 375px - 24px menu */
+    --photo-area-width: calc(100vw - 24px);
     --photo-spacing: 8px;
     --banner-color: #EB3E0E;
 }
@@ -28,10 +29,18 @@ body {
 }
 
 .mobile-container {
-    max-width: var(--mobile-viewport);
+    max-width: var(--max-viewport);
+    width: 100vw;
     height: 100vh;
-    margin: 0; /* Sin margen para que toque los bordes */
+    margin: 0 auto; /* Centrado en pantallas mayores a 768px */
     overflow: hidden; /* Evita scroll en el contenedor */
+}
+
+/* Media query para mantener el diseño móvil hasta desktop */
+@media (max-width: 1024px) {
+    .mobile-container {
+        margin: 0; /* Sin centrar hasta desktop */
+    }
 }
 
 .banner-superior {
@@ -126,3 +135,4 @@ body {
     background-color: #f2f2f2;
     width: var(--photo-area-width);
 }
+

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Chascona</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
         * {
             margin: 0;
@@ -97,7 +97,7 @@
         .layout-mobile {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* CAMBIO: De height: 100% a min-height: 100vh */
+            min-height: 2100px; /* Altura suficiente para mostrar todo el contenido */
             transform-origin: top left;
         }
 
@@ -119,7 +119,7 @@
         .contenido-principal {
             position: relative;
             width: 351px; /* Base mobile */
-            height: 812px; /* Base mobile */
+            height: 2100px; /* Altura extendida para mostrar imagen en posición 1783px */
         }
 
         /* Grupo texto japonés vertical */
@@ -216,18 +216,54 @@
         /* Imagen modelo1 */
         .imagen-modelo1 {
             position: absolute;
-            left: calc((100vw - 24px) * 0.476); /* Solo posición responsive */
-            top: 530px;
-            width: 184px; /* CAMBIO: MANTENER tamaño original mobile */
-            height: 282px; /* CAMBIO: MANTENER tamaño original mobile */
+            left: 139px; /* Mantener posición horizontal anterior */
+            top: 1783px; /* Desplazada 40% más abajo: 1274px + (1274px * 0.4) = 1783px */
+            width: 207px; /* Ancho exacto de Figma */
+            height: 282px; /* Alto exacto de Figma */
             background: url('assets/hero /Modelos /modelo 1.png') center/cover;
             object-fit: cover;
             z-index: 50; /* Por sobre todos los demás elementos */
         }
 
 
-        /* Mobile específico: 320px-375px */
+        /* Imagen modelo5 específica BP5 - bajo las imágenes modelo1 */
+        .imagen-modelo5 {
+            position: absolute;
+            left: calc(69% - 294px); /* Alineada con modelo1 B&N */
+            top: 1134px; /* 24px debajo de modelo1 (710px + 400px altura + 24px margen = 1134px) */
+            width: 588px; /* Ancho que cubre ambas modelo1 (294px + 294px = 588px) */
+            height: 400px; /* Misma altura que modelo1 */
+            background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
+            object-fit: cover;
+            z-index: 50;
+        }
+
+        /* Imagen modelo6 específica BP5 - 70% más abajo */
+        .imagen-modelo6 {
+            position: absolute;
+            left: calc(69% - 294px); /* Alineado con modelo5 */
+            top: 1814px; /* 70% más abajo desde modelo5 (1134px + 400px altura + 280px adicional = 1814px) */
+            width: 588px; /* Mismo ancho que modelo5 */
+            height: 400px; /* Misma altura que otras imágenes */
+            background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
+            object-fit: cover;
+            z-index: 55;
+        }
+
+
+        /* ===============================
+           BREAKPOINT 1: MOBILE PEQUEÑO
+           320px - 375px
+           =============================== */
         @media (max-width: 375px) {
+            /* Mostrar título regular, ocultar BP5 */
+            .titulo-principal {
+                display: flex;
+            }
+            
+            .titulo-chascona-bp5 {
+                display: none;
+            }
             .grupo-texto-japones {
                 top: calc(10vh - 8vh); /* 8% más arriba */
             }
@@ -249,12 +285,24 @@
             }
             
             .imagen-modelo1 {
-                top: calc(530px + 10vh - 8vh); /* 8% más arriba */
+                top: 671px !important; /* Subida 5%: 706px - (706px * 0.05) = 671px */
+                left: 139px !important; /* Mantener posición horizontal */
             }
         }
 
-        /* Mobile escalado progresivo: 376px-599px */
+        /* ===============================
+           BREAKPOINT 2: MOBILE MEDIANO
+           376px - 599px
+           =============================== */
         @media (min-width: 376px) and (max-width: 599px) {
+            /* Mostrar título regular, ocultar BP5 */
+            .titulo-principal {
+                display: flex;
+            }
+            
+            .titulo-chascona-bp5 {
+                display: none;
+            }
             /* CAMBIO: Escalado simple del diseño mobile base */
             .layout-mobile {
                 transform: scale(calc((100vw - 24px) / 351));
@@ -287,131 +335,115 @@
                 width: 202px; /* 10% más grande: 184px * 1.10 = 202px */
                 height: 310px; /* 10% más grande: 282px * 1.10 = 310px */
             }
+
+            /* Imagen modelo5 - Breakpoint 2 - Margen derecho igual a modelo1 */
+            .imagen-modelo5 {
+                left: calc((100vw - 24px) * 0.536); /* Misma posición left que modelo1 para igualar margen derecho */
+                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30)); /* Desplazada 30% abajo */
+                width: 202px; /* Mismo ancho que modelo1 en este breakpoint */
+                height: 310px; /* Misma altura que modelo1 en este breakpoint */
+            }
+
+            /* Imagen modelo6 - Escalada para que quepan ambas - Ajustada a nueva posición modelo5 */
+            .imagen-modelo6 {
+                left: 0px; /* Margen izquierdo */
+                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30)); /* Desplazada 30% abajo, mismo que modelo 5 */
+                width: calc((100vw - 24px) * 0.536); /* Hasta donde empieza modelo 5 (que ahora está en 0.536) */
+                height: 310px; /* Misma altura que las otras imágenes */
+                background-size: cover; /* Escalar para cubrir el área */
+            }
             
+
+
             .caracter-japones {
                 font-family: 'Montserrat', sans-serif;
                 font-size: 34px;
             }
         }
 
-        /* Breakpoint 640px: 600px-767px */
-        @media (min-width: 600px) and (max-width: 767px) {
-            /* Coordenadas específicas para 640px */
+        /* ===============================
+           BREAKPOINT 3: MOBILE GRANDE/PHABLET
+           600px - 879px (extendido hasta desktop)
+           =============================== */
+        @media (min-width: 600px) and (max-width: 879px) {
+            /* Mostrar título regular, ocultar BP5 */
+            .titulo-principal {
+                display: flex;
+            }
+            
+            .titulo-chascona-bp5 {
+                display: none;
+            }
+            /* Misma diagramación que BREAKPOINT 2 pero escalado 20% */
+            
+            /* Grupo texto japonés - Escalado */
             .grupo-texto-japones {
-                left: 78px; /* Mismas medidas que mobile */
+                left: calc(78px * 1.2); /* Escalado 20%: 93.6px */
             }
 
             .imagen-tijeras {
-                left: 347px; /* NUEVO: Coordenadas específicas 640px */
-                width: 267px;
-                height: 389px;
+                left: calc((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)); /* Alineada con margen izquierdo de LA CHASCONA */
+                width: calc(267px * 1.2); /* Escalado 20%: 320.4px */
+                height: calc(389px * 1.2); /* Escalado 20%: 466.8px */
             }
 
             .titulo-principal {
-                left: 348px; /* NUEVO: Coordenadas específicas 640px */
-                top: 385px; /* Separado por cuadrado de grilla */
-                width: 264px;
-                height: 46px;
-                font-size: 36px; /* Escalado proporcional */
+                left: calc((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)); /* Desplazado 30% a la derecha */
+                top: calc(385px * 1.2); /* Escalado 20%: 462px */
+                width: calc((100vw - 24px) * 0.50); /* Ancho responsive para que quepa completo */
+                height: calc(46px * 1.2); /* Escalado 20%: 55.2px */
+                font-size: calc(36px * 1.2); /* Escalado 20%: 43.2px */
             }
 
             .imagen-principal {
                 left: 0;
-                top: 17px; /* NUEVO: Coordenadas específicas 640px */
-                width: 265px;
-                height: 381px;
+                top: calc(17px * 1.2); /* Escalado 20%: 20.4px */
+                width: calc(265px * 1.2); /* Escalado 20%: 318px */
+                height: calc(381px * 1.2); /* Escalado 20%: 457.2px */
             }
 
             .rectangulo-naranja {
-                left: -190px; /* NUEVO: Coordenadas específicas 640px */
-                top: 333px;
-                width: 470px;
-                height: 216px;
-                font-size: 85px; /* Escalado proporcional para 美 */
+                left: calc(-190px * 1.2); /* Escalado 20%: -228px */
+                top: calc(333px * 1.2); /* Escalado 20%: 399.6px */
+                width: calc(470px * 1.2); /* Escalado 20%: 564px */
+                height: calc(216px * 1.2); /* Escalado 20%: 259.2px */
+                font-size: calc(85px * 1.2); /* Escalado 20%: 102px */
             }
 
+            /* Imagen modelo1 - Breakpoint 3 - Desplazado 3% adicional a la izquierda */
             .imagen-modelo1 {
-                left: 348px; /* NUEVO: Coordenadas específicas 640px */
-                top: 449px;
-                width: 263px;
-                height: 358px;
-            }
-        }
-
-        /* Tablet coordenadas específicas */
-        @media (min-width: 768px) and (max-width: 779px) {
-            .layout-mobile {
-                transform: none;
+                left: calc((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) - ((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) * 0.03)); /* Desplazado 3% adicional a la izquierda */
+                top: calc((530px - 4vh) * 1.2); /* Escalado 20% hacia arriba */
+                width: calc(202px * 1.2); /* 20% más grande: 242.4px */
+                height: calc(310px * 1.2); /* 20% más grande: 372px */
             }
 
-            /* Contenido tablet específico */
-            .contenido-principal {
-                width: 744px; /* 768px - 24px del menú */
-                height: 1024px;
+            /* Imagen modelo5 - Breakpoint 3 - Margen derecho igual a modelo1 */
+            .imagen-modelo5 {
+                left: calc((100vw - 24px) * 0.536); /* Misma posición left que modelo1 */
+                top: calc(((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2); /* Escalado 20% */
+                width: calc(202px * 1.2); /* Mismo ancho que modelo1 escalado: 242.4px */
+                height: calc(310px * 1.2); /* Misma altura que modelo1 escalado: 372px */
             }
 
-            /* Grupo texto japonés tablet */
-            .grupo-texto-japones {
-                left: 247px;
-                top: 0;
+            /* Imagen modelo6 - Escalada para que quepan ambas */
+            .imagen-modelo6 {
+                left: 0px; /* Margen izquierdo */
+                top: calc(((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2); /* Mismo que modelo 5 */
+                width: calc((100vw - 24px) * 0.536); /* Hasta donde empieza modelo 5 */
+                height: calc(310px * 1.2); /* Misma altura que las otras imágenes escaladas: 372px */
+                background-size: cover; /* Escalar para cubrir el área */
             }
+            
 
-            .cuadrado-negro {
-                width: 67px;
-                height: 56px;
-            }
-
+            /* Caracter japonés 美 - Escalado */
             .caracter-japones {
-                width: 67px;
-                height: 56px;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 60px;
-            }
-
-            /* Imagen tijeras tablet */
-            .imagen-tijeras {
-                left: 368px;
-                top: 0;
-                width: calc(100% - 368px - 8px); /* Margen 8px */
-                max-width: 362px;
-                height: 527px;
-            }
-
-            /* Título tablet */
-            .titulo-principal {
-                left: 368px;
-                top: 537px;
-                width: 360px;
-                height: 63px;
-                font-size: 48px;
-            }
-
-            /* Imagen principal tablet */
-            .imagen-principal {
-                left: 0;
-                top: 15px;
-                width: 360px;
-                height: 517px;
-            }
-
-            /* Rectángulo naranja tablet */
-            .rectangulo-naranja {
-                left: -134px;
-                top: 440px;
-                width: 470px;
-                height: 216px;
-                font-size: 100px; /* 美 más grande */
-            }
-
-            /* Imagen modelo1 tablet */
-            .imagen-modelo1 {
-                left: 434px;
-                top: 624px;
-                width: calc(100% - 434px - 8px); /* Margen 8px */
-                max-width: 294px;
-                height: 400px;
+                width: calc(67px * 1.2); /* Escalado 20%: 80.4px */
+                height: calc(56px * 1.2); /* Escalado 20%: 67.2px */
+                font-size: calc(60px * 1.2); /* Escalado 20%: 72px */
             }
         }
+
 
         /* Tablet escalado progresivo: 780px-1439px - ELIMINADO POR CONFLICTO 
         @media (min-width: 1024px) and (max-width: 1439px) {
@@ -439,12 +471,34 @@
         }
         */
 
-        /* DESKTOP: 780px+ - Coordenadas específicas web */
-        @media (min-width: 780px) {
+        /* ===============================
+           BREAKPOINT 5: DESKTOP/WEB
+           780px+
+           =============================== */
+        @media (min-width: 880px) {
+            /* Mostrar título BP5, ocultar título regular */
+            .titulo-principal {
+                display: none;
+            }
+            
+            .titulo-chascona-bp5 {
+                display: flex;
+            }
+            
+            /* Extender contenido para usar todo el ancho disponible */
+            .contenido-area {
+                width: calc(100vw - 24px); /* Usar todo el ancho menos el menú */
+            }
+            
             .layout-mobile {
                 width: 100%;
                 height: 100%;
                 transform: none;
+            }
+            
+            .contenido-principal {
+                width: 100%; /* Expandir contenido principal */
+                height: auto;
             }
 
             /* Coordenadas específicas para desktop/web */
@@ -465,19 +519,47 @@
                 font-size: 60px; /* Mismas medidas que tablet */
             }
 
-            .imagen-tijeras {
-                left: 912px; /* NUEVO: Coordenadas específicas web */
+            /* NUEVO: Contenedor scrollable para imagen tijeras */
+            .imagen-tijeras-container {
+                position: absolute;
+                left: 30%; /* Movido 10% a la derecha (20% + 10% = 30%) */
                 top: 0;
-                width: 490px;
-                height: 712px;
+                width: 400px;
+                height: 600px;
+                z-index: 1000;
+            }
+            
+            .imagen-tijeras {
+                width: 100%;
+                height: 100%;
+                background: url('assets/hero /2.jpg') center/cover;
+                object-fit: cover;
             }
 
-            .titulo-principal {
-                left: 912px; /* NUEVO: Coordenadas específicas web */
-                top: 745px; /* Separado por cuadrado de grilla */
-                width: 520px;
+            /* Ocultar título BP5 en otros breakpoints */
+            .titulo-chascona-bp5 {
+                display: none;
+            }
+            
+            /* NUEVO: Contenedor específico BP5 para título LA CHASCONA */
+            .titulo-chascona-bp5 {
+                position: absolute;
+                left: 64%; /* Movido 3% a la izquierda (67% - 3% = 64%) */
+                top: 624px; /* 24px debajo del margen inferior de 2.png (600px + 24px) */
+                width: 400px;
                 height: 63px;
-                font-size: 67px; /* NUEVO: Cinzel type específico */
+                z-index: 1000;
+                font-family: 'Cinzel', serif;
+                font-size: 48px;
+                color: var(--negro);
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            
+            /* Ocultar título regular en BP5 */
+            .titulo-principal {
+                display: none !important;
             }
 
             .imagen-principal {
@@ -495,15 +577,69 @@
                 font-size: 100px; /* Mantener tamaño tablet para 美 */
             }
 
+            /* Imagen modelo1 específica BP5 - manteniendo proporción */
             .imagen-modelo1 {
-                left: 600px; /* NUEVO: Coordenadas específicas web */
-                top: 0;
+                position: absolute;
+                left: 69%; /* Movido 5% a la derecha (64% + 5% = 69%) */
+                top: 710px; /* 24px debajo de LA CHASCONA (624px + 63px altura + 24px margen = 710px) */
                 width: 294px;
                 height: 400px;
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                object-fit: cover;
+                z-index: 50;
+            }
+
+            /* Imagen modelo1 duplicada - blanco y negro - pegada a la izquierda */
+            .imagen-modelo1-bw {
+                position: absolute;
+                left: calc(69% - 294px); /* Pegada a la izquierda de modelo1 original (movida 5%) */
+                top: 710px; /* Misma altura que modelo1 original */
+                width: 294px;
+                height: 400px;
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                object-fit: cover;
+                filter: grayscale(100%); /* Filtro blanco y negro */
+                z-index: 49; /* Ligeramente por debajo de la original */
+            }
+
+            /* DEBUG: Franja roja removida - ya no necesaria */
+
+            /* NUEVO: Sección CORTES BP5 - justo bajo botón naranja con mismo ancho */
+            .seccion-cortes-bp5 {
+                position: absolute;
+                left: -8px; /* Misma posición left que el botón naranja */
+                top: 896px; /* Justo debajo del botón naranja (672px + 216px altura + 8px margen = 896px) */
+                width: 470px; /* Mismo ancho que el botón naranja */
+                height: auto;
+                z-index: 60;
+                padding: 20px; /* Padding interno para el contenido */
+                background: transparent;
+            }
+
+            .titulo-cortes-bp5 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 28px;
+                color: var(--negro);
+                margin-bottom: 16px;
+                text-align: left;
+            }
+
+            .parrafo-cortes-bp5 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 1.5;
+                color: var(--negro);
+                text-align: justify;
+                margin-bottom: 12px;
             }
         }
 
-        /* MEDIA QUERY SOLO PARA PANTALLAS MUY GRANDES */
+        /* ===============================
+           BREAKPOINT 6: PANTALLAS GRANDES
+           1700px+
+           =============================== */
         @media (min-width: 1700px) {
             .main-container {
                 display: flex;
@@ -527,7 +663,7 @@
             }
             
             .menu-completo {
-                right: max(0px, calc((100vw - 1440px) / 2));
+                right: 0; /* Siempre pegado al borde derecho */
             }
         }
 
@@ -697,7 +833,10 @@
             background: #d13408;
         }
 
-        /* Responsive para el popup */
+        /* ===============================
+           BREAKPOINT POPUP: MOBILE
+           max-width: 480px
+           =============================== */
         @media (max-width: 480px) {
             .popup-content {
                 padding: 20px;
@@ -708,6 +847,29 @@
                 font-size: 20px;
             }
         }
+
+        /* ===============================
+           INDICADOR DE BREAKPOINT ACTIVO
+           =============================== */
+        .breakpoint-indicator {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(235, 62, 14, 0.9); /* Fondo naranja más visible */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px; /* Aumentado para mejor visibilidad */
+            font-weight: bold;
+            z-index: 99999; /* Z-index muy alto para asegurar visibilidad */
+            pointer-events: none;
+            border: 2px solid white; /* Borde blanco para mejor contraste */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
+            display: block !important; /* Forzar que siempre se muestre */
+            visibility: visible !important; /* Asegurar visibilidad */
+        }
+
 
         /* Debug grid overlay (temporal) */
         .debug-grid {
@@ -728,16 +890,20 @@
 </head>
 <body>
     <div class="main-container">
+        <!-- INDICADOR DE BREAKPOINT ACTIVO -->
+        <div class="breakpoint-indicator" id="bp-indicator">BP1: MOBILE PEQUEÑO</div>
+        
         <!-- GRUPO MENÚ COMPLETO - INSEPARABLE -->
         <div class="menu-completo">
             <div class="franja-naranja"></div>
             <div class="botones-menu">
                 <a href="#inicio" class="menu-item">Inicio</a>
                 <a href="#agenda" class="menu-item">Agenda</a>
-                <a href="#galeria" class="menu-item">Galeria</a>
+                <a href="#servicios" class="menu-item">SERVICIOS</a>
                 <a href="#contacto" class="menu-item">Contacto</a>
             </div>
         </div>
+        
         
         <!-- ÁREA DE CONTENIDO ESCALABLE -->
         <div class="contenido-area">
@@ -755,20 +921,35 @@
                 <div class="caracter-japones">い</div>
             </div>
             
-            <!-- Imagen tijeras (2.png) -->
-            <div class="imagen-tijeras"></div>
+            <!-- Imagen tijeras (2.png) - NUEVO CONTENEDOR -->
+            <div class="imagen-tijeras-container">
+                <div class="imagen-tijeras"></div>
+            </div>
             
             <!-- Imagen principal (1.png) -->
             <div class="imagen-principal"></div>
             
-            <!-- Texto LA CHASCONA -->
+            <!-- Texto LA CHASCONA - para BP1, BP2, BP3 -->
             <div class="titulo-principal">LA CHASCONA</div>
+            
+            <!-- Texto LA CHASCONA - CONTENEDOR ESPECÍFICO BP5 -->
+            <div class="titulo-chascona-bp5">LA CHASCONA</div>
             
             <!-- Rectángulo naranja con letra japonesa -->
             <div class="rectangulo-naranja">美</div>
             
-            <!-- Imagen modelo1 -->
+            <!-- Imagen modelo1 original -->
             <div class="imagen-modelo1"></div>
+            
+            <!-- Imagen modelo1 duplicada en blanco y negro -->
+            <div class="imagen-modelo1-bw"></div>
+            
+            <!-- Imagen modelo5 -->
+            <div class="imagen-modelo5"></div>
+            
+            <!-- Imagen modelo6 -->
+            <div class="imagen-modelo6"></div>
+            
                 </main>
             </div>
         </div>
@@ -838,6 +1019,27 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Función para actualizar el indicador de breakpoint
+            function updateBreakpointIndicator() {
+                const indicator = document.getElementById('bp-indicator');
+                const width = window.innerWidth;
+                
+                if (width >= 1700) {
+                    indicator.textContent = 'BP6: PANTALLAS GRANDES';
+                } else if (width >= 880) {
+                    indicator.textContent = 'BP5: DESKTOP/WEB';
+                } else if (width >= 600) {
+                    indicator.textContent = 'BP3: MOBILE GRANDE/PHABLET';
+                } else if (width >= 376) {
+                    indicator.textContent = 'BP2: MOBILE MEDIANO';
+                } else {
+                    indicator.textContent = 'BP1: MOBILE PEQUEÑO';
+                }
+            }
+            
+            // Actualizar al cargar y al redimensionar
+            updateBreakpointIndicator();
+            window.addEventListener('resize', updateBreakpointIndicator);
             const agendaButton = document.querySelector('a[href="#agenda"]');
             const simboloBi = document.querySelector('.rectangulo-naranja');
             const popup = document.getElementById('popup-agenda');
@@ -854,20 +1056,30 @@
             agendaButton.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Remover animación si ya está activa
-                simboloBi.classList.remove('glow-animation');
+                // Primero desplazarse hasta el botón naranja (美)
+                const botonNaranja = document.querySelector('.rectangulo-naranja');
+                botonNaranja.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center'
+                });
                 
-                // Forzar reflow para reiniciar la animación
-                simboloBi.offsetHeight;
-                
-                // Añadir la clase de animación
-                simboloBi.classList.add('glow-animation');
-                
-                // Mostrar popup después de la animación
+                // Esperar a que termine el scroll suave (aproximadamente 800ms)
                 setTimeout(() => {
-                    popup.style.display = 'flex';
+                    // Remover animación si ya está activa
                     simboloBi.classList.remove('glow-animation');
-                }, 2000);
+                    
+                    // Forzar reflow para reiniciar la animación
+                    simboloBi.offsetHeight;
+                    
+                    // Añadir la clase de animación
+                    simboloBi.classList.add('glow-animation');
+                    
+                    // Mostrar popup después de la animación
+                    setTimeout(() => {
+                        popup.style.display = 'flex';
+                        simboloBi.classList.remove('glow-animation');
+                    }, 2000);
+                }, 800);
             });
             
             // Cerrar popup
