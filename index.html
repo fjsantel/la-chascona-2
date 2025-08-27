@@ -97,7 +97,7 @@
         .layout-mobile {
             position: relative;
             width: 100%;
-            min-height: 2100px; /* Altura suficiente para mostrar todo el contenido */
+            min-height: 2400px; /* MODIFICADO: Altura aumentada para mostrar todo el contenido incluyendo modelo6 */
             transform-origin: top left;
         }
 
@@ -119,7 +119,7 @@
         .contenido-principal {
             position: relative;
             width: 351px; /* Base mobile */
-            height: 2100px; /* Altura extendida para mostrar imagen en posición 1783px */
+            height: 2400px; /* MODIFICADO: Altura aumentada para acomodar imagen modelo6 en 1814px + 400px altura = 2214px mínimo */
         }
 
         /* Grupo texto japonés vertical */
@@ -238,18 +238,28 @@
             z-index: 50;
         }
 
-        /* Imagen modelo6 específica BP5 - 70% más abajo */
+        /* Imagen modelo6 específica BP5 - 30px debajo de modelo5, desplazada 20px a la izquierda */
         .imagen-modelo6 {
             position: absolute;
-            left: calc(69% - 294px); /* Alineado con modelo5 */
-            top: 1814px; /* 70% más abajo desde modelo5 (1134px + 400px altura + 280px adicional = 1814px) */
-            width: 588px; /* Mismo ancho que modelo5 */
-            height: 400px; /* Misma altura que otras imágenes */
-            background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
-            object-fit: cover;
+            left: calc(69% - 294px - (588px * 0.2) + (100vw - 24px) * 0.11 + 30px); /* MODIFICADO: 20px a la izquierda desde 50px derecha (50px - 20px = 30px) */
+            top: calc(1134px + 400px + 30px); /* MODIFICADO: 30px debajo del margen inferior de modelo5 (1134px + 400px altura + 30px = 1564px) */
+            width: calc(588px * 1.2); /* MODIFICADO: 20% más grande que modelo5 (588px * 1.2 = 705.6px) */
+            height: calc(400px * 1.2); /* MODIFICADO: 20% más grande (400px * 1.2 = 480px) */
+            background: url('assets/hero /Modelos /modelo 6.jpg') center/contain; /* MODIFICADO: contain para mostrar imagen completa */
+            background-repeat: no-repeat; /* AGREGADO: evitar repetición */
+            object-fit: contain; /* MODIFICADO: contain para mostrar imagen completa sin corte */
             z-index: 55;
         }
 
+
+        /* Ocultar todos los bloques ESTILO por defecto */
+        .estilo-bp1,
+        .estilo-bp1-segundo,
+        .estilo-bp2, 
+        .estilo-bp3,
+        .estilo-bp5 {
+            display: none;
+        }
 
         /* ===============================
            BREAKPOINT 1: MOBILE PEQUEÑO
@@ -264,6 +274,78 @@
             .titulo-chascona-bp5 {
                 display: none;
             }
+            
+            /* Mostrar solo bloque ESTILO BP1 - alineado con margen superior del botón naranja */
+            .estilo-bp1 {
+                position: absolute;
+                left: 42%;
+                top: calc(440px + 10vh - 8vh); /* MODIFICADO: Alineado con margen superior del botón naranja */
+                width: 157px; /* MODIFICADO: 50px más angosto que imagen modelo1 */
+                height: auto;
+                z-index: 99999;
+                background: transparent;
+                display: flex !important;
+                flex-direction: column;
+                gap: 8px; /* MODIFICADO: Gap más pequeño para compactar */
+            }
+            
+            /* Título ESTILO para BP1 mobile */
+            .estilo-titulo-bp1 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 24px;
+                text-align: right;
+                color: var(--negro);
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Párrafo específico para BP1 mobile - bloque de texto justificado */
+            .estilo-parrafo-bp1 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 1.6; /* MODIFICADO: Mejor espaciado para legibilidad */
+                color: var(--negro);
+                text-align: justify;
+                margin: 0; /* MODIFICADO: Sin márgenes ya que es el único párrafo */
+                padding: 0;
+                width: 100%;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+                text-rendering: optimizeLegibility; /* AGREGADO: Mejor renderizado */
+            }
+            
+            /* Segundo párrafo ESTILO BP1 - directamente bajo el botón naranja */
+            .estilo-bp1-segundo {
+                position: absolute;
+                left: 10px; /* Alineado con margen izquierdo estándar */
+                top: calc(440px + 10vh - 8vh + 176px + 11px); /* 30px más arriba (41px - 30px = 11px) */
+                width: 124px; /* 8px más angosto (132px - 8px = 124px) */
+                height: auto;
+                z-index: 99999;
+                background: transparent;
+                display: flex !important;
+                flex-direction: column;
+            }
+            
+            .estilo-parrafo-bp1-segundo {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 1.6;
+                color: var(--negro);
+                text-align: justify;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+                text-rendering: optimizeLegibility;
+            }
+            
             .grupo-texto-japones {
                 top: calc(10vh - 8vh); /* 8% más arriba */
             }
@@ -285,7 +367,7 @@
             }
             
             .imagen-modelo1 {
-                top: 671px !important; /* Subida 5%: 706px - (706px * 0.05) = 671px */
+                top: 641px !important; /* 30px más arriba: 671px - 30px = 641px */
                 left: 139px !important; /* Mantener posición horizontal */
             }
         }
@@ -302,6 +384,50 @@
             
             .titulo-chascona-bp5 {
                 display: none;
+            }
+            
+            /* Mostrar solo bloque ESTILO BP2 */
+            .estilo-bp2 {
+                display: flex !important;
+                position: absolute;
+                left: 10px;
+                top: calc(440px + 176px + 20px);
+                width: calc(100vw - 24px - 20px);
+                max-width: 400px;
+                min-width: 300px;
+                height: auto;
+                z-index: 99999;
+                background: transparent;
+                flex-direction: column;
+                gap: 18px;
+            }
+            
+            .estilo-titulo-bp2 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 28px;
+                color: var(--negro);
+                margin: 0;
+                padding: 0;
+                text-align: left;
+            }
+            
+            .estilo-parrafo-bp2 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 1.5;
+                color: var(--negro);
+                text-align: justify;
+                margin: 0 0 12px 0;
+                padding: 0;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+            }
+            
+            .estilo-parrafo-bp2:last-child {
+                margin-bottom: 0;
             }
             /* CAMBIO: Escalado simple del diseño mobile base */
             .layout-mobile {
@@ -344,13 +470,15 @@
                 height: 310px; /* Misma altura que modelo1 en este breakpoint */
             }
 
-            /* Imagen modelo6 - Escalada para que quepan ambas - Ajustada a nueva posición modelo5 */
+            /* Imagen modelo6 - Ajustada para mismo margen derecho que modelo5 y escalada 10% */
             .imagen-modelo6 {
-                left: 0px; /* Margen izquierdo */
+                left: calc((100vw - 24px) * 0.536 - (202px * 1.1 - 202px)); /* MODIFICADO: Ajustado para mismo margen derecho que modelo5 con escalado 10% */
                 top: calc((530px + 20vh) + ((530px + 20vh) * 0.30)); /* Desplazada 30% abajo, mismo que modelo 5 */
-                width: calc((100vw - 24px) * 0.536); /* Hasta donde empieza modelo 5 (que ahora está en 0.536) */
-                height: 310px; /* Misma altura que las otras imágenes */
-                background-size: cover; /* Escalar para cubrir el área */
+                width: calc(202px * 1.1); /* MODIFICADO: 10% más grande que modelo5 (202px * 1.1 = 222.2px) */
+                height: calc(310px * 1.1); /* MODIFICADO: 10% más grande (310px * 1.1 = 341px) */
+                background-size: contain; /* MODIFICADO: contain para mostrar imagen completa */
+                background-repeat: no-repeat; /* AGREGADO: evitar repetición */
+                background-position: center; /* AGREGADO: centrar imagen */
             }
             
 
@@ -373,6 +501,50 @@
             
             .titulo-chascona-bp5 {
                 display: none;
+            }
+            
+            /* Mostrar solo bloque ESTILO BP3 */
+            .estilo-bp3 {
+                display: flex !important;
+                position: absolute;
+                left: 10px;
+                top: calc(440px + 176px + 20px);
+                width: calc(100vw - 24px - 20px);
+                max-width: 450px;
+                min-width: 350px;
+                height: auto;
+                z-index: 99999;
+                background: transparent;
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .estilo-titulo-bp3 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 32px;
+                color: var(--negro);
+                margin: 0;
+                padding: 0;
+                text-align: left;
+            }
+            
+            .estilo-parrafo-bp3 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 1.6;
+                color: var(--negro);
+                text-align: justify;
+                margin: 0 0 12px 0;
+                padding: 0;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+            }
+            
+            .estilo-parrafo-bp3:last-child {
+                margin-bottom: 0;
             }
             /* Misma diagramación que BREAKPOINT 2 pero escalado 20% */
             
@@ -426,13 +598,15 @@
                 height: calc(310px * 1.2); /* Misma altura que modelo1 escalado: 372px */
             }
 
-            /* Imagen modelo6 - Escalada para que quepan ambas */
+            /* Imagen modelo6 - Ajustada para mismo margen derecho que modelo5 y escalada 10% */
             .imagen-modelo6 {
-                left: 0px; /* Margen izquierdo */
+                left: calc((100vw - 24px) * 0.536 - ((202px * 1.2 * 1.1) - (202px * 1.2))); /* MODIFICADO: Ajustado para mismo margen derecho que modelo5 con escalado 10% */
                 top: calc(((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2); /* Mismo que modelo 5 */
-                width: calc((100vw - 24px) * 0.536); /* Hasta donde empieza modelo 5 */
-                height: calc(310px * 1.2); /* Misma altura que las otras imágenes escaladas: 372px */
-                background-size: cover; /* Escalar para cubrir el área */
+                width: calc((202px * 1.2) * 1.1); /* MODIFICADO: 10% más grande que modelo5 escalado (242.4px * 1.1 = 266.64px) */
+                height: calc((310px * 1.2) * 1.1); /* MODIFICADO: 10% más grande (372px * 1.1 = 409.2px) */
+                background-size: contain; /* MODIFICADO: contain para mostrar imagen completa */
+                background-repeat: no-repeat; /* AGREGADO: evitar repetición */
+                background-position: center; /* AGREGADO: centrar imagen */
             }
             
 
@@ -485,6 +659,56 @@
                 display: flex;
             }
             
+            /* Mostrar solo bloque ESTILO BP5 */
+            .estilo-bp5 {
+                display: flex !important;
+                position: absolute;
+                left: 10px;
+                top: 1089px;
+                width: calc(69% - 294px - 20px);
+                max-width: 500px;
+                min-width: 280px;
+                height: auto;
+                z-index: 99999;
+                background: transparent;
+                flex-direction: column;
+                gap: clamp(15px, 2vw, 25px);
+            }
+            
+            .estilo-titulo-bp5 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: clamp(24px, 3vw, 40px);
+                color: var(--negro);
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .estilo-parrafo-bp5 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: clamp(12px, 1.2vw, 16px);
+                line-height: 1.6;
+                color: var(--negro);
+                text-align: justify;
+                margin: 0 0 12px 0;
+                padding: 0;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            
+            .estilo-parrafo-bp5:last-child {
+                margin-bottom: 0;
+            }
+            
             /* Extender contenido para usar todo el ancho disponible */
             .contenido-area {
                 width: calc(100vw - 24px); /* Usar todo el ancho menos el menú */
@@ -499,6 +723,7 @@
             .contenido-principal {
                 width: 100%; /* Expandir contenido principal */
                 height: auto;
+                min-height: 2400px; /* AGREGADO: Altura mínima para acomodar todas las imágenes */
             }
 
             /* Coordenadas específicas para desktop/web */
@@ -570,8 +795,8 @@
             }
 
             .rectangulo-naranja {
-                left: -8px; /* NUEVO: Coordenadas específicas web */
-                top: 672px;
+                left: calc(-243px + (100vw - 24px) * 0.05 - 35px); /* MODIFICADO: 15px a la derecha desde -50px (-50px + 15px = -35px) */
+                top: 722px; /* MODIFICADO: 50px más abajo (672px + 50px = 722px) */
                 width: 470px;
                 height: 216px;
                 font-size: 100px; /* Mantener tamaño tablet para 美 */
@@ -604,36 +829,6 @@
 
             /* DEBUG: Franja roja removida - ya no necesaria */
 
-            /* NUEVO: Sección CORTES BP5 - justo bajo botón naranja con mismo ancho */
-            .seccion-cortes-bp5 {
-                position: absolute;
-                left: -8px; /* Misma posición left que el botón naranja */
-                top: 896px; /* Justo debajo del botón naranja (672px + 216px altura + 8px margen = 896px) */
-                width: 470px; /* Mismo ancho que el botón naranja */
-                height: auto;
-                z-index: 60;
-                padding: 20px; /* Padding interno para el contenido */
-                background: transparent;
-            }
-
-            .titulo-cortes-bp5 {
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 900;
-                font-size: 28px;
-                color: var(--negro);
-                margin-bottom: 16px;
-                text-align: left;
-            }
-
-            .parrafo-cortes-bp5 {
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 1.5;
-                color: var(--negro);
-                text-align: justify;
-                margin-bottom: 12px;
-            }
         }
 
         /* ===============================
@@ -937,6 +1132,38 @@
             
             <!-- Rectángulo naranja con letra japonesa -->
             <div class="rectangulo-naranja">美</div>
+            
+            <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) -->
+            <div class="estilo-bp1">
+                <h2 class="estilo-titulo-bp1">ESTILO</h2>
+                <p class="estilo-parrafo-bp1">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
+            </div>
+            
+            <!-- Segundo párrafo ESTILO BP1: 10% a la izquierda -->
+            <div class="estilo-bp1-segundo">
+                <p class="estilo-parrafo-bp1-segundo">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+            </div>
+            
+            <!-- Bloque ESTILO BP2: Mobile Mediano (376px-599px) -->
+            <div class="estilo-bp2">
+                <h2 class="estilo-titulo-bp2">ESTILO</h2>
+                <p class="estilo-parrafo-bp2">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
+                <p class="estilo-parrafo-bp2">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+            </div>
+            
+            <!-- Bloque ESTILO BP3: Mobile Grande/Phablet (600px-879px) -->
+            <div class="estilo-bp3">
+                <h2 class="estilo-titulo-bp3">ESTILO</h2>
+                <p class="estilo-parrafo-bp3">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
+                <p class="estilo-parrafo-bp3">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+            </div>
+            
+            <!-- Bloque ESTILO BP5: Desktop/Web (≥880px) -->
+            <div class="estilo-bp5">
+                <h2 class="estilo-titulo-bp5">ESTILO</h2>
+                <p class="estilo-parrafo-bp5">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
+                <p class="estilo-parrafo-bp5">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+            </div>
             
             <!-- Imagen modelo1 original -->
             <div class="imagen-modelo1"></div>
