@@ -97,7 +97,7 @@
         .layout-mobile {
             position: relative;
             width: 100%;
-            min-height: 2400px; /* MODIFICADO: Altura aumentada para mostrar todo el contenido incluyendo modelo6 */
+            min-height: 3200px; /* MODIFICADO: Altura ajustada para terminar 50px bajo modelo12 */
             transform-origin: top left;
         }
 
@@ -263,10 +263,10 @@
         }
 
         /* ===============================
-           BREAKPOINT 1: MOBILE PEQUEÑO
-           320px - 375px
+           BREAKPOINT 0: MOBILE EXTRA PEQUEÑO
+           ≤320px
            =============================== */
-        @media (max-width: 375px) {
+        @media (max-width: 320px) {
             /* Mostrar título regular, ocultar BP5 */
             .titulo-principal {
                 display: flex;
@@ -276,7 +276,117 @@
                 display: none;
             }
             
-            /* Mostrar solo bloque ESTILO BP1 - alineado con margen superior del botón naranja */
+            /* Imagen tijeras (2.png) - reducida 3% */
+            .imagen-tijeras {
+                transform: scale(0.97); /* 3% de reducción */
+                transform-origin: center;
+            }
+            
+            /* Título LA CHASCONA - reducido 3% */
+            .titulo-principal {
+                transform: scale(0.97); /* 3% de reducción */
+                transform-origin: left top;
+            }
+            
+            /* ESTILO y párrafo 1 específicos para BP0 - SIN duplicar */
+            .titulo-estilo-bp0-independiente {
+                display: block; /* Solo visible en BP0 */
+                position: absolute;
+                left: 42%;
+                top: calc(440px + 10vh - 8vh - 24px); /* Título arriba del párrafo */
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 900;
+                font-size: 19px; /* Reducido 20% */
+                text-align: right;
+                color: var(--negro);
+                margin: 0;
+                padding: 0;
+                z-index: 99999;
+                transform: scale(0.96) translateX(calc(-8px + 120%)); /* Posición final BP0 */
+                transform-origin: left top;
+            }
+            
+            .parrafo1-estilo-bp0-independiente {
+                display: block; /* Solo visible en BP0 */
+                position: absolute;
+                left: 42%;
+                top: calc(440px + 10vh - 8vh); /* Párrafo bajo el título */
+                width: 125px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 10px; /* Reducido 20% */
+                line-height: 1.4;
+                color: var(--negro);
+                text-align: right;
+                margin: 0;
+                padding: 0;
+                z-index: 99999;
+                transform: scale(1.04) translateX(calc(-40% + 60% - 5%)); /* 15% neto derecha */
+                transform-origin: left top;
+            }
+            
+            /* Bloque ESTILO BP1 - escala reducida 4% y desplazado 8px izquierda */
+            .estilo-bp1 {
+                transform: scale(0.96) translateX(-8px); /* 4% de reducción de escala + 8px a la izquierda */
+                transform-origin: left top;
+            }
+            
+            /* Restaurar párrafo 1 ESTILO normal para BP1+ */
+            .estilo-parrafo-bp1 {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 1.6;
+                color: var(--negro);
+                text-align: right;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+                text-rendering: optimizeLegibility;
+                transform: translateX(calc(20% - 10px)) translateY(3%); /* BP1: 10px izq + 3% abajo */
+            }
+            
+            /* Segundo párrafo ESTILO BP1 - ancho reducido 3% */
+            .estilo-bp1-segundo {
+                width: calc(58% * 0.97); /* 3% de reducción del ancho */
+            }
+            
+            /* Párrafo 2 ESTILO - ancho reducido 3% */
+            .estilo-parrafo-bp1-segundo {
+                width: calc(100% * 0.97); /* 3% de reducción del ancho del párrafo */
+            }
+        }
+
+        /* ===============================
+           BREAKPOINT 1: MOBILE PEQUEÑO
+           321px - 414px
+           =============================== */
+        @media (max-width: 414px) {
+            /* Ocultar elementos BP0 específicos en BP1+ */
+            .titulo-estilo-bp0-independiente,
+            .parrafo1-estilo-bp0-independiente {
+                display: none !important;
+            }
+            
+            /* Mostrar título regular, ocultar BP5 */
+            .titulo-principal {
+                display: flex;
+                transform: translateX(20%); /* 20% a la derecha */
+            }
+            
+            .titulo-chascona-bp5 {
+                display: none;
+            }
+            
+            /* Imagen tijeras (2.png) - desplazada 20% derecha */
+            .imagen-tijeras {
+                transform: translateX(20%); /* 20% a la derecha */
+            }
+            
+            /* Mostrar solo bloque ESTILO BP1 - alineado con margen superior del botón naranja + 50px derecha */
             .estilo-bp1 {
                 position: absolute;
                 left: 42%;
@@ -288,10 +398,14 @@
                 display: flex !important;
                 flex-direction: column;
                 gap: 8px; /* MODIFICADO: Gap más pequeño para compactar */
+                transform: translateX(calc(20% - 10px + 5px)); /* 20% - 10px + 5px (neto 5px izq) */
             }
             
-            /* Título ESTILO para BP1 mobile */
-            .estilo-titulo-bp1 {
+            /* Título ESTILO independiente para BP1 - posicionado absoluto + 24px arriba */
+            .titulo-estilo-bp1-independiente {
+                position: absolute;
+                left: calc(42% + 5px); /* Basado en posición del bloque + 5px derecha */
+                top: calc(440px + 10vh - 8vh - 24px); /* 24px arriba de la altura del bloque ESTILO */
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 900;
                 font-size: 24px;
@@ -299,16 +413,23 @@
                 color: var(--negro);
                 margin: 0;
                 padding: 0;
+                z-index: 99999;
+                transform: translateX(calc(20% + 80px + 5% + 3px + 5px)); /* Posición original + 5% + 3px + 5px extra derecha */
             }
             
-            /* Párrafo específico para BP1 mobile - bloque de texto justificado */
+            /* Título ESTILO para BP1 mobile - OCULTO para usar independiente */
+            .estilo-titulo-bp1 {
+                display: none;
+            }
+            
+            /* Párrafo específico para BP1 mobile - texto alineado a la derecha */
             .estilo-parrafo-bp1 {
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 1.6; /* MODIFICADO: Mejor espaciado para legibilidad */
                 color: var(--negro);
-                text-align: justify;
+                text-align: right; /* Alineado a la derecha */
                 margin: 0; /* MODIFICADO: Sin márgenes ya que es el único párrafo */
                 padding: 0;
                 width: 100%;
@@ -316,9 +437,10 @@
                 hyphens: auto;
                 overflow-wrap: break-word;
                 text-rendering: optimizeLegibility; /* AGREGADO: Mejor renderizado */
+                transform: translateX(calc(20% - 10px)) translateY(3%); /* 20% - 10px (neto 10px izq) + 3% abajo */
             }
             
-            /* Segundo párrafo ESTILO BP1 - directamente bajo el botón naranja */
+            /* Segundo párrafo ESTILO BP1 - directamente bajo el botón naranja + 5px derecha */
             .estilo-bp1-segundo {
                 position: absolute;
                 left: 7px; /* 3px a la izquierda (10px - 3px = 7px) */
@@ -329,6 +451,7 @@
                 background: transparent;
                 display: flex !important;
                 flex-direction: column;
+                transform: translateX(5px); /* 5px a la derecha */
             }
             
             .estilo-parrafo-bp1-segundo {
@@ -369,14 +492,16 @@
             
             .imagen-modelo1 {
                 top: calc(641px * 1.04) !important; /* 4% más abajo: 641px * 1.04 = 667px (6% - 2% = 4%) */
-                left: 139px !important; /* Mantener posición horizontal */
+                left: calc(139px + 10px) !important; /* 10px más a la derecha */
+                transform: translateX(10px) translateY(-6%); /* 10px derecha + 6% arriba */
             }
             
-            /* Imagen modelo1 duplicada BP1 - 30% menor, blanco y negro */
+            /* Imagen modelo1 duplicada BP1 - 30% menor, blanco y negro + 10px derecha + 6% arriba */
             .imagen-modelo1-bw {
                 position: absolute;
-                left: calc(139px - (207px * 0.7) + 30px + (calc((207px * 0.7) * 0.8) - calc(((207px * 0.7) * 0.8) * 0.9))); /* Ajustar left para mantener margen derecho */
+                left: calc(139px - (207px * 0.7) + 30px + (calc((207px * 0.7) * 0.8) - calc(((207px * 0.7) * 0.8) * 0.9)) + 10px); /* Ajustar left + 10px derecha */
                 top: calc((641px * 1.04) + 80px + 30px + 15px - 1px + (calc((282px * 0.7) * 0.8) - calc(((282px * 0.7) * 0.8) * 0.9))) !important; /* Ajustar top para mantener margen inferior */
+                transform: translateX(10px) translateY(-6%); /* 10px derecha + 6% arriba */
                 width: calc(((207px * 0.7) * 0.8) * 0.9); /* 10% menor adicional - total 50.4% menor que original */
                 height: calc(((282px * 0.7) * 0.8) * 0.9); /* 10% menor adicional - total 50.4% menor que original */
                 background: url('assets/hero /Modelos /modelo 1.png') center/cover;
@@ -501,19 +626,30 @@
                 z-index: 58; /* Por encima de modelo8-color */
             }
             
-            /* Imagen modelo12 BP1 - bajo modelo3, ancho completo llenando el contenedor */
+            /* Imagen modelo12 BP1 - bajo modelo3, ancho completo llenando el contenedor + 30px abajo */
             .imagen-modelo12 {
                 position: absolute;
                 left: 0px; /* Borde izquierdo */
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1)); /* Bajo modelo3: posición modelo3 + altura modelo3 */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 30px); /* Bajo modelo3 + 30px abajo */
                 width: calc(100vw - 24px); /* Ancho completo disponible */
                 height: auto; /* Altura automática para mantener proporciones */
-                min-height: 400px; /* Altura mínima para asegurar visibilidad */
+                min-height: 800px; /* Altura mínima aumentada para asegurar visibilidad completa */
                 background: url('assets/hero /Modelos /modelo12.jpg?v=1') center/cover;
-                background-size: 100% auto; /* Ancho completo, altura proporcional */
+                background-size: contain; /* Contiene la imagen completa sin recortes */
                 background-repeat: no-repeat;
-                background-position: center;
+                background-position: center top; /* Alineado al centro y arriba */
                 z-index: 59; /* Por encima de modelo3 */
+            }
+            
+            /* Bloque espaciador blanco bajo modelo12 BP1 - evita crop vertical + 30% abajo */
+            .espaciador-modelo12-bp1 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 30px + 800px + 50px); /* Exactamente 50px bajo modelo12 BP1 */
+                width: calc(100vw - 24px);
+                height: 50px; /* Espaciador de exactamente 50px */
+                background: #FFFFFF; /* Fondo blanco */
+                z-index: 60; /* Por encima de modelo12 */
             }
         }
 
@@ -521,7 +657,7 @@
            BREAKPOINT 2: MOBILE MEDIANO
            376px - 599px
            =============================== */
-        @media (min-width: 376px) and (max-width: 599px) {
+        @media (min-width: 415px) and (max-width: 599px) {
             /* Mostrar título regular, ocultar BP5 */
             .titulo-principal {
                 display: flex;
@@ -726,19 +862,30 @@
                 z-index: 58;
             }
             
-            /* Imagen modelo12 BP2 - ancho completo sin recortar imagen, desplazada 35px abajo */
+            /* Imagen modelo12 BP2 - ancho completo sin recortar imagen, desplazada 65px abajo */
             .imagen-modelo12 {
                 position: absolute;
                 left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 35px);
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 65px); /* Original 35px + 30px adicionales = 65px abajo */
                 width: calc(100vw - 24px);
                 height: auto;
-                min-height: 500px;
+                min-height: 800px; /* Altura mínima aumentada para BP2 */
                 background: url('assets/hero /Modelos /modelo12.jpg?v=1') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
                 z-index: 59;
+            }
+            
+            /* Bloque espaciador blanco bajo modelo12 BP2 - evita crop vertical + 30% abajo */
+            .espaciador-modelo12-bp2 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 65px + 800px + 50px); /* Exactamente 50px bajo modelo12 BP2 */
+                width: calc(100vw - 24px);
+                height: 50px; /* Espaciador de exactamente 50px */
+                background: #FFFFFF; /* Fondo blanco */
+                z-index: 60; /* Por encima de modelo12 */
             }
         }
 
@@ -747,6 +894,12 @@
            600px - 879px (extendido hasta desktop)
            =============================== */
         @media (min-width: 600px) and (max-width: 879px) {
+            /* Ocultar elementos BP0 específicos en BP3 */
+            .titulo-estilo-bp0-independiente,
+            .parrafo1-estilo-bp0-independiente {
+                display: none !important;
+            }
+            
             /* Mostrar título regular, ocultar BP5 */
             .titulo-principal {
                 display: flex;
@@ -927,6 +1080,12 @@
            780px+
            =============================== */
         @media (min-width: 880px) {
+            /* Ocultar elementos BP0 específicos en BP5 */
+            .titulo-estilo-bp0-independiente,
+            .parrafo1-estilo-bp0-independiente {
+                display: none !important;
+            }
+            
             /* Mostrar título BP5, ocultar título regular */
             .titulo-principal {
                 display: none;
@@ -1000,7 +1159,7 @@
             .contenido-principal {
                 width: 100%; /* Expandir contenido principal */
                 height: auto;
-                min-height: 2400px; /* AGREGADO: Altura mínima para acomodar todas las imágenes */
+                min-height: 3200px; /* AGREGADO: Altura ajustada para terminar 50px bajo modelo12 */
             }
 
             /* Coordenadas específicas para desktop/web */
@@ -1410,7 +1569,14 @@
             <!-- Rectángulo naranja con letra japonesa -->
             <div class="rectangulo-naranja">美</div>
             
-            <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) -->
+            <!-- Título ESTILO independiente BP0 - reducido 20% -->
+            <h2 class="titulo-estilo-bp0-independiente">ESTILO</h2>
+            
+            <!-- Párrafo 1 ESTILO independiente BP0 - reducido 20% -->
+            <p class="parrafo1-estilo-bp0-independiente">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+            
+            
+            <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) - solo párrafo -->
             <div class="estilo-bp1">
                 <h2 class="estilo-titulo-bp1">ESTILO</h2>
                 <p class="estilo-parrafo-bp1">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
@@ -1474,6 +1640,12 @@
             
             <!-- Imagen modelo12 -->
             <div class="imagen-modelo12"></div>
+            
+            <!-- Espaciador blanco bajo modelo12 BP1 - evita crop vertical -->
+            <div class="espaciador-modelo12-bp1"></div>
+            
+            <!-- Espaciador blanco bajo modelo12 BP2 - evita crop vertical -->
+            <div class="espaciador-modelo12-bp2"></div>
             
                 </main>
             </div>
@@ -1555,10 +1727,12 @@
                     indicator.textContent = 'BP5: DESKTOP/WEB';
                 } else if (width >= 600) {
                     indicator.textContent = 'BP3: MOBILE GRANDE/PHABLET';
-                } else if (width >= 376) {
+                } else if (width >= 415) {
                     indicator.textContent = 'BP2: MOBILE MEDIANO';
-                } else {
+                } else if (width >= 321) {
                     indicator.textContent = 'BP1: MOBILE PEQUEÑO';
+                } else {
+                    indicator.textContent = 'BP0: MOBILE EXTRA PEQUEÑO';
                 }
             }
             
