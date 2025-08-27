@@ -222,6 +222,7 @@
             height: 282px; /* Alto exacto de Figma */
             background: url('assets/hero /Modelos /modelo 1.png') center/cover;
             object-fit: cover;
+            border-top-left-radius: 15px; /* Esquina superior izquierda redondeada */
             z-index: 50; /* Por sobre todos los demás elementos */
         }
 
@@ -320,9 +321,9 @@
             /* Segundo párrafo ESTILO BP1 - directamente bajo el botón naranja */
             .estilo-bp1-segundo {
                 position: absolute;
-                left: 10px; /* Alineado con margen izquierdo estándar */
-                top: calc(440px + 10vh - 8vh + 176px + 11px); /* 30px más arriba (41px - 30px = 11px) */
-                width: 124px; /* 8px más angosto (132px - 8px = 124px) */
+                left: 7px; /* 3px a la izquierda (10px - 3px = 7px) */
+                top: calc((440px + 10vh - 8vh + 176px + 11px) * 1.04); /* 4% más abajo (6% - 2% = 4%) */
+                width: 125px; /* 1px más ancho (124px + 1px = 125px) */
                 height: auto;
                 z-index: 99999;
                 background: transparent;
@@ -367,8 +368,152 @@
             }
             
             .imagen-modelo1 {
-                top: 641px !important; /* 30px más arriba: 671px - 30px = 641px */
+                top: calc(641px * 1.04) !important; /* 4% más abajo: 641px * 1.04 = 667px (6% - 2% = 4%) */
                 left: 139px !important; /* Mantener posición horizontal */
+            }
+            
+            /* Imagen modelo1 duplicada BP1 - 30% menor, blanco y negro */
+            .imagen-modelo1-bw {
+                position: absolute;
+                left: calc(139px - (207px * 0.7) + 30px + (calc((207px * 0.7) * 0.8) - calc(((207px * 0.7) * 0.8) * 0.9))); /* Ajustar left para mantener margen derecho */
+                top: calc((641px * 1.04) + 80px + 30px + 15px - 1px + (calc((282px * 0.7) * 0.8) - calc(((282px * 0.7) * 0.8) * 0.9))) !important; /* Ajustar top para mantener margen inferior */
+                width: calc(((207px * 0.7) * 0.8) * 0.9); /* 10% menor adicional - total 50.4% menor que original */
+                height: calc(((282px * 0.7) * 0.8) * 0.9); /* 10% menor adicional - total 50.4% menor que original */
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                object-fit: cover;
+                filter: grayscale(100%); /* Blanco y negro */
+                border-radius: 0; /* Sin bordes redondeados */
+                z-index: 49; /* Por debajo de modelo1 original */
+            }
+            
+            /* Imagen modelo5 BP1 - 80px arriba de su posición estándar, escalada 20%, 185px a la izquierda total */
+            .imagen-modelo5 {
+                position: absolute;
+                left: calc(139px - 45px - 45px - 30px - 40px - 25px); /* 185px total a la izquierda: 139px - 185px = -46px */
+                top: calc((641px * 1.04) + 282px - 50px + 80px - 50px); /* 50px más arriba: 80px arriba de la posición estándar */
+                width: calc(207px * 1.2); /* 20% más grande: 248.4px */
+                height: calc(282px * 1.2); /* 20% más grande: 338.4px */
+                background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
+                object-fit: cover;
+                z-index: 50;
+            }
+            
+            /* Imagen modelo6 BP1 - 50% abajo de la posición modelo1 */
+            .imagen-modelo6 {
+                position: absolute;
+                left: 139px; /* Misma posición horizontal que modelo1 */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20)); /* 20% adicional más abajo: 50% abajo de modelo1 BP1 */
+                width: 207px; /* Mismo ancho que modelo1 */
+                height: 282px; /* Misma altura que modelo1 */
+                background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
+                object-fit: cover;
+                z-index: 51; /* Por encima de modelo5 */
+            }
+            
+            /* Imagen modelo9 BP1 - ancho completo, sobre modelo6 */
+            .imagen-modelo9 {
+                position: absolute;
+                left: 0; /* Desde el borde izquierdo */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px); /* 6px adicional más arriba (19px total) */
+                width: calc(100vw - 24px); /* Ancho completo menos el menú */
+                height: 282px; /* Misma altura que modelo1 */
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
+                object-fit: cover;
+                z-index: 53; /* Por encima de modelo6 (51) */
+            }
+            
+            /* Imagen modelo10 BP1 - bajo modelo9, 23px arriba, escala reducida 10% */
+            .imagen-modelo10 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px); /* Bajo modelo9: posición modelo9 + altura modelo9 - 23px */
+                width: calc((100vw - 24px) * 0.9); /* Ancho completo disponible con escala reducida 10% */
+                height: calc(282px * 0.9); /* Altura original con escala reducida 10% (253.8px) */
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/cover;
+                object-fit: cover;
+                z-index: 54; /* Por encima de modelo9 */
+            }
+            
+            /* Imagen modelo11 BP1 - bajo modelo10 */
+            .imagen-modelo11 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9)); /* Bajo modelo10: posición modelo10 + altura modelo10 */
+                width: calc(100vw - 24px); /* Ancho completo disponible */
+                height: 282px; /* Altura original */
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/cover;
+                object-fit: cover;
+                z-index: 55; /* Por encima de modelo10 */
+            }
+            
+            /* Imagen modelo11 BP1 - bajo modelo10 */
+            .imagen-modelo11 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9)); /* Bajo modelo10: posición modelo10 + altura modelo10 */
+                width: calc(100vw - 24px); /* Ancho completo disponible */
+                height: 282px; /* Altura original */
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/cover;
+                object-fit: cover;
+                z-index: 55; /* Por encima de modelo10 */
+            }
+            
+            /* Imagen modelo8 BP1 - bajo modelo11, escala reducida 30%, blanco y negro, desplazada 30% arriba */
+            .imagen-modelo8 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px - calc(282px * 0.7 * 0.30)); /* Bajo modelo11 - 30% de su altura */
+                width: calc((100vw - 24px) * 0.7); /* Ancho reducido 30% */
+                height: calc(282px * 0.7); /* Altura reducida 30% */
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                filter: grayscale(100%); /* Blanco y negro */
+                z-index: 56; /* Por encima de modelo11 */
+            }
+            
+            /* Imagen modelo8 duplicada BP1 - desplazada 40% abajo, 50% derecha, upscale 20%, en color */
+            .imagen-modelo8-color {
+                position: absolute;
+                left: calc((100vw - 24px) * 0.50); /* 50% a la derecha */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40)); /* Mismo nivel que modelo8 + 40% de su altura */
+                width: calc((100vw - 24px) * 0.7 * 1.2); /* Ancho reducido 30% + upscale 20% */
+                height: calc(282px * 0.7 * 1.2); /* Altura reducida 30% + upscale 20% */
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 57; /* Por encima de modelo8 blanco y negro */
+            }
+            
+            /* Imagen modelo3 BP1 - a la izquierda de modelo-8 color, 15% arriba desde 30% abajo, escala 10% adicional */
+            .imagen-modelo3 {
+                position: absolute;
+                left: calc((100vw - 24px) * 0.50 - calc((100vw - 24px) * 0.5)); /* A la izquierda de modelo8-color */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15)); /* Ajustado para nueva escala */
+                width: calc((100vw - 24px) * 0.5 * 1.2 * 1.1); /* Mitad del ancho disponible + escala 20% + escala 10% */
+                height: calc(282px * 0.7 * 1.2 * 1.2 * 1.1); /* Altura de modelo8-color + escala 20% + escala 10% */
+                background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 58; /* Por encima de modelo8-color */
+            }
+            
+            /* Imagen modelo12 BP1 - bajo modelo3, ancho completo llenando el contenedor */
+            .imagen-modelo12 {
+                position: absolute;
+                left: 0px; /* Borde izquierdo */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1)); /* Bajo modelo3: posición modelo3 + altura modelo3 */
+                width: calc(100vw - 24px); /* Ancho completo disponible */
+                height: auto; /* Altura automática para mantener proporciones */
+                min-height: 400px; /* Altura mínima para asegurar visibilidad */
+                background: url('assets/hero /Modelos /modelo12.jpg?v=1') center/cover;
+                background-size: 100% auto; /* Ancho completo, altura proporcional */
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 59; /* Por encima de modelo3 */
             }
         }
 
@@ -392,9 +537,9 @@
                 position: absolute;
                 left: 10px;
                 top: calc(440px + 176px + 20px);
-                width: calc(100vw - 24px - 20px);
-                max-width: 400px;
-                min-width: 300px;
+                width: calc((100vw - 24px - 20px) * 0.532); /* 5% más angosto (0.56 - 0.028 = 0.532) */
+                max-width: 213px; /* 5% menos de 224px */
+                min-width: 160px; /* 5% menos de 168px */
                 height: auto;
                 z-index: 99999;
                 background: transparent;
@@ -464,18 +609,32 @@
 
             /* Imagen modelo5 - Breakpoint 2 - Margen derecho igual a modelo1 */
             .imagen-modelo5 {
-                left: calc((100vw - 24px) * 0.536); /* Misma posición left que modelo1 para igualar margen derecho */
-                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30)); /* Desplazada 30% abajo */
-                width: 202px; /* Mismo ancho que modelo1 en este breakpoint */
-                height: 310px; /* Misma altura que modelo1 en este breakpoint */
+                left: calc((100vw - 24px) * 0.536 - 41px); /* 8px adicional a la izquierda (33px + 8px = 41px total) */
+                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30) + 90px); /* 10px adicional más abajo (80px + 10px = 90px total) */
+                width: calc((202px * 1.1) * 1.1); /* 10% adicional más grande (222.2px * 1.1 = 244.42px) */
+                height: calc((310px * 1.1) * 1.1); /* 10% adicional más grande (341px * 1.1 = 375.1px) */
+            }
+
+            /* Imagen modelo1 duplicada BP2 - 40% menor, blanco y negro */
+            .imagen-modelo1-bw {
+                position: absolute;
+                left: calc((100vw - 24px) * 0.536 + 202px - (202px * 0.6)); /* Margen derecho alineado con modelo1 original */
+                top: calc((530px - 4vh) + 310px - 40px); /* 30px adicional más arriba (10px + 30px = 40px total) */
+                width: calc(202px * 0.6); /* 40% menor que modelo1 original (202px * 0.6 = 121.2px) */
+                height: calc(310px * 0.6); /* 40% menor que modelo1 original (310px * 0.6 = 186px) */
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                object-fit: cover;
+                filter: grayscale(100%); /* Blanco y negro */
+                border-radius: 0; /* Sin bordes redondeados */
+                z-index: 51; /* Por encima de modelo1 original */
             }
 
             /* Imagen modelo6 - Ajustada para mismo margen derecho que modelo5 y escalada 10% */
             .imagen-modelo6 {
-                left: calc((100vw - 24px) * 0.536 - (202px * 1.1 - 202px)); /* MODIFICADO: Ajustado para mismo margen derecho que modelo5 con escalado 10% */
-                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30)); /* Desplazada 30% abajo, mismo que modelo 5 */
-                width: calc(202px * 1.1); /* MODIFICADO: 10% más grande que modelo5 (202px * 1.1 = 222.2px) */
-                height: calc(310px * 1.1); /* MODIFICADO: 10% más grande (310px * 1.1 = 341px) */
+                left: calc((100vw - 24px) * 0.536 - (202px * 1.1 - 202px) - ((100vw - 24px) * 0.50)); /* 50% a la izquierda */
+                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30) + 50px); /* 50px más abajo */
+                width: calc((202px * 1.1) * 1.05); /* 5% más grande que modelo5 escalado (222.2px * 1.05 = 233.31px) */
+                height: calc((310px * 1.1) * 1.05); /* 5% más grande (341px * 1.05 = 358.05px) */
                 background-size: contain; /* MODIFICADO: contain para mostrar imagen completa */
                 background-repeat: no-repeat; /* AGREGADO: evitar repetición */
                 background-position: center; /* AGREGADO: centrar imagen */
@@ -486,6 +645,100 @@
             .caracter-japones {
                 font-family: 'Montserrat', sans-serif;
                 font-size: 34px;
+            }
+            
+            /* Imagen modelo9 BP2 - adaptada desde BP1 */
+            .imagen-modelo9 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px);
+                width: calc(100vw - 24px);
+                height: 282px;
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
+                object-fit: cover;
+                z-index: 53;
+            }
+            
+            /* Imagen modelo10 BP2 - adaptada desde BP1 */
+            .imagen-modelo10 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px);
+                width: calc((100vw - 24px) * 0.9);
+                height: calc(282px * 0.9);
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/cover;
+                object-fit: cover;
+                z-index: 54;
+            }
+            
+            /* Imagen modelo11 BP2 - adaptada desde BP1 */
+            .imagen-modelo11 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9));
+                width: calc(100vw - 24px);
+                height: 282px;
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/cover;
+                object-fit: cover;
+                z-index: 55;
+            }
+            
+            /* Imagen modelo8 BP2 - blanco y negro, adaptada desde BP1 */
+            .imagen-modelo8 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px - calc(282px * 0.7 * 0.30));
+                width: calc((100vw - 24px) * 0.7);
+                height: calc(282px * 0.7);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                filter: grayscale(100%);
+                z-index: 56;
+            }
+            
+            /* Imagen modelo8 color BP2 - adaptada desde BP1 */
+            .imagen-modelo8-color {
+                position: absolute;
+                left: calc((100vw - 24px) * 0.50);
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40));
+                width: calc((100vw - 24px) * 0.7 * 1.2);
+                height: calc(282px * 0.7 * 1.2);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 57;
+            }
+            
+            /* Imagen modelo3 BP2 - adaptada desde BP1 */
+            .imagen-modelo3 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15));
+                width: calc((100vw - 24px) * 0.5 * 1.2 * 1.1);
+                height: calc(282px * 0.7 * 1.2 * 1.2 * 1.1);
+                background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 58;
+            }
+            
+            /* Imagen modelo12 BP2 - ancho completo sin recortar imagen, desplazada 35px abajo */
+            .imagen-modelo12 {
+                position: absolute;
+                left: 0px;
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 35px);
+                width: calc(100vw - 24px);
+                height: auto;
+                min-height: 500px;
+                background: url('assets/hero /Modelos /modelo12.jpg?v=1') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 59;
             }
         }
 
@@ -507,16 +760,16 @@
             .estilo-bp3 {
                 display: flex !important;
                 position: absolute;
-                left: 10px;
-                top: calc(440px + 176px + 20px);
-                width: calc(100vw - 24px - 20px);
-                max-width: 450px;
-                min-width: 350px;
+                left: calc(10px + ((100vw - 24px) * 0.11) - ((100vw - 24px) * 0.10)); /* 2% a la derecha adicional (9% + 2% = 11% desde máscara 10% izquierda) */
+                top: calc((440px + 176px + 20px) * 1.05); /* 5% más abajo */
+                width: calc((100vw - 24px - 20px) * 0.727); /* Ancho fijo como BP5 */
+                max-width: 328px; /* 5% menos de 345px */
+                min-width: 254px; /* Mismo comportamiento que BP5 */
                 height: auto;
                 z-index: 99999;
                 background: transparent;
                 flex-direction: column;
-                gap: 20px;
+                gap: 20px; /* Mismo gap que BP5 (clamp(15px, 2vw, 25px) ≈ 20px) */
             }
             
             .estilo-titulo-bp3 {
@@ -541,11 +794,35 @@
                 word-wrap: break-word;
                 hyphens: auto;
                 overflow-wrap: break-word;
+                /* Evitar superposición con imagen modelo1 - forma adaptativa */
+                shape-outside: polygon(0 0, 40% 0, 50% 30%, 60% 50%, 100% 70%, 100% 100%, 0 100%);
+                width: 100%;
+                /* Ancho variable: empieza más angosto y se ensancha gradualmente */
+                background: linear-gradient(to right, 
+                    transparent 0%, 
+                    transparent 30%, 
+                    var(--texto-fondo, transparent) 30%, 
+                    var(--texto-fondo, transparent) 100%);
             }
             
             .estilo-parrafo-bp3:last-child {
                 margin-bottom: 0;
             }
+            
+            /* Imagen modelo1 duplicada BP3 - 30% menor, blanco y negro, sin bordes redondeados */
+            .imagen-modelo1-bw {
+                position: absolute;
+                left: calc((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) - ((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) * 0.03) - calc((202px * 1.2) * 0.7)); /* A la izquierda de modelo1 original, con imagen 30% menor */
+                top: calc(((530px - 4vh) * 1.2) + calc((310px * 1.2) - (310px * 1.2 * 0.7))); /* Ajustada al margen inferior de modelo1 original */
+                width: calc((202px * 1.2) * 0.7); /* 30% menor que modelo1 original */
+                height: calc((310px * 1.2) * 0.7); /* 30% menor que modelo1 original */
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                object-fit: cover;
+                filter: grayscale(100%); /* Blanco y negro */
+                border-radius: 0; /* Sin bordes redondeados */
+                z-index: 49; /* Por debajo de modelo1 original */
+            }
+            
             /* Misma diagramación que BREAKPOINT 2 pero escalado 20% */
             
             /* Grupo texto japonés - Escalado */
@@ -575,7 +852,7 @@
             }
 
             .rectangulo-naranja {
-                left: calc(-190px * 1.2); /* Escalado 20%: -228px */
+                left: calc((-190px * 1.2) - ((100vw - 24px) * 0.23)); /* 8% adicional a la izquierda (15% + 8% = 23% total) */
                 top: calc(333px * 1.2); /* Escalado 20%: 399.6px */
                 width: calc(470px * 1.2); /* Escalado 20%: 564px */
                 height: calc(216px * 1.2); /* Escalado 20%: 259.2px */
@@ -592,16 +869,16 @@
 
             /* Imagen modelo5 - Breakpoint 3 - Margen derecho igual a modelo1 */
             .imagen-modelo5 {
-                left: calc((100vw - 24px) * 0.536); /* Misma posición left que modelo1 */
-                top: calc(((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2); /* Escalado 20% */
-                width: calc(202px * 1.2); /* Mismo ancho que modelo1 escalado: 242.4px */
-                height: calc(310px * 1.2); /* Misma altura que modelo1 escalado: 372px */
+                left: calc((100vw - 24px) * 0.536 + 10px); /* 5px adicional a la derecha (5px + 5px = 10px total) */
+                top: calc((((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2) - 50px); /* 25px adicional más arriba (25px + 25px = 50px total) */
+                width: calc((202px * 1.2) * 1.4); /* 40% más grande que modelo1 escalado: 338.88px */
+                height: calc((310px * 1.2) * 1.4); /* 40% más grande: 520.8px */
             }
 
             /* Imagen modelo6 - Ajustada para mismo margen derecho que modelo5 y escalada 10% */
             .imagen-modelo6 {
-                left: calc((100vw - 24px) * 0.536 - ((202px * 1.2 * 1.1) - (202px * 1.2))); /* MODIFICADO: Ajustado para mismo margen derecho que modelo5 con escalado 10% */
-                top: calc(((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2); /* Mismo que modelo 5 */
+                left: calc((100vw - 24px) * 0.536 - ((202px * 1.2 * 1.1) - (202px * 1.2)) - 150px); /* 5px adicional a la derecha (155px - 5px = 150px a la izquierda) */
+                top: calc((((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px); /* 25px más arriba */
                 width: calc((202px * 1.2) * 1.1); /* MODIFICADO: 10% más grande que modelo5 escalado (242.4px * 1.1 = 266.64px) */
                 height: calc((310px * 1.2) * 1.1); /* MODIFICADO: 10% más grande (372px * 1.1 = 409.2px) */
                 background-size: contain; /* MODIFICADO: contain para mostrar imagen completa */
@@ -665,9 +942,9 @@
                 position: absolute;
                 left: 10px;
                 top: 1089px;
-                width: calc(69% - 294px - 20px);
-                max-width: 500px;
-                min-width: 280px;
+                width: calc((69% - 294px - 20px) * 0.98); /* 2% más angosto */
+                max-width: 490px; /* 2% menos que 500px */
+                min-width: 274px; /* 2% menos que 280px */
                 height: auto;
                 z-index: 99999;
                 background: transparent;
@@ -691,7 +968,7 @@
             .estilo-parrafo-bp5 {
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 400;
-                font-size: clamp(12px, 1.2vw, 16px);
+                font-size: 14px; /* Mismo tamaño que BP3 */
                 line-height: 1.6;
                 color: var(--negro);
                 text-align: justify;
@@ -817,10 +1094,10 @@
             /* Imagen modelo1 duplicada - blanco y negro - pegada a la izquierda */
             .imagen-modelo1-bw {
                 position: absolute;
-                left: calc(69% - 294px); /* Pegada a la izquierda de modelo1 original (movida 5%) */
-                top: 710px; /* Misma altura que modelo1 original */
-                width: 294px;
-                height: 400px;
+                left: calc(69% - (294px * 0.7)); /* Margen derecho de imagen b/n alineado con margen izquierdo de modelo1 color */
+                top: calc(710px + 400px - (400px * 0.7)); /* Pegada al margen inferior de modelo1 original */
+                width: calc(294px * 0.7); /* 30% menor: 205.8px */
+                height: calc(400px * 0.7); /* 30% menor: 280px */
                 background: url('assets/hero /Modelos /modelo 1.png') center/cover;
                 object-fit: cover;
                 filter: grayscale(100%); /* Filtro blanco y negro */
@@ -893,7 +1170,7 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
+            z-index: 999999;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1107,7 +1384,7 @@
                 <!-- <div class="debug-grid"></div> -->
                 
                 <!-- Contenido principal -->
-                <main class="contenido-principal">
+                <main id="inicio" class="contenido-principal">
             <!-- Grupo texto japonés vertical -->
             <div class="grupo-texto-japones">
                 <div class="cuadrado-negro"></div>
@@ -1136,33 +1413,33 @@
             <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) -->
             <div class="estilo-bp1">
                 <h2 class="estilo-titulo-bp1">ESTILO</h2>
-                <p class="estilo-parrafo-bp1">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
+                <p class="estilo-parrafo-bp1">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
             </div>
             
             <!-- Segundo párrafo ESTILO BP1: 10% a la izquierda -->
             <div class="estilo-bp1-segundo">
-                <p class="estilo-parrafo-bp1-segundo">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+                <p class="estilo-parrafo-bp1-segundo">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP2: Mobile Mediano (376px-599px) -->
             <div class="estilo-bp2">
                 <h2 class="estilo-titulo-bp2">ESTILO</h2>
-                <p class="estilo-parrafo-bp2">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
-                <p class="estilo-parrafo-bp2">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+                <p class="estilo-parrafo-bp2">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p class="estilo-parrafo-bp2">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP3: Mobile Grande/Phablet (600px-879px) -->
             <div class="estilo-bp3">
                 <h2 class="estilo-titulo-bp3">ESTILO</h2>
-                <p class="estilo-parrafo-bp3">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
-                <p class="estilo-parrafo-bp3">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+                <p class="estilo-parrafo-bp3">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p class="estilo-parrafo-bp3">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP5: Desktop/Web (≥880px) -->
             <div class="estilo-bp5">
                 <h2 class="estilo-titulo-bp5">ESTILO</h2>
-                <p class="estilo-parrafo-bp5">Ofrecemos cortes personalizados que realzan tu estilo único. Nuestros estilistas expertos trabajan contigo para crear el look perfecto que refleje tu personalidad.</p>
-                <p class="estilo-parrafo-bp5">Cada corte es una obra de arte, diseñado específicamente para complementar tus características faciales y estilo de vida. Utilizamos técnicas modernas y clásicas para lograr resultados excepcionales.</p>
+                <p class="estilo-parrafo-bp5">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p class="estilo-parrafo-bp5">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Imagen modelo1 original -->
@@ -1176,6 +1453,27 @@
             
             <!-- Imagen modelo6 -->
             <div class="imagen-modelo6"></div>
+            
+            <!-- Imagen modelo9 -->
+            <div class="imagen-modelo9"></div>
+            
+            <!-- Imagen modelo10 -->
+            <div class="imagen-modelo10"></div>
+            
+            <!-- Imagen modelo11 -->
+            <div class="imagen-modelo11"></div>
+            
+            <!-- Imagen modelo8 blanco y negro -->
+            <div class="imagen-modelo8"></div>
+            
+            <!-- Imagen modelo8 duplicada en color -->
+            <div class="imagen-modelo8-color"></div>
+            
+            <!-- Imagen modelo3 -->
+            <div class="imagen-modelo3"></div>
+            
+            <!-- Imagen modelo12 -->
+            <div class="imagen-modelo12"></div>
             
                 </main>
             </div>
