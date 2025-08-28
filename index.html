@@ -225,18 +225,26 @@
             border-top-left-radius: 15px; /* Esquina superior izquierda redondeada */
             z-index: 50; /* Por sobre todos los demás elementos */
         }
+        
+        /* Ocultar elementos específicos BP0 en todos los breakpoints por defecto */
+        .imagen-modelo1-bp0,
+        .imagen-modelo1-bw-bp0,
+        .parrafo2-estilo-bp0-independiente,
+        .imagen-modelo5-bp0,
+        .imagen-modelo6-bp0,
+        .imagen-modelo8-bp0,
+        .imagen-modelo9-bp0,
+        .imagen-modelo10-bp0,
+        .imagen-modelo11-bp0,
+        .imagen-modelo3-bp0,
+        .imagen-modelo12-bp0 {
+            display: none !important;
+        }
 
 
-        /* Imagen modelo5 específica BP5 - bajo las imágenes modelo1 */
+        /* Imagen modelo5 - oculta por defecto en todos los breakpoints */
         .imagen-modelo5 {
-            position: absolute;
-            left: calc(69% - 294px); /* Alineada con modelo1 B&N */
-            top: 1134px; /* 24px debajo de modelo1 (710px + 400px altura + 24px margen = 1134px) */
-            width: 588px; /* Ancho que cubre ambas modelo1 (294px + 294px = 588px) */
-            height: 400px; /* Misma altura que modelo1 */
-            background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
-            object-fit: cover;
-            z-index: 50;
+            display: none !important;
         }
 
         /* Imagen modelo6 específica BP5 - 30px debajo de modelo5, desplazada 20px a la izquierda */
@@ -268,27 +276,50 @@
            =============================== */
         @media (max-width: 320px) {
             /* Mostrar título regular, ocultar BP5 */
-            .titulo-principal {
-                display: flex;
-            }
-            
             .titulo-chascona-bp5 {
                 display: none;
             }
             
-            /* Imagen tijeras (2.png) - reducida 3% */
+            /* Ocultar TODOS los elementos ESTILO duplicados en BP0 - usar solo independientes */
+            .estilo-bp1,
+            .estilo-bp2,
+            .estilo-bp3,
+            .estilo-bp5,
+            .titulo-estilo-bp1-independiente,
+            .parrafo1-estilo-bp1-independiente,
+            .estilo-bp1-segundo {
+                display: none !important;
+            }
+            
+            /* Ocultar TODAS las imágenes de modelos compartidas en BP0 - usar solo versiones BP0 */
+            .imagen-modelo1,
+            .imagen-modelo1-bw,
+            .imagen-modelo5,
+            .imagen-modelo6,
+            .imagen-modelo8,
+            .imagen-modelo8-color,
+            .imagen-modelo9,
+            .imagen-modelo10,
+            .imagen-modelo11,
+            .imagen-modelo3,
+            .imagen-modelo12 {
+                display: none !important;
+            }
+            
+            /* Imagen tijeras (2.png) - reducida 30% total, aumentada 30%, desplazada 10% arriba */
             .imagen-tijeras {
-                transform: scale(0.97); /* 3% de reducción */
+                transform: scale(0.91) translateY(-10%); /* 30% de reducción + 30% de aumento + 10% arriba (12% - 2% = 10%) */
                 transform-origin: center;
             }
             
-            /* Título LA CHASCONA - reducido 3% */
+            /* Título LA CHASCONA - reducido 30% total, aumentado 20%, desplazado 16px derecha, 30px arriba */
             .titulo-principal {
-                transform: scale(0.97); /* 3% de reducción */
+                display: flex;
+                transform: scale(0.84) translateX(16px) translateY(-30px); /* 30% de reducción + 20% de aumento + 16px a la derecha + 30px arriba */
                 transform-origin: left top;
             }
             
-            /* ESTILO y párrafo 1 específicos para BP0 - SIN duplicar */
+            /* ESTILO y párrafo 1 específicos para BP0 - escalas reducidas 20% adicional, aumentadas 15% */
             .titulo-estilo-bp0-independiente {
                 display: block; /* Solo visible en BP0 */
                 position: absolute;
@@ -302,7 +333,7 @@
                 margin: 0;
                 padding: 0;
                 z-index: 99999;
-                transform: scale(0.96) translateX(calc(-8px + 120%)); /* Posición final BP0 */
+                transform: scale(0.883) translateX(calc(-8px + 120% + 10px)); /* Escala aumentada 15% + 10px a la derecha (8px + 2px) */
                 transform-origin: left top;
             }
             
@@ -321,8 +352,149 @@
                 margin: 0;
                 padding: 0;
                 z-index: 99999;
-                transform: scale(1.04) translateX(calc(-40% + 60% - 5%)); /* 15% neto derecha */
+                transform: scale(0.957) translateX(calc(-40% + 60% - 5%)); /* Escala aumentada 15%: 0.832 × 1.15 = 0.957 */
                 transform-origin: left top;
+            }
+            
+            /* Imagen modelo1 BP0 - bajo párrafo 1, agrandada 39%, borde redondeado, desplazada 6% der + 3px, 7% abajo */
+            .imagen-modelo1-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: calc(42% + 6% + 3px); /* 3px a la derecha adicionales */
+                top: calc(440px + 10vh - 8vh + 80px + 7vh); /* Bajo el párrafo 1 + 7% abajo (15vh - 8vh = 7vh) */
+                width: 111px; /* 39% más grande: 80px × 1.39 = 111px (1.32 × 1.05) */
+                height: 166px; /* 39% más grande: 120px × 1.39 = 166px (1.32 × 1.05) */
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                border-top-left-radius: 15px; /* Borde superior izquierdo redondeado */
+                z-index: 99998;
+            }
+            
+            /* Imagen modelo1 blanco y negro BP0 - por sobre modelo1 color, desplazada 10% der */
+            .imagen-modelo1-bw-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: calc(42% + 6% + 3px - 62px + 10%); /* Margen derecho toca margen izquierdo de modelo1 color + 10% a la derecha (5% + 5%) */
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 74px); /* Margen inferior alineado con modelo1 color (166px - 92px = 74px) */
+                width: 62px; /* 23% reducido: 80px × 0.77 = 62px (0.91 × 0.85) */
+                height: 92px; /* 23% reducido: 120px × 0.77 = 92px (0.91 × 0.85) */
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                filter: grayscale(100%);
+                z-index: 99999; /* Por sobre modelo1 color */
+            }
+            
+            /* Párrafo 2 BP0 - a la izquierda de modelo1 b&n, desplazado 9px + 5% der */
+            .parrafo2-estilo-bp0-independiente {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: calc(42% + 6% + 3px - 62px - 125px + 9px + 5%); /* A la izquierda de modelo1 b&n + 9px + 5% a la derecha */
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 74px); /* Misma altura que modelo1 b&n */
+                width: 120px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 10px;
+                line-height: 1.4;
+                color: var(--negro);
+                text-align: left;
+                margin: 0;
+                padding: 0;
+                z-index: 99999;
+            }
+            
+            /* Imagen modelo5 BP0 - bajo modelo1 color, escalada 149% más grande, desplazada 30% izq */
+            .imagen-modelo5-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: calc(42% + 6% + 3px - 30%); /* Alineada con modelo1 color - 30% a la izquierda (-20% - 10% = -30%) */
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px); /* Margen superior toca margen inferior de modelo1 */
+                width: 278px; /* 149% más grande: 111px × 2.49 = 278px (2.08 × 1.20) */
+                height: 202px; /* 149% más grande: 80px × 2.49 = 202px (2.08 × 1.20) */
+                background: url('assets/hero /Modelos /modelo 5.jpg') center/contain no-repeat;
+                z-index: 99996;
+            }
+            
+            /* Imagen modelo6 BP0 - por sobre modelo5, desplazada 5% der, agrandada 20% */
+            .imagen-modelo6-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: calc(10px + 5%); /* 5% a la derecha (-10% + 15% = 5%) */
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px); /* Misma altura que modelo5 - por sobre */
+                width: 108px; /* 20% más grande: 90px × 1.2 = 108px */
+                height: 162px; /* 20% más grande: 135px × 1.2 = 162px */
+                background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
+                z-index: 99997; /* Por sobre modelo5 */
+            }
+            
+            /* Imagen modelo8 BP0 - al lado de modelo6 BP0 */
+            .imagen-modelo8-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: 110px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 100px); /* Misma altura que modelo6 */
+                width: 75px;
+                height: 112px;
+                background: url('assets/hero /Modelos /modelo 8.jpg') center/cover;
+                filter: grayscale(100%);
+                z-index: 99994;
+            }
+            
+            /* Imagen modelo9 BP0 - debajo de modelo6 BP0 */
+            .imagen-modelo9-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: 10px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 250px); /* Más abajo */
+                width: 85px;
+                height: 127px;
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
+                z-index: 99993;
+            }
+            
+            /* Imagen modelo10 BP0 - al lado de modelo9 BP0 */
+            .imagen-modelo10-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: 105px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 250px); /* Misma altura que modelo9 */
+                width: 80px;
+                height: 120px;
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/cover;
+                z-index: 99992;
+            }
+            
+            /* Imagen modelo11 BP0 - debajo de modelo9 BP0 */
+            .imagen-modelo11-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: 195px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 250px); /* Misma altura que modelo9/10 */
+                width: 75px;
+                height: 112px;
+                background: url('assets/hero /Modelos /modelo 11.jpg') center/cover;
+                z-index: 99991;
+            }
+            
+            /* Imagen modelo3 BP0 - nueva fila */
+            .imagen-modelo3-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: 10px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 390px); /* Más abajo */
+                width: 95px;
+                height: 142px;
+                background: url('assets/hero /Modelos /modelo 3.jpg') center/cover;
+                z-index: 99990;
+            }
+            
+            /* Imagen modelo12 BP0 - al lado de modelo3 BP0 */
+            .imagen-modelo12-bp0 {
+                display: block !important; /* Solo visible en BP0 */
+                position: absolute;
+                left: 115px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 390px); /* Misma altura que modelo3 */
+                width: 180px;
+                height: 100px;
+                background: url('assets/hero /Modelos /modelo12.jpg') center/cover;
+                z-index: 99989;
             }
             
             /* Bloque ESTILO BP1 - escala reducida 4% y desplazado 8px izquierda */
@@ -364,10 +536,21 @@
            BREAKPOINT 1: MOBILE PEQUEÑO
            321px - 414px
            =============================== */
-        @media (max-width: 414px) {
-            /* Ocultar elementos BP0 específicos en BP1+ */
+        @media (min-width: 321px) and (max-width: 414px) {
+            /* Ocultar elementos BP0 específicos en BP1 solamente (excluir BP0) */
             .titulo-estilo-bp0-independiente,
-            .parrafo1-estilo-bp0-independiente {
+            .parrafo1-estilo-bp0-independiente,
+            .imagen-modelo1-bp0,
+            .imagen-modelo1-bw-bp0,
+            .parrafo2-estilo-bp0-independiente,
+            .imagen-modelo5-bp0,
+            .imagen-modelo6-bp0,
+            .imagen-modelo8-bp0,
+            .imagen-modelo9-bp0,
+            .imagen-modelo10-bp0,
+            .imagen-modelo11-bp0,
+            .imagen-modelo3-bp0,
+            .imagen-modelo12-bp0 {
                 display: none !important;
             }
             
@@ -382,30 +565,23 @@
             }
             
             /* Imagen tijeras (2.png) - desplazada 5% derecha */
+            /* Imagen tijeras (2.png) - alineada a la derecha con ESTILO */
             .imagen-tijeras {
-                transform: translateX(5%); /* 15% a la derecha (-10% + 15% = 5%) */
+                left: calc(42% + 5px); /* Misma posición left que título ESTILO independiente */
+                transform: none; /* Remover transform anterior para usar posición exacta */
             }
             
-            /* Mostrar solo bloque ESTILO BP1 - alineado con margen superior del botón naranja + 50px derecha */
+            /* Ocultar bloque ESTILO BP1 - usar elementos independientes */
             .estilo-bp1 {
-                position: absolute;
-                left: 42%;
-                top: calc(440px + 10vh - 8vh); /* MODIFICADO: Alineado con margen superior del botón naranja */
-                width: 157px; /* MODIFICADO: 50px más angosto que imagen modelo1 */
-                height: auto;
-                z-index: 99999;
-                background: transparent;
-                display: flex !important;
-                flex-direction: column;
-                gap: 8px; /* MODIFICADO: Gap más pequeño para compactar */
-                transform: translateX(calc(20% - 10px + 5px)); /* 20% - 10px + 5px (neto 5px izq) */
+                display: none !important; /* OCULTO: usar título y párrafo independientes */
             }
             
-            /* Título ESTILO independiente para BP1 - posicionado absoluto + 24px arriba */
+            /* Título ESTILO independiente para BP1 - contenedor ajustado al texto exacto */
             .titulo-estilo-bp1-independiente {
                 position: absolute;
                 left: calc(42% + 5px); /* Basado en posición del bloque + 5px derecha */
                 top: calc(440px + 10vh - 8vh - 24px); /* 24px arriba de la altura del bloque ESTILO */
+                width: fit-content; /* Ancho exacto del texto ESTILO */
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 900;
                 font-size: 24px;
@@ -417,9 +593,36 @@
                 transform: translateX(calc(20% + 80px + 5% + 3px + 5px)); /* Posición original + 5% + 3px + 5px extra derecha */
             }
             
+            /* Párrafo 1 ESTILO independiente para BP1 - margen derecho alineado exactamente con letra O */
+            .parrafo1-estilo-bp1-independiente {
+                position: absolute;
+                left: calc(42% + 5px); /* Misma posición left que título ESTILO independiente */
+                top: calc(440px + 10vh - 8vh); /* Misma altura que contenedor original */
+                width: 157px; /* Ancho fijo para el texto del párrafo */
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 1.6;
+                color: var(--negro);
+                text-align: justify; /* Texto justificado pero margen derecho alineado */
+                margin: 0;
+                padding: 0;
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+                text-rendering: optimizeLegibility;
+                z-index: 99999;
+                transform: translateX(calc(20% + 10px)); /* Movido 20% + 10px total a la derecha (6px + 4px) */
+            }
+            
             /* Título ESTILO para BP1 mobile - OCULTO para usar independiente */
             .estilo-titulo-bp1 {
                 display: none;
+            }
+            
+            /* Párrafo 1 ESTILO para BP1 mobile - OCULTO para usar independiente */
+            .estilo-parrafo-bp1 {
+                display: none !important;
             }
             
             /* Párrafo específico para BP1 mobile - texto alineado a la derecha */
@@ -429,7 +632,7 @@
                 font-size: 12px;
                 line-height: 1.6; /* MODIFICADO: Mejor espaciado para legibilidad */
                 color: var(--negro);
-                text-align: right; /* Alineado a la derecha */
+                text-align: justify; /* Texto justificado */
                 margin: 0; /* MODIFICADO: Sin márgenes ya que es el único párrafo */
                 padding: 0;
                 width: 100%;
@@ -478,8 +681,12 @@
                 top: calc(10vh - 8vh); /* 8% más arriba */
             }
             
+            /* Título LA CHASCONA - alineado a la derecha con ESTILO + escala reducida 7% + desplazado 4px derecha */
             .titulo-principal {
+                left: calc(42% + 5px + 4px + 2px); /* Posición ESTILO + 6px total a la derecha */
                 top: calc(286px + 10vh - 8vh); /* 8% más arriba */
+                transform: scale(0.93); /* 7% de reducción de escala total (3% + 2% + 2%) */
+                transform-origin: left top;
             }
             
             .imagen-principal {
@@ -513,10 +720,7 @@
             
             /* Imagen modelo5 BP1 - 80px arriba de su posición estándar, escalada 20%, 185px a la izquierda total */
             .imagen-modelo5 {
-                position: absolute;
-                left: calc(139px - 45px - 45px - 30px - 40px - 25px); /* 185px total a la izquierda: 139px - 185px = -46px */
-                top: calc((641px * 1.04) + 282px - 50px + 80px - 50px); /* 50px más arriba: 80px arriba de la posición estándar */
-                width: calc(207px * 1.2); /* 20% más grande: 248.4px */
+                display: none !important; /* Oculta en BP1 */
                 height: calc(282px * 1.2); /* 20% más grande: 338.4px */
                 background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
                 object-fit: cover;
@@ -743,10 +947,9 @@
                 height: 310px; /* 10% más grande: 282px * 1.10 = 310px */
             }
 
-            /* Imagen modelo5 - Breakpoint 2 - Margen derecho igual a modelo1 */
+            /* Imagen modelo5 - Breakpoint 2 - Oculta */
             .imagen-modelo5 {
-                left: calc((100vw - 24px) * 0.536 - 41px); /* 8px adicional a la izquierda (33px + 8px = 41px total) */
-                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30) + 90px); /* 10px adicional más abajo (80px + 10px = 90px total) */
+                display: none !important; /* Oculta en BP2 */
                 width: calc((202px * 1.1) * 1.1); /* 10% adicional más grande (222.2px * 1.1 = 244.42px) */
                 height: calc((310px * 1.1) * 1.1); /* 10% adicional más grande (341px * 1.1 = 375.1px) */
             }
@@ -1020,10 +1223,9 @@
                 height: calc(310px * 1.2); /* 20% más grande: 372px */
             }
 
-            /* Imagen modelo5 - Breakpoint 3 - Margen derecho igual a modelo1 */
+            /* Imagen modelo5 - Breakpoint 3 - Oculta */
             .imagen-modelo5 {
-                left: calc((100vw - 24px) * 0.536 + 10px); /* 5px adicional a la derecha (5px + 5px = 10px total) */
-                top: calc((((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2) - 50px); /* 25px adicional más arriba (25px + 25px = 50px total) */
+                display: none !important; /* Oculta en BP3 */
                 width: calc((202px * 1.2) * 1.4); /* 40% más grande que modelo1 escalado: 338.88px */
                 height: calc((310px * 1.2) * 1.4); /* 40% más grande: 520.8px */
             }
@@ -1497,8 +1699,8 @@
             pointer-events: none;
             border: 2px solid white; /* Borde blanco para mejor contraste */
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar */
-            display: none !important; /* Ocultar indicador */
-            visibility: hidden !important; /* Asegurar que no se vea */
+            display: block !important; /* Mostrar indicador */
+            visibility: visible !important; /* Asegurar que se vea */
         }
 
 
@@ -1575,6 +1777,44 @@
             <!-- Párrafo 1 ESTILO independiente BP0 - reducido 20% -->
             <p class="parrafo1-estilo-bp0-independiente">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
             
+            <!-- Imagen modelo1 BP0 - bajo párrafo 1 -->
+            <div class="imagen-modelo1-bp0"></div>
+            
+            <!-- Imagen modelo1 blanco y negro BP0 - bajo modelo1 -->
+            <div class="imagen-modelo1-bw-bp0"></div>
+            
+            <!-- Párrafo 2 ESTILO independiente BP0 - a la izquierda de modelo1 b&n -->
+            <p class="parrafo2-estilo-bp0-independiente">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+            
+            <!-- Imagen modelo5 BP0 - bajo modelo1 color -->
+            <div class="imagen-modelo5-bp0"></div>
+            
+            <!-- Imagen modelo6 BP0 - bajo modelo5 BP0 -->
+            <div class="imagen-modelo6-bp0"></div>
+            
+            <!-- Imagen modelo8 BP0 - al lado de modelo6 BP0 -->
+            <div class="imagen-modelo8-bp0"></div>
+            
+            <!-- Imagen modelo9 BP0 - debajo de modelo6 BP0 -->
+            <div class="imagen-modelo9-bp0"></div>
+            
+            <!-- Imagen modelo10 BP0 - al lado de modelo9 BP0 -->
+            <div class="imagen-modelo10-bp0"></div>
+            
+            <!-- Imagen modelo11 BP0 - al lado de modelo10 BP0 -->
+            <div class="imagen-modelo11-bp0"></div>
+            
+            <!-- Imagen modelo3 BP0 - nueva fila -->
+            <div class="imagen-modelo3-bp0"></div>
+            
+            <!-- Imagen modelo12 BP0 - al lado de modelo3 BP0 -->
+            <div class="imagen-modelo12-bp0"></div>
+            
+            <!-- Título ESTILO independiente BP1 - movilidad independiente del párrafo -->
+            <h2 class="titulo-estilo-bp1-independiente">ESTILO</h2>
+            
+            <!-- Párrafo 1 ESTILO independiente BP1 - movilidad independiente del párrafo 2 -->
+            <p class="parrafo1-estilo-bp1-independiente">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
             
             <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) - solo párrafo -->
             <div class="estilo-bp1">
