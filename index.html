@@ -97,7 +97,7 @@
         .layout-mobile {
             position: relative;
             width: 100%;
-            min-height: 3200px; /* MODIFICADO: Altura ajustada para terminar 50px bajo modelo12 */
+            min-height: 1600px; /* MODIFICADO: Altura ajustada después de eliminar modelos */
             transform-origin: top left;
         }
 
@@ -231,13 +231,7 @@
         .imagen-modelo1-bw-bp0,
         .parrafo2-estilo-bp0-independiente,
         .imagen-modelo5-bp0,
-        .imagen-modelo6-bp0,
-        .imagen-modelo8-bp0,
-        .imagen-modelo9-bp0,
-        .imagen-modelo10-bp0,
-        .imagen-modelo11-bp0,
-        .imagen-modelo3-bp0,
-        .imagen-modelo12-bp0 {
+        .imagen-modelo6-bp0 {
             display: none !important;
         }
 
@@ -285,9 +279,8 @@
             .estilo-bp2,
             .estilo-bp3,
             .estilo-bp4,
-            .titulo-estilo-bp1-independiente,
-            .parrafo1-estilo-bp1-independiente,
-            .estilo-bp1-segundo {
+            .estilo-bp1-segundo,
+            .estilo-centralizado-bp1 {
                 display: none !important;
             }
             
@@ -295,14 +288,7 @@
             .imagen-modelo1,
             .imagen-modelo1-bw,
             .imagen-modelo5,
-            .imagen-modelo6,
-            .imagen-modelo8,
-            .imagen-modelo8-color,
-            .imagen-modelo9,
-            .imagen-modelo10,
-            .imagen-modelo11,
-            .imagen-modelo3,
-            .imagen-modelo12 {
+            .imagen-modelo6 {
                 display: none !important;
             }
             
@@ -424,78 +410,6 @@
                 z-index: 99997; /* Por sobre modelo5 */
             }
             
-            /* Imagen modelo8 BP0 - al lado de modelo6 BP0 */
-            .imagen-modelo8-bp0 {
-                display: block !important; /* Solo visible en BP0 */
-                position: absolute;
-                left: 110px;
-                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 100px); /* Misma altura que modelo6 */
-                width: 75px;
-                height: 112px;
-                background: url('assets/hero /Modelos /modelo 8.jpg') center/cover;
-                filter: grayscale(100%);
-                z-index: 99994;
-            }
-            
-            /* Imagen modelo9 BP0 - debajo de modelo6 BP0 */
-            .imagen-modelo9-bp0 {
-                display: block !important; /* Solo visible en BP0 */
-                position: absolute;
-                left: 10px;
-                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 250px); /* Más abajo */
-                width: 85px;
-                height: 127px;
-                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
-                z-index: 99993;
-            }
-            
-            /* Imagen modelo10 BP0 - al lado de modelo9 BP0 */
-            .imagen-modelo10-bp0 {
-                display: block !important; /* Solo visible en BP0 */
-                position: absolute;
-                left: 105px;
-                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 250px); /* Misma altura que modelo9 */
-                width: 80px;
-                height: 120px;
-                background: url('assets/hero /Modelos /modelo 10.jpg') center/cover;
-                z-index: 99992;
-            }
-            
-            /* Imagen modelo11 BP0 - debajo de modelo9 BP0 */
-            .imagen-modelo11-bp0 {
-                display: block !important; /* Solo visible en BP0 */
-                position: absolute;
-                left: 195px;
-                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 250px); /* Misma altura que modelo9/10 */
-                width: 75px;
-                height: 112px;
-                background: url('assets/hero /Modelos /modelo 11.jpg') center/cover;
-                z-index: 99991;
-            }
-            
-            /* Imagen modelo3 BP0 - nueva fila */
-            .imagen-modelo3-bp0 {
-                display: block !important; /* Solo visible en BP0 */
-                position: absolute;
-                left: 10px;
-                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 390px); /* Más abajo */
-                width: 95px;
-                height: 142px;
-                background: url('assets/hero /Modelos /modelo 3.jpg') center/cover;
-                z-index: 99990;
-            }
-            
-            /* Imagen modelo12 BP0 - al lado de modelo3 BP0 */
-            .imagen-modelo12-bp0 {
-                display: block !important; /* Solo visible en BP0 */
-                position: absolute;
-                left: 115px;
-                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 390px); /* Misma altura que modelo3 */
-                width: 180px;
-                height: 100px;
-                background: url('assets/hero /Modelos /modelo12.jpg') center/cover;
-                z-index: 99989;
-            }
             
             /* Bloque ESTILO BP1 - escala reducida 4% y desplazado 8px izquierda */
             .estilo-bp1 {
@@ -544,13 +458,7 @@
             .imagen-modelo1-bw-bp0,
             .parrafo2-estilo-bp0-independiente,
             .imagen-modelo5-bp0,
-            .imagen-modelo6-bp0,
-            .imagen-modelo8-bp0,
-            .imagen-modelo9-bp0,
-            .imagen-modelo10-bp0,
-            .imagen-modelo11-bp0,
-            .imagen-modelo3-bp0,
-            .imagen-modelo12-bp0 {
+            .imagen-modelo6-bp0 {
                 display: none !important;
             }
             
@@ -576,43 +484,35 @@
                 display: none !important; /* OCULTO: usar título y párrafo independientes */
             }
             
-            /* Título ESTILO independiente para BP1 - contenedor ajustado al texto exacto */
-            .titulo-estilo-bp1-independiente {
+            /* Bloque ESTILO centralizado BP1 - funciona en todas las versiones */
+            .estilo-centralizado-bp1 {
                 position: absolute;
-                left: calc(42% + 5px); /* Basado en posición del bloque + 5px derecha */
-                top: calc(440px + 10vh - 8vh - 24px); /* 24px arriba de la altura del bloque ESTILO */
-                width: fit-content; /* Ancho exacto del texto ESTILO */
+                left: 50%;
+                transform: translateX(calc(-50% - 5px)); /* Centrado + 5px a la izquierda */
+                top: calc(calc(440px + 10vh - 8vh) + 176px + 20px); /* Bajo rectángulo naranja: posición + altura + margen */
+                width: 280px; /* Ancho fijo para consistencia */
+                text-align: center; /* Centrado */
                 font-family: 'Montserrat', sans-serif;
-                font-weight: 900;
-                font-size: 24px;
-                text-align: right;
                 color: var(--negro);
-                margin: 0;
-                padding: 0;
                 z-index: 99999;
-                transform: translateX(calc(20% + 80px + 5% + 3px + 5px)); /* Posición original + 5% + 3px + 5px extra derecha */
             }
             
-            /* Párrafo 1 ESTILO independiente para BP1 - margen derecho alineado exactamente con letra O */
-            .parrafo1-estilo-bp1-independiente {
-                position: absolute;
-                left: calc(42% + 5px); /* Misma posición left que título ESTILO independiente */
-                top: calc(440px + 10vh - 8vh); /* Misma altura que contenedor original */
-                width: 157px; /* Ancho fijo para el texto del párrafo */
-                font-family: 'Montserrat', sans-serif;
+            .estilo-centralizado-bp1 h2 {
+                font-weight: 900;
+                font-size: 24px;
+                margin: 0 0 15px 0;
+                padding: 0;
+            }
+            
+            .estilo-centralizado-bp1 p {
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 1.6;
-                color: var(--negro);
-                text-align: justify; /* Texto justificado pero margen derecho alineado */
+                text-align: justify;
                 margin: 0;
                 padding: 0;
-                word-wrap: break-word;
                 hyphens: auto;
-                overflow-wrap: break-word;
-                text-rendering: optimizeLegibility;
-                z-index: 99999;
-                transform: translateX(calc(20% + 10px)); /* Movido 20% + 10px total a la derecha (6px + 4px) */
+                word-wrap: break-word;
             }
             
             /* Título ESTILO para BP1 mobile - OCULTO para usar independiente */
@@ -689,6 +589,19 @@
                 transform-origin: left top;
             }
             
+            /* Ajuste específico para resoluciones muy pequeñas - desplazar 2.png y centrar LA CHASCONA bajo ella */
+            @media (max-width: 350px) {
+                .imagen-tijeras {
+                    left: calc((100vw - 24px) * 0.31 + 2px - 15px); /* 15px más a la izquierda */
+                }
+                
+                .titulo-principal {
+                    left: calc((100vw - 24px) * 0.31 + 2px - 15px + 8px); /* Desplazado 8px a la derecha desde la posición de tijeras */
+                    transform: scale(0.9); /* Escala aumentada 5% (0.85 + 0.05 = 0.9) */
+                    width: calc(192px + 20px); /* Más ancho para acomodar el texto */
+                }
+            }
+            
             .imagen-principal {
                 top: calc(136px + 10vh - 8vh); /* 8% más arriba */
             }
@@ -698,24 +611,26 @@
             }
             
             .imagen-modelo1 {
-                top: calc(641px * 1.04) !important; /* 4% más abajo: 641px * 1.04 = 667px (6% - 2% = 4%) */
-                left: calc(50% - 103.5px) !important; /* Centrado horizontalmente (207px/2 = 103.5px) */
-                transform: translateY(-6%); /* Solo 6% arriba, removido translateX */
+                top: calc(calc(440px + 10vh - 8vh) - 8% + 10% - 5% + 3% - 2% + 1%) !important; /* 8% arriba + 10% abajo - 5% arriba + 3% abajo - 2% arriba + 1% abajo = 1% arriba del rectángulo naranja */
+                left: calc(50% - 103.5px + min(75%, (100vw - 24px - 186.3px - 50px) * 0.85) + 15% - 8%) !important; /* 8% a la izquierda del desplazamiento anterior */
+                width: calc(207px * 0.9 * 0.8) !important; /* 20% adicional más pequeño: 149px */
+                height: calc(282px * 0.9 * 0.8) !important; /* 20% adicional más pequeño: 203px */
+                transform: none; /* Sin transform */
             }
             
-            /* Imagen modelo1 duplicada BP1 - 30% menor, blanco y negro, posicionada relativa a modelo1 */
+            /* Imagen modelo1 duplicada BP1 - margen inferior alineado con modelo1 color, 30% adicional más pequeña */
             .imagen-modelo1-bw {
                 position: absolute;
-                left: calc(50% - 103.5px + 120px); /* A la derecha de modelo1 centrado */
-                top: calc(calc(641px * 1.04) + 150px) !important; /* 150px bajo modelo1 */
-                transform: translateY(-6%); /* Solo 6% arriba */
-                width: calc(207px * 0.7); /* 30% menor que original */
-                height: calc(282px * 0.7); /* 30% menor que original */
+                top: calc(calc(440px + 10vh - 8vh) - 8% + 10% - 5% + 3% - 2% + 1% + calc(282px * 0.9 * 0.8) - calc(282px * 0.9 * 0.8 * 0.7 * 0.7 * 0.7)) !important; /* Ajustado para margen inferior igual con nueva escala */
+                left: calc(50% - 103.5px + min(75%, (100vw - 24px - 186.3px - 50px) * 0.85) + 15% - 8%) !important; /* Misma posición horizontal que modelo1 color */
+                width: calc(207px * 0.9 * 0.8 * 0.7 * 0.7 * 0.7) !important; /* 30% adicional más pequeña */
+                height: calc(282px * 0.9 * 0.8 * 0.7 * 0.7 * 0.7) !important; /* 30% adicional más pequeña */
                 background: url('assets/hero /Modelos /modelo 1.png') center/cover;
                 object-fit: cover;
                 filter: grayscale(100%); /* Blanco y negro */
                 border-radius: 0; /* Sin bordes redondeados */
-                z-index: 49; /* Por debajo de modelo1 original */
+                z-index: 53; /* Por encima de modelo1 original */
+                transform: none; /* Sin transform */
             }
             
             /* Imagen modelo5 BP1 - 80px arriba de su posición estándar, escalada 20%, posición visible */
@@ -723,7 +638,7 @@
                 display: block !important; /* Visible en BP1 */
                 position: absolute;
                 left: 10px; /* Posición visible dentro del viewport */
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) - 80px); /* 80px arriba de posición estándar */
+                top: calc(calc(440px + 10vh - 8vh) + 176px + 20px + 120px + 25px + 50px); /* 50px adicional abajo: 75px total bajo párrafo 2 */
                 width: calc(207px * 1.2); /* 20% más grande: 248.4px */
                 height: calc(282px * 1.2); /* 20% más grande: 338.4px */
                 background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
@@ -735,7 +650,7 @@
             .imagen-modelo6 {
                 position: absolute;
                 left: calc((100vw - 24px) - 207px - 10px); /* Alineada a la derecha con 10px de margen */
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20)); /* 20% adicional más abajo: 50% abajo de modelo1 BP1 */
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 20px + 30px); /* 30px extra adicional: 50px total abajo */
                 width: 207px; /* Mismo ancho que modelo1 */
                 height: 282px; /* Misma altura que modelo1 */
                 background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
@@ -849,101 +764,12 @@
             }
         }
 
-        /* ===============================
-           BREAKPOINT 1.5: RESOLUCIÓN 339x807
-           Específico para 339px x 807px
-           =============================== */
-        @media (width: 339px) and (height: 807px) {
-            /* Ajustes específicos para resolución 339x807 */
-            .contenido-principal {
-                width: 315px; /* Ajustado para 339px - 24px menú = 315px disponible */
-            }
-            
-            /* Optimización del grupo texto japonés para esta resolución */
-            .grupo-texto-japones {
-                left: calc((315px) * 0.22); /* 22% del ancho disponible específico */
-            }
-            
-            /* Imagen tijeras optimizada para 339px */
-            .imagen-tijeras {
-                left: calc((315px) * 0.31 + 2px);
-                transform: scale(0.95); /* Ligeramente reducida para mejor ajuste */
-            }
-            
-            /* Título principal optimizado */
-            .titulo-principal {
-                left: calc((315px) * 0.31 + 2px);
-                transform: scale(0.95);
-            }
-            
-            /* Elementos ESTILO ajustados para 339px */
-            .titulo-estilo-bp1-independiente {
-                left: calc(40% - 15%); /* Desplazado 15% a la izquierda (10% + 5% extra): 25% */
-            }
-            
-            .parrafo1-estilo-bp1-independiente {
-                left: 40%;
-                width: 120px; /* Ancho optimizado para 339px */
-            }
-            
-            /* Imagen modelo5 específica para 339x807 - desplazada 50% + 10% extra abajo, 14% izq */
-            .imagen-modelo5 {
-                left: calc(10px - 14%) !important; /* 14% a la izquierda desde posición original (7% + 7% extra) */
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) - 80px + 200px + 10%) !important; /* Posición original + 200px + 10% abajo */
-            }
-            
-            /* Imagen modelo6 específica para 339x807 - reducida 5% y desplazada 4% arriba */
-            .imagen-modelo6 {
-                width: calc(207px * 0.95) !important; /* 5% más pequeña */
-                height: calc(282px * 0.95) !important; /* 5% más pequeña */
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) - 4%) !important; /* Posición original - 4% arriba (2% + 2% extra) */
-            }
-            
-            /* Imagen modelo1 color específica para 339x807 - desplazada 6.5% izq */
-            .imagen-modelo1 {
-                left: calc(139px + 10px - 6.5%) !important; /* Posición original - 6.5% a la izquierda (5% + 1.5% extra) */
-            }
-            
-            /* Imagen modelo1 blanco y negro específica para 339x807 - desplazada 2% izq */
-            .imagen-modelo1-bw {
-                left: calc(139px - (207px * 0.7) + 30px + (calc((207px * 0.7) * 0.8) - calc(((207px * 0.7) * 0.8) * 0.9)) + 10px - 2%) !important; /* Posición original - 2% a la izquierda */
-            }
-        }
 
-        /* ===============================
-           RESOLUCIÓN ESPECÍFICA: 390x844
-           =============================== */
-        @media (width: 390px) and (height: 844px) {
-            /* Control independiente de imágenes de modelos para 390x844 */
-        }
 
-        /* ===============================
-           RESOLUCIÓN ESPECÍFICA: 768x1024
-           =============================== */
-        @media (width: 768px) and (height: 1024px) {
-            /* Control independiente de imágenes de modelos para 768x1024 */
-        }
 
-        /* ===============================
-           RESOLUCIÓN ESPECÍFICA: 1440x900
-           =============================== */
-        @media (width: 1440px) and (height: 900px) {
-            /* Control independiente de imágenes de modelos para 1440x900 */
-        }
 
-        /* ===============================
-           RESOLUCIÓN ESPECÍFICA: 320x568
-           =============================== */
-        @media (width: 320px) and (height: 568px) {
-            /* Control independiente de imágenes de modelos para 320x568 */
-        }
 
-        /* ===============================
-           RESOLUCIÓN ESPECÍFICA: 412x915
-           =============================== */
-        @media (width: 412px) and (height: 915px) {
-            /* Control independiente de imágenes de modelos para 412x915 */
-        }
+
 
         /* ===============================
            BREAKPOINT 2: MOBILE MEDIANO
@@ -957,6 +783,11 @@
             
             .titulo-chascona-bp4 {
                 display: none;
+            }
+            
+            /* Ocultar bloque ESTILO centralizado BP1 */
+            .estilo-centralizado-bp1 {
+                display: none !important;
             }
             
             /* Mostrar solo bloque ESTILO BP2 */
@@ -1200,6 +1031,11 @@
                 display: none;
             }
             
+            /* Ocultar bloque ESTILO centralizado BP1 */
+            .estilo-centralizado-bp1 {
+                display: none !important;
+            }
+            
             /* Mostrar solo bloque ESTILO BP3 */
             .estilo-bp3 {
                 display: flex !important;
@@ -1376,6 +1212,11 @@
                 display: none !important;
             }
             
+            /* Ocultar bloque ESTILO centralizado BP1 */
+            .estilo-centralizado-bp1 {
+                display: none !important;
+            }
+            
             /* Mostrar título BP4, ocultar título regular */
             .titulo-principal {
                 display: none;
@@ -1538,6 +1379,32 @@
                 background: url('assets/hero /Modelos /modelo 1.png') center/cover;
                 object-fit: cover;
                 z-index: 50;
+            }
+            
+            /* Imagen modelo5 específica BP4 - justo bajo modelo1 */
+            .imagen-modelo5 {
+                display: block !important; /* Visible en BP4 */
+                position: absolute;
+                left: 69%; /* Misma posición horizontal que modelo1 */
+                top: calc(710px + 400px + 20px); /* Bajo modelo1: top + height + margen 20px = 1130px */
+                width: 294px; /* Mismo ancho que modelo1 */
+                height: 400px; /* Misma altura que modelo1 */
+                background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
+                object-fit: cover;
+                z-index: 51; /* Por encima de modelo1 */
+            }
+            
+            /* Imagen modelo6 específica BP4 - a la izquierda de modelo5 */
+            .imagen-modelo6 {
+                display: block !important; /* Visible en BP4 */
+                position: absolute;
+                left: calc(69% - 294px - 30px + 20px + 20px); /* 20px extra adicional: 40px total a la derecha */
+                top: calc(710px + 400px + 20px); /* Misma altura que modelo5 */
+                width: 294px; /* Mismo ancho que modelo5 */
+                height: 400px; /* Misma altura que modelo5 */
+                background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
+                object-fit: cover;
+                z-index: 52; /* Por encima de modelo5 */
             }
 
             /* Imagen modelo1 duplicada - blanco y negro - pegada a la izquierda */
@@ -1880,29 +1747,13 @@
             <!-- Imagen modelo6 BP0 - bajo modelo5 BP0 -->
             <div class="imagen-modelo6-bp0"></div>
             
-            <!-- Imagen modelo8 BP0 - al lado de modelo6 BP0 -->
-            <div class="imagen-modelo8-bp0"></div>
             
-            <!-- Imagen modelo9 BP0 - debajo de modelo6 BP0 -->
-            <div class="imagen-modelo9-bp0"></div>
-            
-            <!-- Imagen modelo10 BP0 - al lado de modelo9 BP0 -->
-            <div class="imagen-modelo10-bp0"></div>
-            
-            <!-- Imagen modelo11 BP0 - al lado de modelo10 BP0 -->
-            <div class="imagen-modelo11-bp0"></div>
-            
-            <!-- Imagen modelo3 BP0 - nueva fila -->
-            <div class="imagen-modelo3-bp0"></div>
-            
-            <!-- Imagen modelo12 BP0 - al lado de modelo3 BP0 -->
-            <div class="imagen-modelo12-bp0"></div>
-            
-            <!-- Título ESTILO independiente BP1 - movilidad independiente del párrafo -->
-            <h2 class="titulo-estilo-bp1-independiente">ESTILO</h2>
-            
-            <!-- Párrafo 1 ESTILO independiente BP1 - movilidad independiente del párrafo 2 -->
-            <p class="parrafo1-estilo-bp1-independiente">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+            <!-- Bloque ESTILO centralizado BP1 - funciona en todas las versiones -->
+            <div class="estilo-centralizado-bp1">
+                <h2>ESTILO</h2>
+                <p>Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p>Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+            </div>
             
             <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) - solo párrafo -->
             <div class="estilo-bp1">
@@ -1910,10 +1761,6 @@
                 <p class="estilo-parrafo-bp1">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
             </div>
             
-            <!-- Segundo párrafo ESTILO BP1: 10% a la izquierda -->
-            <div class="estilo-bp1-segundo">
-                <p class="estilo-parrafo-bp1-segundo">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
-            </div>
             
             <!-- Bloque ESTILO BP2: Mobile Mediano (376px-599px) -->
             <div class="estilo-bp2">
@@ -1948,32 +1795,6 @@
             <!-- Imagen modelo6 -->
             <div class="imagen-modelo6"></div>
             
-            <!-- Imagen modelo9 -->
-            <div class="imagen-modelo9"></div>
-            
-            <!-- Imagen modelo10 -->
-            <div class="imagen-modelo10"></div>
-            
-            <!-- Imagen modelo11 -->
-            <div class="imagen-modelo11"></div>
-            
-            <!-- Imagen modelo8 blanco y negro -->
-            <div class="imagen-modelo8"></div>
-            
-            <!-- Imagen modelo8 duplicada en color -->
-            <div class="imagen-modelo8-color"></div>
-            
-            <!-- Imagen modelo3 -->
-            <div class="imagen-modelo3"></div>
-            
-            <!-- Imagen modelo12 -->
-            <div class="imagen-modelo12"></div>
-            
-            <!-- Espaciador blanco bajo modelo12 BP1 - evita crop vertical -->
-            <div class="espaciador-modelo12-bp1"></div>
-            
-            <!-- Espaciador blanco bajo modelo12 BP2 - evita crop vertical -->
-            <div class="espaciador-modelo12-bp2"></div>
             
                 </main>
             </div>
