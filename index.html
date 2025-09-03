@@ -288,7 +288,12 @@
             .imagen-modelo1,
             .imagen-modelo1-bw,
             .imagen-modelo5,
-            .imagen-modelo6 {
+            .imagen-modelo6,
+            .imagen-modelo8,
+            .imagen-modelo8-color,
+            .imagen-modelo9,
+            .imagen-modelo8-bp1,
+            .imagen-modelo8-color-bp1 {
                 display: none !important;
             }
             
@@ -410,6 +415,43 @@
                 z-index: 99997; /* Por sobre modelo5 */
             }
             
+            /* Imagen modelo9 BP0 - bajo modelo6 */
+            .imagen-modelo9-bp0 {
+                display: block !important;
+                position: absolute;
+                left: -19px;
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 162px + 20px);
+                width: calc((100vw - 24px - 20px) * 0.8);
+                height: calc(282px * 1.2);
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/contain no-repeat;
+                z-index: 99998;
+            }
+            
+            /* Imagen modelo8 BP0 - bajo modelo9 */
+            .imagen-modelo8-bp0 {
+                display: block !important;
+                position: absolute;
+                left: 77px;
+                top: calc(440px + 10vh - 0vh + -250px + 7vh + 166px + 162px + 20px + calc(282px * 1.2) + 20px);
+                width: calc((110vw - 4px - -110px) * 0.7);
+                height: calc(202px * 1.0);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                filter: grayscale(100%);
+                z-index: 99999;
+            }
+            
+            /* Imagen modelo8 color BP0 - bajo modelo8 */
+            .imagen-modelo8-color-bp0 {
+                display: block !important;
+                position: absolute;
+                left: calc(50% - 10px);
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + 166px + 162px + 20px + calc(282px * 1.2) + 20px + calc(282px * 1.0) + 20px);
+                width: calc((100vw - 24px - 20px) * 0.7);
+                height: calc(282px * 1.0);
+                background: url('assets/hero /Modelos /modelo 8.jpg') center/contain no-repeat;
+                z-index: 100000;
+            }
+            
             
             /* Bloque ESTILO BP1 - escala reducida 4% y desplazado 8px izquierda */
             .estilo-bp1 {
@@ -462,6 +504,12 @@
                 display: none !important;
             }
             
+            /* Mostrar elementos BP1 específicos solo en BP1 */
+            .imagen-modelo8-bp1,
+            .imagen-modelo8-color-bp1 {
+                display: block !important;
+            }
+            
             /* Mostrar título regular, ocultar BP4 */
             .titulo-principal {
                 display: flex;
@@ -488,31 +536,37 @@
             .estilo-centralizado-bp1 {
                 position: absolute;
                 left: 50%;
-                transform: translateX(calc(-50% - 5px)); /* Centrado + 5px a la izquierda */
+                transform: translateX(-50%); /* Perfectamente centrado */
                 top: calc(calc(440px + 10vh - 8vh) + 176px + 20px); /* Bajo rectángulo naranja: posición + altura + margen */
                 width: 280px; /* Ancho fijo para consistencia */
                 text-align: center; /* Centrado */
                 font-family: 'Montserrat', sans-serif;
                 color: var(--negro);
                 z-index: 99999;
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Centrar contenido verticalmente */
+                gap: 15px; /* Espaciado entre elementos */
             }
             
             .estilo-centralizado-bp1 h2 {
                 font-weight: 900;
                 font-size: 24px;
-                margin: 0 0 15px 0;
+                margin: 0;
                 padding: 0;
+                text-align: center;
             }
             
             .estilo-centralizado-bp1 p {
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 1.6;
-                text-align: justify;
+                text-align: center; /* Centrado en lugar de justified */
                 margin: 0;
                 padding: 0;
                 hyphens: auto;
                 word-wrap: break-word;
+                max-width: 100%;
             }
             
             /* Título ESTILO para BP1 mobile - OCULTO para usar independiente */
@@ -543,18 +597,19 @@
                 transform: translateX(calc(5% - 10px)) translateY(3%); /* 15% der: (5% - 10px) + 3% abajo */
             }
             
-            /* Segundo párrafo ESTILO BP1 - directamente bajo el botón naranja + 5px derecha */
+            /* Segundo párrafo ESTILO BP1 - centrado bajo el rectángulo naranja */
             .estilo-bp1-segundo {
                 position: absolute;
-                left: 7px; /* 3px a la izquierda (10px - 3px = 7px) */
+                left: 50%;
+                transform: translateX(-50%); /* Centrado horizontalmente */
                 top: calc((440px + 10vh - 8vh + 176px + 11px) * 1.04); /* 4% más abajo (6% - 2% = 4%) */
-                width: 125px; /* 1px más ancho (124px + 1px = 125px) */
+                width: 140px; /* Ancho ajustado para mejor centrado */
                 height: auto;
                 z-index: 99999;
                 background: transparent;
                 display: flex !important;
                 flex-direction: column;
-                transform: translateX(5px); /* 5px a la derecha */
+                align-items: center; /* Centrar contenido */
             }
             
             .estilo-parrafo-bp1-segundo {
@@ -563,7 +618,7 @@
                 font-size: 12px;
                 line-height: 1.6;
                 color: var(--negro);
-                text-align: justify;
+                text-align: center; /* Centrado */
                 margin: 0;
                 padding: 0;
                 width: 100%;
@@ -661,10 +716,10 @@
             /* Imagen modelo9 BP1 - ancho completo, posicionada de forma consistente */
             .imagen-modelo9 {
                 position: absolute;
-                left: 10px; /* Margen consistente desde el borde */
-                top: calc(calc(641px * 1.04) + 450px); /* Posición simplificada bajo modelo1 */
-                width: calc(100vw - 24px - 20px); /* Ancho completo con margen */
-                height: 282px; /* Misma altura que modelo1 */
+                left: -9px;
+                top: calc(calc(641px * 1.04) + 662px);
+                width: calc(100vw - -105px - 130px);
+                height: 422px;
                 background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
                 object-fit: cover;
                 z-index: 53;
@@ -694,29 +749,41 @@
                 z-index: 55;
             }
             
-            /* Imagen modelo8 BP1 - bajo modelo11, escala reducida 30%, blanco y negro */
+            /* Imagen modelo8 BP1 - ocultar para usar versiones específicas BP1 */
             .imagen-modelo8 {
+                display: none !important;
+            }
+            
+            /* Imagen modelo8 color BP1 - ocultar para usar versiones específicas BP1 */
+            .imagen-modelo8-color {
+                display: none !important;
+            }
+            
+            /* Imagen modelo8 BP1 específica - bajo modelo9, blanco y negro */
+            .imagen-modelo8-bp1 {
+                display: block !important;
                 position: absolute;
-                left: 10px; /* Margen consistente */
-                top: calc(calc(641px * 1.04) + 1300px); /* Bajo modelo11 */
-                width: calc((100vw - 24px - 20px) * 0.7); /* Ancho reducido 30% con margen */
-                height: calc(282px * 0.7); /* Altura reducida 30% */
-                background: url('assets/hero /Modelos /modelo 8.jpg') center/contain no-repeat;
+                left: -10px;
+                top: calc(calc(641px * 1.04) + 662px + 422px + -88px);
+                width: calc((100vw - 24px - 20px) * 0.7);
+                height: calc(282px * 1.7);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                filter: grayscale(100%); /* Blanco y negro */
+                filter: grayscale(100%);
                 z-index: 56;
             }
             
-            /* Imagen modelo8 color BP1 - a la derecha, upscale 20% */
-            .imagen-modelo8-color {
+            /* Imagen modelo8 color BP1 específica - a la derecha del modelo8 b&n */
+            .imagen-modelo8-color-bp1 {
+                display: block !important;
                 position: absolute;
-                left: calc(50% + 50px); /* A la derecha del centro */
-                top: calc(calc(641px * 1.04) + 1450px); /* Bajo modelo8 b&n */
-                width: calc((100vw - 24px - 20px) * 0.7 * 1.2); /* Ancho con upscale 20% y margen */
-                height: calc(282px * 0.7 * 1.2); /* Altura con upscale 20% */
-                background: url('assets/hero /Modelos /modelo 8.jpg') center/contain no-repeat;
+                left: calc(50% + -88px);
+                top: calc(calc(641px * 1.04) + 512px + 422px + 30px + calc(282px * 0.7 * 0.40));
+                width: calc((100vw - 24px - 23px) * 0.9 * 1.2);
+                height: calc(282px * 0.7 * 1.2);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -785,8 +852,16 @@
                 display: none;
             }
             
-            /* Ocultar bloque ESTILO centralizado BP1 */
-            .estilo-centralizado-bp1 {
+            /* Ocultar TODOS los bloques ESTILO excepto BP2 y elementos BP0 y BP1 */
+            .estilo-centralizado-bp1,
+            .estilo-bp1,
+            .estilo-bp1-segundo,
+            .estilo-bp3,
+            .estilo-bp4,
+            .titulo-estilo-bp0-independiente,
+            .parrafo1-estilo-bp0-independiente,
+            .imagen-modelo8-bp1,
+            .imagen-modelo8-color-bp1 {
                 display: none !important;
             }
             
@@ -796,9 +871,9 @@
                 position: absolute;
                 left: 10px;
                 top: calc(440px + 176px + 20px);
-                width: calc((100vw - 24px - 20px) * 0.532); /* 5% más angosto (0.56 - 0.028 = 0.532) */
-                max-width: 213px; /* 5% menos de 224px */
-                min-width: 160px; /* 5% menos de 168px */
+                width: calc((100vw - 24px - 20px) * 0.532);
+                max-width: 213px;
+                min-width: 160px;
                 height: auto;
                 z-index: 99999;
                 background: transparent;
@@ -833,69 +908,120 @@
             .estilo-parrafo-bp2:last-child {
                 margin-bottom: 0;
             }
-            /* CAMBIO: Escalado simple del diseño mobile base */
+            /* CAMBIO: Sin escalado para evitar scroll horizontal */
             .layout-mobile {
-                transform: scale(calc((100vw - 24px) / 351));
-                width: 351px;
-                height: 812px;
+                transform: none;
+                width: 100%;
+                min-height: 100vh;
                 transform-origin: top left;
             }
             
             .contenido-area {
-                overflow-x: auto;
+                overflow-x: hidden; /* Evitar scroll horizontal */
+                max-width: 100vw;
             }
             
             .imagen-tijeras {
-                left: calc((100vw - 24px) * 0.51 + 2px); /* 20% más a la derecha: 0.31 + 0.20 = 0.51 */
-                width: 228px; /* 10% más grande: 207px * 1.10 = 228px */
-                height: 306px; /* 10% más grande: 278px * 1.10 = 306px */
+                left: calc((100vw - 24px) * 0.26);
+                width: calc(min(331px, (100vw - 24px) * 1.4));
+                height: calc(min(306px, (100vw - 24px) * 0.4 * 2.34));
             }
             
             .titulo-principal {
-                left: calc((100vw - 24px) * 0.51 + 2px); /* 20% más a la derecha: 0.31 + 0.20 = 0.51 */
-                top: calc(286px + 5vh); /* 5% más abajo */
-                width: 211px; /* 10% más grande: 192px * 1.10 = 211px */
-                height: 26px; /* 10% más grande: 24px * 1.10 = 26px */
-                font-size: 30px; /* 10% más grande: 27px * 1.10 = 30px */
+                left: calc((100vw - 17px) * 0.41);
+                top: calc(274px + 5vh);
+                width: calc(min(211px, (100vw - 24px) * 0.5));
+                height: auto;
+                font-size: calc(min(30px, (100vw - 24px) * 0.072));
             }
             
             .imagen-modelo1 {
-                left: calc((100vw - 24px) * 0.536); /* 7% a la izquierda: 0.606 - 0.07 = 0.536 */
-                top: calc(530px - 4vh); /* 4% hacia arriba (6% - 2% = 4%) */
-                width: 202px; /* 10% más grande: 184px * 1.10 = 202px */
-                height: 310px; /* 10% más grande: 282px * 1.10 = 310px */
+                left: calc(min((100vw - 24px) * 0.54, (90vw - -116px - 164px)));
+                top: calc(530px - 4vh - 60px);
+                width: calc(min(162px, (100vw - 24px) * 1));
+                height: calc(min(248px, (100vw - 24px) * 0.36 * 1.54));
             }
 
-            /* Imagen modelo5 - Breakpoint 2 - Oculta */
+            /* Imagen modelo5 - Breakpoint 2 - Visible bajo modelo1 b&n */
             .imagen-modelo5 {
-                display: none !important; /* Oculta en BP2 */
-                width: calc((202px * 1.1) * 1.1); /* 10% adicional más grande (222.2px * 1.1 = 244.42px) */
-                height: calc((310px * 1.1) * 1.1); /* 10% adicional más grande (341px * 1.1 = 375.1px) */
+                display: block !important;
+                position: absolute;
+                left: calc((100vw - 24px) * 0.44 + 76px - (202px * 0.6));
+                top: calc((530px - 4vh) + 199px - 40px + calc(310px * 0.6) + 20px);
+                width: calc((202px * 1.1) * 1.1);
+                height: calc((310px * 1.1) * 1.1);
+                background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
+                object-fit: cover;
+                z-index: 50;
             }
 
             /* Imagen modelo1 duplicada BP2 - 40% menor, blanco y negro */
             .imagen-modelo1-bw {
                 position: absolute;
-                left: calc((100vw - 24px) * 0.536 + 202px - (202px * 0.6)); /* Margen derecho alineado con modelo1 original */
-                top: calc((530px - 4vh) + 310px - 40px); /* 30px adicional más arriba (10px + 30px = 40px total) */
-                width: calc(202px * 0.6); /* 40% menor que modelo1 original (202px * 0.6 = 121.2px) */
-                height: calc(310px * 0.6); /* 40% menor que modelo1 original (310px * 0.6 = 186px) */
+                left: calc((100vw - 24px) * 0.44 + 202px - (202px * 0.6));
+                top: calc((530px - 4vh) + 178px - 40px);
+                width: calc(202px * 0.6);
+                height: calc(310px * 0.6);
                 background: url('assets/hero /Modelos /modelo 1.png') center/cover;
                 object-fit: cover;
-                filter: grayscale(100%); /* Blanco y negro */
-                border-radius: 0; /* Sin bordes redondeados */
-                z-index: 51; /* Por encima de modelo1 original */
+                filter: grayscale(100%);
+                border-radius: 0;
+                z-index: 51;
             }
 
-            /* Imagen modelo6 - Ajustada para mismo margen derecho que modelo5 y escalada 10% */
+            /* Imagen modelo6 - Posicionada a la izquierda de modelo5 */
             .imagen-modelo6 {
-                left: calc((100vw - 24px) * 0.536 - (202px * 1.1 - 202px) - ((100vw - 24px) * 0.50)); /* 50% a la izquierda */
-                top: calc((530px + 20vh) + ((530px + 20vh) * 0.30) + 50px); /* 50px más abajo */
-                width: calc((202px * 1.1) * 1.05); /* 5% más grande que modelo5 escalado (222.2px * 1.05 = 233.31px) */
-                height: calc((310px * 1.1) * 1.05); /* 5% más grande (341px * 1.05 = 358.05px) */
-                background-size: contain; /* MODIFICADO: contain para mostrar imagen completa */
-                background-repeat: no-repeat; /* AGREGADO: evitar repetición */
-                background-position: center; /* AGREGADO: centrar imagen */
+                left: calc((100vw - 24px) * 0.44 + 173px - (202px * 0.6) - calc((202px * 1.1) * 1) - 20px);
+                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px);
+                width: calc((202px * 1.1) * 1);
+                height: calc((285px * 1.1) * 0.9);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            
+            /* Imagen modelo9 BP2 - bajo modelo6 */
+            .imagen-modelo9 {
+                display: block !important;
+                position: absolute;
+                left: 0px;
+                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px + calc((285px * 1.1) * 0.9) + 30px);
+                width: calc(100vw - 24px);
+                height: 282px;
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
+                object-fit: cover;
+                z-index: 53;
+            }
+            
+            /* Imagen modelo8 BP2 - bajo modelo9, blanco y negro */
+            .imagen-modelo8 {
+                display: block !important;
+                position: absolute;
+                left: 0px;
+                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px + calc((285px * 1.1) * 0.9) + 30px + 282px + 20px);
+                width: calc((100vw - 24px) * 0.7);
+                height: calc(282px * 0.7);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                filter: grayscale(100%);
+                z-index: 56;
+            }
+            
+            /* Imagen modelo8 color BP2 - a la derecha del modelo8 b&n */
+            .imagen-modelo8-color {
+                display: block !important;
+                position: absolute;
+                left: calc((100vw - 24px) * 0.50);
+                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px + calc((285px * 1.1) * 0.9) + 30px + 282px + 20px + calc(282px * 0.7 * 0.40));
+                width: calc((100vw - 24px) * 0.7 * 1.2);
+                height: calc(282px * 0.7 * 1.2);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 57;
             }
             
 
@@ -1016,9 +1142,11 @@
            600px - 879px (extendido hasta desktop)
            =============================== */
         @media (min-width: 600px) and (max-width: 879px) {
-            /* Ocultar elementos BP0 específicos en BP3 */
+            /* Ocultar elementos BP0 y BP1 específicos en BP3 */
             .titulo-estilo-bp0-independiente,
-            .parrafo1-estilo-bp0-independiente {
+            .parrafo1-estilo-bp0-independiente,
+            .imagen-modelo8-bp1,
+            .imagen-modelo8-color-bp1 {
                 display: none !important;
             }
             
@@ -1042,9 +1170,9 @@
                 position: absolute;
                 left: calc(10px + ((100vw - 24px) * 0.11) - ((100vw - 24px) * 0.10)); /* 2% a la derecha adicional (9% + 2% = 11% desde máscara 10% izquierda) */
                 top: calc((440px + 176px + 20px) * 1.05); /* 5% más abajo */
-                width: calc((100vw - 24px - 20px) * 0.727); /* Ancho fijo como BP4 */
-                max-width: 328px; /* 5% menos de 345px */
-                min-width: 254px; /* Mismo comportamiento que BP4 */
+                width: calc((100vw - 24px - 20px) * 0.727 * 0.97); /* Ancho reducido 3% desde margen derecho */
+                max-width: calc(328px * 0.97); /* 5% menos de 345px, reducido 3% */
+                min-width: calc(254px * 0.97); /* Mismo comportamiento que BP4, reducido 3% */
                 height: auto;
                 z-index: 99999;
                 background: transparent;
@@ -1089,18 +1217,18 @@
                 margin-bottom: 0;
             }
             
-            /* Imagen modelo1 duplicada BP3 - 30% menor, blanco y negro, sin bordes redondeados */
+            /* Imagen modelo1 duplicada BP3 - 50% menor (30% + 20% adicional), blanco y negro, sin bordes redondeados */
             .imagen-modelo1-bw {
                 position: absolute;
-                left: calc((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) - ((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) * 0.03) - calc((202px * 1.2) * 0.7)); /* A la izquierda de modelo1 original, con imagen 30% menor */
-                top: calc(((530px - 4vh) * 1.2) + calc((310px * 1.2) - (310px * 1.2 * 0.7))); /* Ajustada al margen inferior de modelo1 original */
-                width: calc((202px * 1.2) * 0.7); /* 30% menor que modelo1 original */
-                height: calc((310px * 1.2) * 0.7); /* 30% menor que modelo1 original */
+                left: calc((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) - ((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) * 0.03) - calc((202px * 1.2) * 0.7 * 0.8) + calc((202px * 1.2) * 0.7 * 0.2));
+                top: calc(((530px - 4vh) * 1.2) + calc((310px * 1.2) - (310px * 1.2 * 0.7 * 0.8)));
+                width: calc((202px * 1.2) * 0.7 * 0.8);
+                height: calc((310px * 1.2) * 0.7 * 0.8);
                 background: url('assets/hero /Modelos /modelo 1.png') center/cover;
                 object-fit: cover;
-                filter: grayscale(100%); /* Blanco y negro */
-                border-radius: 0; /* Sin bordes redondeados */
-                z-index: 49; /* Por debajo de modelo1 original */
+                filter: grayscale(100%);
+                border-radius: 0;
+                z-index: 50;
             }
             
             /* Misma diagramación que BREAKPOINT 2 pero escalado 20% */
@@ -1111,17 +1239,17 @@
             }
 
             .imagen-tijeras {
-                left: calc((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)); /* Alineada con margen izquierdo de LA CHASCONA */
-                width: calc(267px * 1.2); /* Escalado 20%: 320.4px */
-                height: calc(389px * 1.2); /* Escalado 20%: 466.8px */
+                left: calc((100vw - 24px) * 0.42 + ((100vw - 24px) * 0.45 * 0.30));
+                width: calc(267px * 1.2);
+                height: calc(389px * 1.2);
             }
 
             .titulo-principal {
-                left: calc((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)); /* Desplazado 30% a la derecha */
-                top: calc(385px * 1.2); /* Escalado 20%: 462px */
-                width: calc((100vw - 24px) * 0.50); /* Ancho responsive para que quepa completo */
-                height: calc(46px * 1.2); /* Escalado 20%: 55.2px */
-                font-size: calc(36px * 1.2); /* Escalado 20%: 43.2px */
+                left: calc((100vw - 24px) * 0.424 + ((100vw - 24px) * 0.45 * 0.30));
+                top: calc(385px * 1.2);
+                width: calc((100vw - 24px) * 0.50);
+                height: calc(46px * 1.2);
+                font-size: calc(36px * 1.2);
             }
 
             .imagen-principal {
@@ -1139,30 +1267,85 @@
                 font-size: calc(85px * 1.2); /* Escalado 20%: 102px */
             }
 
-            /* Imagen modelo1 - Breakpoint 3 - Desplazado 3% adicional a la izquierda */
+            /* Imagen modelo1 - Breakpoint 3 - Posición actualizada */
             .imagen-modelo1 {
-                left: calc((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) - ((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) * 0.03)); /* Desplazado 3% adicional a la izquierda */
-                top: calc((530px - 4vh) * 1.2); /* Escalado 20% hacia arriba */
-                width: calc(202px * 1.2); /* 20% más grande: 242.4px */
-                height: calc(310px * 1.2); /* 20% más grande: 372px */
+                position: absolute;
+                left: 521px;
+                top: 676px;
+                width: 211px;
+                height: 282px;
+                background: url('assets/hero /Modelos /modelo 1.png') center/cover;
+                object-fit: cover;
+                border-top-left-radius: 15px;
+                z-index: 40;
             }
 
-            /* Imagen modelo5 - Breakpoint 3 - Oculta */
+            /* Imagen modelo5 - Breakpoint 3 - Visible bajo modelo1 b&n */
             .imagen-modelo5 {
-                display: none !important; /* Oculta en BP3 */
-                width: calc((202px * 1.2) * 1.4); /* 40% más grande que modelo1 escalado: 338.88px */
-                height: calc((310px * 1.2) * 1.4); /* 40% más grande: 520.8px */
+                display: block !important;
+                position: absolute;
+                left: calc((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * -0.6 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) - ((((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) - (((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) + ((((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) + (((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) - ((((100vw - 24px) * 0.45 + ((100vw - 24px) * 0.45 * 0.30)) + ((100vw - 24px) * 0.50) - calc(202px * 1.2)) * 0.30)) * 0.20)) * 0.15)) * 0.08)) * 0.03) - calc((202px * 1.2) * 0.7 * 0.8) + calc((202px * 1.2) * 0.7 * 0.2));
+                top: calc(((530px - 4vh) * 1.2) + calc((310px * 1.2) - (310px * 1.2 * 0.7 * 0.8)) + calc((310px * 1.2) * 0.7 * 0.8) + 20px);
+                width: calc((202px * 1.2) * 2.4);
+                height: calc((310px * 1.2) * 1.4);
+                background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
+                object-fit: cover;
+                z-index: 49;
             }
 
             /* Imagen modelo6 - Ajustada para mismo margen derecho que modelo5 y escalada 10% */
             .imagen-modelo6 {
-                left: calc((100vw - 24px) * 0.536 - ((202px * 1.2 * 1.1) - (202px * 1.2)) - 150px); /* 5px adicional a la derecha (155px - 5px = 150px a la izquierda) */
-                top: calc((((530px + 20vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px); /* 25px más arriba */
-                width: calc((202px * 1.2) * 1.1); /* MODIFICADO: 10% más grande que modelo5 escalado (242.4px * 1.1 = 266.64px) */
-                height: calc((310px * 1.2) * 1.1); /* MODIFICADO: 10% más grande (372px * 1.1 = 409.2px) */
-                background-size: contain; /* MODIFICADO: contain para mostrar imagen completa */
-                background-repeat: no-repeat; /* AGREGADO: evitar repetición */
-                background-position: center; /* AGREGADO: centrar imagen */
+                left: calc((100vw - 24px) * 0.22 - ((202px * 1.2 * 1.1) - (202px * 1.2)) - 150px);
+                top: calc((((530px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px);
+                width: calc((202px * 1.2) * 1.1);
+                height: calc((310px * 1.2) * 1.1);
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            
+            /* Imagen modelo9 BP3 - bajo modelo6 */
+            .imagen-modelo9 {
+                display: block !important;
+                position: absolute;
+                left: -10px;
+                top: calc((((530px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 8px + calc((310px * 1.2) * 1.1) + 40px);
+                width: calc(100vw - 24px);
+                height: calc(282px * 3.2);
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
+                object-fit: cover;
+                z-index: 53;
+            }
+            
+            /* Imagen modelo8 BP3 - bajo modelo9, blanco y negro */
+            .imagen-modelo8 {
+                display: block !important;
+                position: absolute;
+                left: -50px;
+                top: calc((((530px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px + calc((310px * 1.2) * 1.1) + 460px + calc(282px * 1.2) + 30px);
+                width: calc((100vw - 24px) * 0.7);
+                height: calc(672px * 0.7 * 1.2);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                filter: grayscale(100%);
+                z-index: 56;
+            }
+            
+            /* Imagen modelo8 color BP3 - a la derecha del modelo8 b&n */
+            .imagen-modelo8-color {
+                display: block !important;
+                position: absolute;
+                left: calc((100vw - 274px) * 0.50);
+                top: calc((((530px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px + calc((310px * 1.2) * 1.1) + 40px + calc(662px * 1.2) + 30px + calc(282px * 0.7 * 1.2 * 0.40));
+                width: calc((100vw - 24px) * 0.7 * 1.2 * 1.2);
+                height: calc(282px * 0.7 * 1.2 * 1.2);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 57;
             }
             
 
@@ -1206,9 +1389,11 @@
            780px+
            =============================== */
         @media (min-width: 880px) {
-            /* Ocultar elementos BP0 específicos en BP4 */
+            /* Ocultar elementos BP0 y BP1 específicos en BP4 */
             .titulo-estilo-bp0-independiente,
-            .parrafo1-estilo-bp0-independiente {
+            .parrafo1-estilo-bp0-independiente,
+            .imagen-modelo8-bp1,
+            .imagen-modelo8-color-bp1 {
                 display: none !important;
             }
             
@@ -1383,28 +1568,72 @@
             
             /* Imagen modelo5 específica BP4 - justo bajo modelo1 */
             .imagen-modelo5 {
-                display: block !important; /* Visible en BP4 */
+                display: block !important;
                 position: absolute;
-                left: 69%; /* Misma posición horizontal que modelo1 */
-                top: calc(710px + 400px + 20px); /* Bajo modelo1: top + height + margen 20px = 1130px */
-                width: 294px; /* Mismo ancho que modelo1 */
-                height: 400px; /* Misma altura que modelo1 */
+                left: 45.3%;
+                top: calc(710px + 394px + 66px);
+                width: 745px;
+                height: 720px;
                 background: url('assets/hero /Modelos /modelo 5.jpg') center/cover;
                 object-fit: cover;
-                z-index: 51; /* Por encima de modelo1 */
+                z-index: 51;
             }
             
             /* Imagen modelo6 específica BP4 - a la izquierda de modelo5 */
             .imagen-modelo6 {
-                display: block !important; /* Visible en BP4 */
+                display: block !important;
                 position: absolute;
-                left: calc(69% - 294px - 30px + 20px + 20px); /* 20px extra adicional: 40px total a la derecha */
-                top: calc(710px + 400px + 20px); /* Misma altura que modelo5 */
-                width: 294px; /* Mismo ancho que modelo5 */
-                height: 400px; /* Misma altura que modelo5 */
+                left: calc(69% - 988px - 30px + 20px + 20px);
+                top: calc(710px + 620px + 20px);
+                width: 499px;
+                height: 644px;
                 background: url('assets/hero /Modelos /modelo 6.jpg') center/cover;
                 object-fit: cover;
-                z-index: 52; /* Por encima de modelo5 */
+                z-index: 52;
+            }
+            
+            /* Imagen modelo9 BP4 - bajo modelo6 */
+            .imagen-modelo9 {
+                display: block !important;
+                position: absolute;
+                left: -18px;
+                top: calc(710px + 620px + 20px + 594px + -60px);
+                width: calc(100vw - 15px - 20px);
+                height: 1480px;
+                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
+                object-fit: cover;
+                z-index: 53;
+            }
+            
+            /* Imagen modelo8 BP4 - bajo modelo9, blanco y negro */
+            .imagen-modelo8 {
+                display: block !important;
+                position: absolute;
+                left: -160px;
+                top: calc(710px + 1430px + 20px + 644px + 40px + 350px + 30px);
+                width: calc((100vw - 24px - 20px) * 0.7);
+                height: calc(1170px * 0.7);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                filter: grayscale(100%);
+                z-index: 56;
+            }
+            
+            /* Imagen modelo8 color BP4 - a la derecha del modelo8 b&n */
+            .imagen-modelo8-color {
+                display: block !important;
+                position: absolute;
+                left: calc(29% + 50px);
+                top: calc(710px + 620px + 690px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40));
+                width: calc((100vw - 24px - 20px) * 0.7 * 1.2);
+                height: calc(1030px * 0.7 * 1.2);
+                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 57;
             }
 
             /* Imagen modelo1 duplicada - blanco y negro - pegada a la izquierda */
@@ -1747,6 +1976,15 @@
             <!-- Imagen modelo6 BP0 - bajo modelo5 BP0 -->
             <div class="imagen-modelo6-bp0"></div>
             
+            <!-- Imagen modelo9 BP0 - bajo modelo6 BP0 -->
+            <div class="imagen-modelo9-bp0"></div>
+            
+            <!-- Imagen modelo8 BP0 - bajo modelo9 BP0 -->
+            <div class="imagen-modelo8-bp0"></div>
+            
+            <!-- Imagen modelo8 color BP0 - bajo modelo8 BP0 -->
+            <div class="imagen-modelo8-color-bp0"></div>
+            
             
             <!-- Bloque ESTILO centralizado BP1 - funciona en todas las versiones -->
             <div class="estilo-centralizado-bp1">
@@ -1765,8 +2003,7 @@
             <!-- Bloque ESTILO BP2: Mobile Mediano (376px-599px) -->
             <div class="estilo-bp2">
                 <h2 class="estilo-titulo-bp2">ESTILO</h2>
-                <p class="estilo-parrafo-bp2">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
-                <p class="estilo-parrafo-bp2">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+                <p class="estilo-parrafo-bp2">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente. Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP3: Mobile Grande/Phablet (600px-879px) -->
@@ -1794,6 +2031,21 @@
             
             <!-- Imagen modelo6 -->
             <div class="imagen-modelo6"></div>
+            
+            <!-- Imagen modelo9 -->
+            <div class="imagen-modelo9"></div>
+            
+            <!-- Imagen modelo8 blanco y negro -->
+            <div class="imagen-modelo8"></div>
+            
+            <!-- Imagen modelo8 color -->
+            <div class="imagen-modelo8-color"></div>
+            
+            <!-- Imagen modelo8 BP1 específica -->
+            <div class="imagen-modelo8-bp1"></div>
+            
+            <!-- Imagen modelo8 color BP1 específica -->
+            <div class="imagen-modelo8-color-bp1"></div>
             
             
                 </main>
