@@ -2942,11 +2942,21 @@
                         <label for="servicio">Tipo de servicio:</label>
                         <select id="servicio" name="servicio" required>
                             <option value="">Seleccionar servicio</option>
-                            <option value="corte">Corte</option>
-                            <option value="color">Color</option>
-                            <option value="corte-color">Corte + Color</option>
-                            <option value="tratamiento">Tratamiento</option>
+                            <option value="corte-pelo">Corte de pelo</option>
+                            <option value="nano-botox">Nano botox hidratante</option>
+                            <option value="bloque-color">Bloque de color</option>
+                            <option value="decoloracion-global">Decoloración global</option>
+                            <option value="color-global">Color global</option>
+                            <option value="babylights">Babylights</option>
+                            <option value="balayage">Balayage</option>
+                            <option value="alisado-organico">Alisado orgánico</option>
+                            <option value="barrido-color">Barrido de color</option>
+                            <option value="otro">Otro servicio</option>
                         </select>
+                        <div id="otro-servicio-container" style="display: none; margin-top: 10px;">
+                            <input type="text" id="otro-servicio" name="otro-servicio" placeholder="Especifica el servicio que necesitas" 
+                                   style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-family: 'Author', sans-serif;">
+                        </div>
                     </div>
                     
                     <button type="submit" class="submit-btn">Agendar Cita</button>
@@ -2998,6 +3008,22 @@
             const fechaInput = document.getElementById('fecha');
             const today = new Date().toISOString().split('T')[0];
             fechaInput.min = today;
+            
+            // Manejar funcionalidad de "otro servicio"
+            const servicioSelect = document.getElementById('servicio');
+            const otroServicioContainer = document.getElementById('otro-servicio-container');
+            const otroServicioInput = document.getElementById('otro-servicio');
+            
+            servicioSelect.addEventListener('change', function() {
+                if (this.value === 'otro') {
+                    otroServicioContainer.style.display = 'block';
+                    otroServicioInput.required = true;
+                } else {
+                    otroServicioContainer.style.display = 'none';
+                    otroServicioInput.required = false;
+                    otroServicioInput.value = '';
+                }
+            });
             
             agendaButton.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -3054,9 +3080,17 @@
                 const hora = document.getElementById('hora').value;
                 const telefono = document.getElementById('telefono').value.trim();
                 const servicio = document.getElementById('servicio').value;
+                const otroServicio = document.getElementById('otro-servicio').value.trim();
                 
+                // Validación básica
                 if (!nombre || !fecha || !hora || !telefono || !servicio) {
                     alert('Por favor completa todos los campos');
+                    return;
+                }
+                
+                // Validación específica para "otro servicio"
+                if (servicio === 'otro' && !otroServicio) {
+                    alert('Por favor especifica el servicio que necesitas');
                     return;
                 }
                 
@@ -3066,7 +3100,10 @@
                 formData.append('fecha', fecha);
                 formData.append('hora', hora);
                 formData.append('telefono', telefono);
-                formData.append('servicio', servicio);
+                
+                // Determinar el servicio final a enviar
+                const servicioFinal = servicio === 'otro' ? otroServicio : servicio;
+                formData.append('servicio', servicioFinal);
                 formData.append('_subject', 'Nueva cita agendada - La Chascona');
                 
                 // Enviar a Formspree
@@ -3207,12 +3244,35 @@
             const servicioItems = document.querySelectorAll('.servicio-item');
             servicioItems.forEach(item => {
                 item.addEventListener('click', function() {
+                    // Obtener el nombre del servicio clickeado
+                    const servicioNombre = this.querySelector('.servicio-nombre').textContent;
+                    
+                    // Mapear nombre del servicio a valor del select
+                    const servicioMapping = {
+                        'Corte de pelo': 'corte-pelo',
+                        'Nano botox hidratante': 'nano-botox',
+                        'Bloque de color': 'bloque-color',
+                        'Decoloración global': 'decoloracion-global',
+                        'Color global': 'color-global',
+                        'Babylights': 'babylights',
+                        'Balayage': 'balayage',
+                        'Alisado orgánico': 'alisado-organico',
+                        'Barrido de color': 'barrido-color'
+                    };
+                    
                     // Cerrar popup de servicios
                     closeServiciosPopup();
                     
                     // Abrir popup de agenda
                     setTimeout(() => {
                         popup.style.display = 'flex';
+                        
+                        // Preseleccionar el servicio correspondiente
+                        const servicioSelect = document.getElementById('servicio');
+                        const valorServicio = servicioMapping[servicioNombre];
+                        if (valorServicio && servicioSelect) {
+                            servicioSelect.value = valorServicio;
+                        }
                     }, 300); // Pequeño delay para suavizar la transición
                 });
             });
