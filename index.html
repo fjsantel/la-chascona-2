@@ -2494,22 +2494,23 @@
             margin-bottom: 20px;
         }
         
-        /* Título LA CHASCONA overlay */
+        /* Título LA CHASCONA overlay - mismo estilo que main page */
         .titulo-chascona-overlay {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--naranja);
-            font-weight: 400;
+            font-size: clamp(2.8rem, 5vw, 3.9rem); /* Mismo que display-large */
+            font-weight: 400; /* No bold para LA CHASCONA */
+            line-height: 1.2;
+            letter-spacing: 0.015em;
+            color: var(--negro); /* Negro como en main page, no naranja */
             text-align: center;
             opacity: 0;
             z-index: 20;
             transition: opacity 0.8s ease;
             pointer-events: none;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         /* Mostrar título */
@@ -2517,8 +2518,16 @@
             opacity: 1;
         }
         
-        /* Ocultar título cuando la animación está compacta */
+        /* Mostrar título solo cuando la animación está compacta */
         .lottie-container.compact .titulo-chascona-overlay {
+            display: block;
+            position: static;
+            transform: none;
+            margin: 10px 0;
+        }
+        
+        /* Ocultar título cuando animación está en fullscreen */
+        .lottie-container.fullscreen .titulo-chascona-overlay {
             display: none;
         }
         
@@ -3105,27 +3114,28 @@
                 popupServicios.querySelector('.popup-content').classList.add('animation-playing');
                 lottieContainer.classList.add('fullscreen');
                 
-                // 2. Después de 3 segundos: detener animación y mostrar título
+                // 2. Después de 3 segundos: achicar animación
                 setTimeout(() => {
-                    // Detener y ocultar la animación
-                    lottieAnimation.pause();
-                    lottieAnimation.hide();
+                    // Remover modo animación (muestra header)
+                    popupServicios.querySelector('.popup-content').classList.remove('animation-playing');
+                    lottieContainer.classList.remove('fullscreen');
+                    lottieContainer.classList.add('compact');
                     
-                    // Mostrar título LA CHASCONA en lugar de la animación
-                    tituloOverlay.classList.add('show');
+                    // Reiniciar animación para que continúe reproduciéndose en modo compacto
+                    if (lottieAnimation) {
+                        lottieAnimation.goToAndPlay(0, true); // Reinicia desde el frame 0 y reproduce
+                        lottieAnimation.setLoop(true); // Asegurar que siga en loop
+                    }
                     
-                    // 3. Después de 2 segundos más: achicar y mostrar servicios
+                    // Después de que termine la transición de achique, mostrar título
                     setTimeout(() => {
-                        // Remover modo animación (muestra header)
-                        popupServicios.querySelector('.popup-content').classList.remove('animation-playing');
-                        lottieContainer.classList.remove('fullscreen');
-                        lottieContainer.classList.add('compact');
+                        tituloOverlay.classList.add('show');
                         
-                        // Mostrar servicios con animación de despliegue
+                        // Después de 2 segundos más: mostrar servicios
                         setTimeout(() => {
                             serviciosLista.classList.add('show');
-                        }, 400); // Esperar un poco para que termine la transición del contenedor
-                    }, 2000); // 2 segundos mostrando el título
+                        }, 2000); // 2 segundos mostrando el título
+                    }, 400); // Esperar que termine la transición de achique
                 }, 3000); // 3 segundos de animación
             }
             
