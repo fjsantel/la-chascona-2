@@ -6,6 +6,7 @@
     <title>La Chascona</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=author@400,500,600,700&display=swap');
 
         * {
             margin: 0;
@@ -18,7 +19,199 @@
             --negro: #000000;
             --blanco: #FFFFFF;
             --grid-size: 8px;
+            
+            /* Typography System - La Chascona */
+            --base-font-size: 16px;
         }
+
+        /* ========================================
+           SISTEMA TIPOGRÁFICO LA CHASCONA
+           Adaptado para Cinzel (títulos) y Author (párrafos)
+           ======================================== */
+
+        .display-large {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.8rem, 5vw, 3.9rem); /* ~44.8-62.4px responsive */
+            font-weight: 400; /* No bold para LA CHASCONA */
+            line-height: 1.2;
+            letter-spacing: 0.015em;
+            color: var(--negro);
+        }
+
+        .display-medium {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.4rem, 4.5vw, 3.5rem); /* ~38.4-56px responsive */
+            font-weight: 400; /* No bold para LA CHASCONA */
+            line-height: 1.3;
+            letter-spacing: 0.015em;
+            color: var(--negro);
+        }
+
+        /* Clases específicas para ESTILO usando Author */
+        .estilo-large {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.1rem); /* ~32-49.6px responsive */
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            color: var(--negro);
+        }
+
+        .estilo-medium {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(1.6rem, 3vw, 2.5rem); /* ~25.6-40px responsive */
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            color: var(--negro);
+        }
+
+        .estilo-small {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(1.4rem, 2.5vw, 2.2rem); /* ~22.4-35.2px responsive */
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0.025em;
+            color: var(--negro);
+        }
+
+        .estilo-tiny {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 2rem); /* ~19.2-32px responsive */
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 0.025em;
+            color: var(--negro);
+        }
+
+        .h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3.1rem); /* ~32-49.6px responsive */
+            font-weight: 700;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            color: var(--negro);
+        }
+
+        .h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 3vw, 2.5rem); /* ~25.6-40px responsive */
+            font-weight: 600;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            color: var(--negro);
+        }
+
+        .h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.4rem, 2.5vw, 2.2rem); /* ~22.4-35.2px responsive */
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0.025em;
+            color: var(--negro);
+        }
+
+        .h4 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 2vw, 2rem); /* ~19.2-32px responsive */
+            font-weight: 500;
+            line-height: 1.5;
+            letter-spacing: 0.025em;
+            color: var(--negro);
+        }
+
+        .h5 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.1rem, 1.8vw, 1.9rem); /* ~17.6-30.4px responsive */
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .h6 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 1.6vw, 1.8rem); /* ~16-28.8px responsive */
+            font-weight: 500;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .body-xl {
+            font-family: 'Author', sans-serif;
+            font-size: 1.06rem; /* Tamaño fijo como especificado */
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .body {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(0.9rem, 1.2vw, 1.6rem); /* ~14.4-25.6px responsive */
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .body-small {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(0.8rem, 1vw, 1.4rem); /* ~12.8-22.4px responsive */
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .caption-large {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(0.7rem, 0.9vw, 1.3rem); /* ~11.2-20.8px responsive */
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .caption {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(0.65rem, 0.8vw, 1.2rem); /* ~10.4-19.2px responsive */
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .caption-small {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(0.6rem, 0.7vw, 1rem); /* ~9.6-16px responsive */
+            font-weight: 300;
+            line-height: 1.65;
+            letter-spacing: 0.03em;
+            color: var(--negro);
+        }
+
+        .overline {
+            font-family: 'Author', sans-serif;
+            font-size: clamp(0.55rem, 0.6vw, 0.9rem); /* ~8.8-14.4px responsive */
+            font-weight: 500;
+            line-height: 1.65;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--negro);
+        }
+
+        /* Utilidades adicionales para colores */
+        .text-primary { color: var(--naranja); }
+        .text-secondary { color: var(--negro); }
+        .text-white { color: var(--blanco); }
+
+        /* Utilidades para alineación */
+        .text-left { text-align: left; }
+        .text-center { text-align: center; }
+        .text-right { text-align: right; }
+        .text-justify { text-align: justify; }
 
         body {
             font-family: 'Cinzel', serif;
@@ -293,7 +486,11 @@
             .imagen-modelo8-color,
             .imagen-modelo9,
             .imagen-modelo8-bp1,
-            .imagen-modelo8-color-bp1 {
+            .imagen-modelo8-color-bp1,
+            .imagen-modelo3,
+            .imagen-modelo10,
+            .imagen-modelo11,
+            .imagen-modelo12 {
                 display: none !important;
             }
             
@@ -316,7 +513,7 @@
                 position: absolute;
                 left: 42%;
                 top: calc(440px + 10vh - 8vh - 24px); /* Título arriba del párrafo */
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 900;
                 font-size: 19px; /* Reducido 20% */
                 text-align: right;
@@ -334,7 +531,7 @@
                 left: 42%;
                 top: calc(440px + 10vh - 8vh); /* Párrafo bajo el título */
                 width: 125px;
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 10px; /* Reducido 20% */
                 line-height: 1.4;
@@ -380,7 +577,7 @@
                 left: calc(42% + 6% + 3px - 62px - 125px + 9px + 5%); /* A la izquierda de modelo1 b&n + 9px + 5% a la derecha */
                 top: calc(440px + 10vh - 8vh + 80px + 7vh + 74px); /* Misma altura que modelo1 b&n */
                 width: 120px;
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 10px;
                 line-height: 1.4;
@@ -452,6 +649,54 @@
                 z-index: 100000;
             }
             
+            /* Imagen modelo3 BP0 - bajo modelo8 color */
+            .imagen-modelo3 {
+                display: block !important;
+                position: absolute;
+                left: -90px;
+                top: calc(-37px + 10vh - 8vh + 80px + 7vh + 166px + 162px + 20px + calc(282px * 1.2) + 20px + calc(282px * 1.0) + 20px + calc(282px * 1.0) + 20px);
+                width: calc((100vw - 24px - 20px) * 0.8);
+                height: calc(282px * 1.1);
+                background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
+                z-index: 100001;
+            }
+            
+            /* Imagen modelo10 BP0 - bajo modelo3 */
+            .imagen-modelo10 {
+                display: block !important;
+                position: absolute;
+                left: calc(30%);
+                top: calc(440px + 10vh - 8vh + 80px + 7vh + -825px + 162px + 20px + calc(282px * 1.2) + 20px + calc(282px * 1.0) + 20px + calc(282px * 1.0) + 20px + calc(282px * 1.1) + 20px);
+                width: calc((130vw - 24px - 20px) * 0.7);
+                height: calc(282px * 0.9);
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/contain no-repeat;
+                z-index: 100002;
+            }
+            
+            /* Imagen modelo11 BP0 - bajo modelo10 */
+            .imagen-modelo11 {
+                display: block !important;
+                position: absolute;
+                left: 135px;
+                top: calc(-595px + 10vh - 8vh + 80px + 7vh + 166px + 162px + 20px + calc(282px * 1.2) + 20px + calc(282px * 1.0) + 20px + calc(282px * 1.0) + 20px + calc(282px * 1.1) + 20px + calc(282px * 0.9) + 20px);
+                width: calc((100vw - 24px - 20px) * 0.85);
+                height: calc(282px * 1.0);
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/contain no-repeat;
+                z-index: 99993;
+            }
+            
+            /* Imagen modelo12 BP0 - bajo modelo11 */
+            .imagen-modelo12 {
+                display: block !important;
+                position: absolute;
+                left: 0px;
+                top: calc(78px + 10vh - 8vh + 80px + 7vh + -254px + 162px + 20px + calc(282px * 1.2) + 20px + calc(282px * 1.0) + 20px + calc(-18px * 1.0) + 20px + calc(282px * 1.1) + 20px + calc(282px * 0.9) + 20px + calc(282px * 1.0) + 20px);
+                width: calc(106vw - 14px - 20px);
+                height: calc(382px * 1.2);
+                background: url('assets/hero /Modelos /modelo12.jpg') center/contain no-repeat;
+                z-index: 1000;
+            }
+            
             
             /* Bloque ESTILO BP1 - escala reducida 4% y desplazado 8px izquierda */
             .estilo-bp1 {
@@ -461,7 +706,7 @@
             
             /* Restaurar párrafo 1 ESTILO normal para BP1+ */
             .estilo-parrafo-bp1 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 1.6;
@@ -540,7 +785,7 @@
                 top: calc(calc(440px + 10vh - 8vh) + 176px + 20px); /* Bajo rectángulo naranja: posición + altura + margen */
                 width: 280px; /* Ancho fijo para consistencia */
                 text-align: center; /* Centrado */
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 color: var(--negro);
                 z-index: 99999;
                 display: flex;
@@ -581,7 +826,7 @@
             
             /* Párrafo específico para BP1 mobile - texto alineado a la derecha */
             .estilo-parrafo-bp1 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 1.6; /* MODIFICADO: Mejor espaciado para legibilidad */
@@ -613,7 +858,7 @@
             }
             
             .estilo-parrafo-bp1-segundo {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 12px;
                 line-height: 1.6;
@@ -790,34 +1035,66 @@
                 z-index: 57;
             }
             
-            /* Imagen modelo3 BP1 - a la izquierda, escalada */
+            /* Imagen modelo3 BP1 - bajo modelo8 color */
             .imagen-modelo3 {
+                display: block !important;
                 position: absolute;
-                left: 10px; /* A la izquierda con margen */
-                top: calc(calc(641px * 1.04) + 1600px); /* Bajo modelo8-color */
-                width: calc((100vw - 24px - 20px) * 0.6); /* 60% del ancho disponible */
-                height: calc(282px * 1.1); /* 10% más alta */
-                background: url('assets/hero /Modelos /modelo 3.jpg') center/contain no-repeat;
+                left: -65px;
+                top: calc(calc(991px * 1.04) + 512px + 422px + 30px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2) + 40px);
+                width: calc((100vw - 24px - 20px) * 0.8);
+                height: calc(282px * 1.0);
+                background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
-                z-index: 58;
+                z-index: 62;
             }
             
-            /* Imagen modelo12 BP1 - bajo modelo3, ancho completo */
-            .imagen-modelo12 {
+            /* Imagen modelo10 BP1 - bajo modelo3 */
+            .imagen-modelo10 {
+                display: block !important;
                 position: absolute;
-                left: 10px; /* Margen consistente */
-                top: calc(calc(641px * 1.04) + 1900px); /* Bajo modelo3 */
-                width: calc(100vw - 24px - 20px); /* Ancho completo con margen */
-                height: auto; /* Altura automática */
-                min-height: 800px; /* Altura mínima */
-                background: url('assets/hero /Modelos /modelo12.jpg') center/cover;
-                background-size: contain; /* Imagen completa sin recortes */
+                left: calc(0%);
+                top: calc(calc(641px * 0.9) + 212px + 232px + 30px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2) + 40px + calc(314px * 1.0) + 30px);
+                width: calc((100vw - -196px - 20px) * 0.6);
+                height: calc(222px * 3.8);
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/contain no-repeat;
+                background-size: contain;
                 background-repeat: no-repeat;
-                background-position: center top;
+                background-position: center;
                 z-index: 59;
             }
+            
+            /* Imagen modelo11 BP1 - bajo modelo10 */
+            .imagen-modelo11 {
+                display: block !important;
+                position: absolute;
+                left: 130px;
+                top: calc(calc(425px * 1.04) + 512px + 422px + 30px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2) + 40px + calc(282px * 1.0) + 30px + calc(282px * 0.8) + 25px);
+                width: calc((100vw - 24px - 20px) * 0.9);
+                height: calc(282px * 0.9);
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 60;
+            }
+            
+            /* Imagen modelo12 BP1 - bajo modelo11 */
+            .imagen-modelo12 {
+                display: block !important;
+                position: absolute;
+                left: -17px;
+                top: calc(calc(500px * 1.04) + 452px + 422px + 30px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2) + 40px + calc(282px * 1.0) + 30px + calc(282px * 0.8) + 25px + calc(282px * 0.9) + 35px);
+                width: calc(100vw - -6px - 20px);
+                height: calc(432px * 1.3);
+                background: url('assets/hero /Modelos /modelo12.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 62;
+            }
+            
             
             /* Bloque espaciador blanco bajo modelo12 BP1 - evita crop vertical */
             .espaciador-modelo12-bp1 {
@@ -882,7 +1159,7 @@
             }
             
             .estilo-titulo-bp2 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 900;
                 font-size: 28px;
                 color: var(--negro);
@@ -892,7 +1169,7 @@
             }
             
             .estilo-parrafo-bp2 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 13px;
                 line-height: 1.5;
@@ -985,9 +1262,9 @@
                 display: block !important;
                 position: absolute;
                 left: 0px;
-                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px + calc((285px * 1.1) * 0.9) + 30px);
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.43) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px);
                 width: calc(100vw - 24px);
-                height: 282px;
+                height: 404px;
                 background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
                 object-fit: cover;
                 z-index: 53;
@@ -998,9 +1275,9 @@
                 display: block !important;
                 position: absolute;
                 left: 0px;
-                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px + calc((285px * 1.1) * 0.9) + 30px + 282px + 20px);
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.999) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px - calc(282px * 0.7 * 0.30));
                 width: calc((100vw - 24px) * 0.7);
-                height: calc(282px * 0.7);
+                height: calc(492px * 0.7);
                 background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -1013,10 +1290,10 @@
             .imagen-modelo8-color {
                 display: block !important;
                 position: absolute;
-                left: calc((100vw - 24px) * 0.50);
-                top: calc((530px - 4vh) + 220px - 40px + calc(310px * 0.6) + 20px + calc((285px * 1.1) * 0.9) + 30px + 282px + 20px + calc(282px * 0.7 * 0.40));
+                left: calc((100vw - -16px) * 0.50);
+                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(-909px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40));
                 width: calc((100vw - 24px) * 0.7 * 1.2);
-                height: calc(282px * 0.7 * 1.2);
+                height: calc(342px * 0.7 * 1.2);
                 background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -1024,84 +1301,13 @@
                 z-index: 57;
             }
             
-
-
-            .caracter-japones {
-                font-family: 'Montserrat', sans-serif;
-                font-size: 34px;
-            }
-            
-            /* Imagen modelo9 BP2 - adaptada desde BP1 */
-            .imagen-modelo9 {
-                position: absolute;
-                left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px);
-                width: calc(100vw - 24px);
-                height: 282px;
-                background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
-                object-fit: cover;
-                z-index: 53;
-            }
-            
-            /* Imagen modelo10 BP2 - adaptada desde BP1 */
-            .imagen-modelo10 {
-                position: absolute;
-                left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px);
-                width: calc((100vw - 24px) * 0.9);
-                height: calc(282px * 0.9);
-                background: url('assets/hero /Modelos /modelo 10.jpg') center/cover;
-                object-fit: cover;
-                z-index: 54;
-            }
-            
-            /* Imagen modelo11 BP2 - adaptada desde BP1 */
-            .imagen-modelo11 {
-                position: absolute;
-                left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9));
-                width: calc(100vw - 24px);
-                height: 282px;
-                background: url('assets/hero /Modelos /modelo-11.jpg') center/cover;
-                object-fit: cover;
-                z-index: 55;
-            }
-            
-            /* Imagen modelo8 BP2 - blanco y negro, adaptada desde BP1 */
-            .imagen-modelo8 {
-                position: absolute;
-                left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px - calc(282px * 0.7 * 0.30));
-                width: calc((100vw - 24px) * 0.7);
-                height: calc(282px * 0.7);
-                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                filter: grayscale(100%);
-                z-index: 56;
-            }
-            
-            /* Imagen modelo8 color BP2 - adaptada desde BP1 */
-            .imagen-modelo8-color {
-                position: absolute;
-                left: calc((100vw - 24px) * 0.50);
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40));
-                width: calc((100vw - 24px) * 0.7 * 1.2);
-                height: calc(282px * 0.7 * 1.2);
-                background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                z-index: 57;
-            }
-            
-            /* Imagen modelo3 BP2 - adaptada desde BP1 */
+            /* Imagen modelo3 BP2 - bajo modelo8 color */
             .imagen-modelo3 {
+                display: block !important;
                 position: absolute;
-                left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15));
-                width: calc((100vw - 24px) * 0.5 * 1.2 * 1.1);
+                left: -40px;
+                top: calc(calc(624px * 1.04) - (calc(91px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15));
+                width: calc((100vw - 54px) * 0.5 * 1.2 * 1.1);
                 height: calc(282px * 0.7 * 1.2 * 1.2 * 1.1);
                 background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
                 background-size: contain;
@@ -1110,20 +1316,61 @@
                 z-index: 58;
             }
             
-            /* Imagen modelo12 BP2 - ancho completo sin recortar imagen, desplazada 65px abajo */
+            /* Imagen modelo10 BP2 - bajo modelo3 */
+            .imagen-modelo10 {
+                display: block !important;
+                position: absolute;
+                left: -42px;
+                top: calc(calc(641px * 1.04) - (calc(-359px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px);
+                width: calc((138vw - 24px) * 0.9);
+                height: calc(482px * 0.9);
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/cover;
+                object-fit: cover;
+                z-index: 57;
+            }
+            
+            /* Imagen modelo11 BP2 - bajo modelo10 */
+            .imagen-modelo11 {
+                display: block !important;
+                position: absolute;
+                left: 160px;
+                top: calc(calc(1071px * 1.04) - (calc(321px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9));
+                width: calc(100vw - 24px);
+                height: 332px;
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/cover;
+                object-fit: cover;
+                z-index: 52;
+            }
+            
+            /* Imagen modelo12 BP2 - bajo modelo11 */
             .imagen-modelo12 {
+                display: block !important;
                 position: absolute;
                 left: 0px;
-                top: calc(calc(641px * 1.04) - (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 65px); /* Original 35px + 30px adicionales = 65px abajo */
-                width: calc(100vw - 24px);
+                top: calc(calc(641px * 1.04) - (calc(531px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.30) + (calc(641px * 1.04) * 0.40) + (calc(641px * 1.04) * 0.20) + 282px - 13px - 6px + 282px - 23px + calc(282px * 0.9) + 282px + calc(282px * 0.7 * 0.40) + calc(282px * 0.7 * 1.2 * 0.30) - calc(282px * 0.7 * 1.2 * 1.2 * 1.1 * 0.15) + calc(282px * 0.7 * 1.2 * 1.2 * 1.1) + 65px);
+                width: calc(100vw - 11px);
                 height: auto;
-                min-height: 800px; /* Altura mínima aumentada para BP2 */
+                min-height: 800px;
                 background: url('assets/hero /Modelos /modelo12.jpg?v=1') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
                 z-index: 59;
             }
+            
+
+
+            .caracter-japones {
+                font-family: 'Author', sans-serif;
+                font-size: 34px;
+            }
+            
+            
+            
+            
+            
+            
+            
             
             /* Bloque espaciador blanco bajo modelo12 BP2 - evita crop vertical + 30% abajo */
             .espaciador-modelo12-bp2 {
@@ -1181,7 +1428,7 @@
             }
             
             .estilo-titulo-bp3 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 900;
                 font-size: 32px;
                 color: var(--negro);
@@ -1191,7 +1438,7 @@
             }
             
             .estilo-parrafo-bp3 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 14px;
                 line-height: 1.6;
@@ -1348,6 +1595,66 @@
                 z-index: 57;
             }
             
+            /* Imagen modelo3 BP3 - bajo modelo8 color con espaciado vertical */
+            .imagen-modelo3 {
+                display: block !important;
+                position: absolute;
+                left: 0px;
+                top: calc((((650px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px + calc((310px * 1.2) * 1.1) + 40px + calc(662px * 1.2) + 30px + calc(282px * 0.7 * 1.2 * 0.40) + calc(282px * 0.7 * 1.2 * 1.2) + 50px);
+                width: calc((100vw - 534px) * 0.85);
+                height: calc(282px * 1.0);
+                background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 58;
+            }
+            
+            /* Imagen modelo10 BP3 - bajo modelo3 con espaciado vertical */
+            .imagen-modelo10 {
+                display: block !important;
+                position: absolute;
+                left: calc((100vw - 24px) * 0.30);
+                top: calc((((220px + 11vh) + ((530px + 25vh) * 0.30)) * 1.2) - 25px + calc((310px * 1.2) * 1.1) + 40px + calc(662px * 1.2) + 30px + calc(282px * 0.7 * 1.2 * 0.40) + calc(282px * 0.7 * 1.2 * 1.2) + 50px + calc(282px * 1.0) + 40px);
+                width: calc((110vw - 24px) * 0.70);
+                height: calc(532px * 0.85);
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 59;
+            }
+            
+            /* Imagen modelo11 BP3 - bajo modelo10 con espaciado vertical */
+            .imagen-modelo11 {
+                display: block !important;
+                position: absolute;
+                left: 25px;
+                top: calc((((383px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px + calc((310px * 1.2) * 1.1) + 40px + calc(662px * 1.2) + 30px + calc(282px * 0.7 * 1.2 * 0.40) + calc(282px * 0.7 * 1.2 * 1.2) + 50px + calc(282px * 1.0) + 40px + calc(282px * 0.85) + 35px);
+                width: calc((100vw - 24px) * 0.90);
+                height: calc(412px * 1.1);
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 60;
+            }
+            
+            /* Imagen modelo12 BP3 - bajo modelo11 con espaciado vertical */
+            .imagen-modelo12 {
+                display: block !important;
+                position: absolute;
+                left: 0px;
+                top: calc((((420px + 11vh) + ((530px + 20vh) * 0.30)) * 1.2) - 25px + calc((310px * 1.2) * 1.1) + 40px + calc(662px * 1.2) + 30px + calc(282px * 0.7 * 1.2 * 0.40) + calc(282px * 0.7 * 1.2 * 1.2) + 50px + calc(282px * 1.0) + 40px + calc(282px * 0.85) + 35px + calc(282px * 1.1) + 45px);
+                width: calc(100vw - 24px);
+                height: calc(562px * 1.3);
+                background: url('assets/hero /Modelos /modelo12.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 61;
+            }
+            
 
             /* Caracter japonés 美 - Escalado */
             .caracter-japones {
@@ -1428,7 +1735,7 @@
             }
             
             .estilo-titulo-bp4 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 900;
                 font-size: clamp(24px, 3vw, 40px);
                 color: var(--negro);
@@ -1441,7 +1748,7 @@
             }
             
             .estilo-parrafo-bp4 {
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-weight: 400;
                 font-size: 14px; /* Mismo tamaño que BP3 */
                 line-height: 1.6;
@@ -1492,7 +1799,7 @@
             .caracter-japones {
                 width: 67px; /* Mismas medidas que tablet */
                 height: 56px;
-                font-family: 'Montserrat', sans-serif;
+                font-family: 'Author', sans-serif;
                 font-size: 60px; /* Mismas medidas que tablet */
             }
 
@@ -1596,10 +1903,10 @@
             .imagen-modelo9 {
                 display: block !important;
                 position: absolute;
-                left: -18px;
-                top: calc(710px + 620px + 20px + 594px + -60px);
-                width: calc(100vw - 15px - 20px);
-                height: 1480px;
+                left: -42px;
+                top: calc(716px + 620px + 20px + 594px + -60px);
+                width: calc(50vw - 15px - 20px);
+                height: 1460px;
                 background: url('assets/hero /Modelos /modelo 9.jpg') center/cover;
                 object-fit: cover;
                 z-index: 53;
@@ -1609,16 +1916,16 @@
             .imagen-modelo8 {
                 display: block !important;
                 position: absolute;
-                left: -160px;
-                top: calc(710px + 1430px + 20px + 644px + 40px + 350px + 30px);
+                left: 396px;
+                top: calc(470px + 842px + 20px + 644px + 40px + 350px + 30px);
                 width: calc((100vw - 24px - 20px) * 0.7);
-                height: calc(1170px * 0.7);
+                height: calc(860px * 0.7);
                 background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
                 filter: grayscale(100%);
-                z-index: 56;
+                z-index: 76;
             }
             
             /* Imagen modelo8 color BP4 - a la derecha del modelo8 b&n */
@@ -1626,14 +1933,74 @@
                 display: block !important;
                 position: absolute;
                 left: calc(29% + 50px);
-                top: calc(710px + 620px + 690px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40));
+                top: calc(430px + 340px + -130px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40));
                 width: calc((100vw - 24px - 20px) * 0.7 * 1.2);
-                height: calc(1030px * 0.7 * 1.2);
+                height: calc(710px * 0.7 * 1.2);
                 background: url('assets/hero /Modelos /modelo-8.jpg') center/contain no-repeat;
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center;
                 z-index: 57;
+            }
+            
+            /* Imagen modelo3 BP4 - bajo modelo8 color con espaciado vertical */
+            .imagen-modelo3 {
+                display: block !important;
+                position: absolute;
+                left: -250px;
+                top: calc(-10px + 680px + 770px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40) + calc(1030px * 0.7 * 1.2) + 60px);
+                width: calc((100vw - 24px) * 0.90);
+                height: calc(1063px * 1.2);
+                background: url('assets/hero /Modelos /modelo3.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 61;
+            }
+            
+            /* Imagen modelo10 BP4 - bajo modelo3 con espaciado vertical */
+            .imagen-modelo10 {
+                display: block !important;
+                position: absolute;
+                left: calc((17vw - 124px) * 0.25);
+                top: calc(850px + -400px + 50px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40) + calc(1030px * 0.7 * 1.2) + 60px + calc(350px * 1.2) + 50px);
+                width: calc((100vw - 64px) * 0.75);
+                height: calc(530px * 1.0);
+                background: url('assets/hero /Modelos /modelo 10.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 59;
+            }
+            
+            /* Imagen modelo11 BP4 - bajo modelo10 con espaciado vertical */
+            .imagen-modelo11 {
+                display: block !important;
+                position: absolute;
+                left: 19px;
+                top: calc(-740px + 685px + 690px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40) + calc(1030px * 0.7 * 1.2) + 60px + calc(350px * 1.2) + 50px + calc(350px * 1.0) + 45px);
+                width: calc((100vw - 24px) * 0.95);
+                height: calc(510px * 1.3);
+                background: url('assets/hero /Modelos /modelo-11.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 58;
+            }
+            
+            /* Imagen modelo12 BP4 - bajo modelo11 con espaciado vertical */
+            .imagen-modelo12 {
+                display: block !important;
+                position: absolute;
+                left: 392px;
+                top: calc(710px + 851px + -360px + 644px + 40px + 350px + 30px + calc(350px * 0.7 * 0.40) + calc(1030px * 0.7 * 1.2) + 60px + calc(350px * 1.2) + 50px + calc(350px * 1.0) + -745px + calc(350px * 1.3) + 55px);
+                width: calc(100vw - 24px);
+                height: calc(620px * 1.5);
+                background: url('assets/hero /Modelos /modelo12.jpg') center/contain no-repeat;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                z-index: 61;
             }
 
             /* Imagen modelo1 duplicada - blanco y negro - pegada a la izquierda */
@@ -1947,19 +2314,19 @@
             <div class="imagen-principal"></div>
             
             <!-- Texto LA CHASCONA - para BP1, BP2, BP3 -->
-            <div class="titulo-principal">LA CHASCONA</div>
+            <div class="titulo-principal display-large">LA CHASCONA</div>
             
             <!-- Texto LA CHASCONA - CONTENEDOR ESPECÍFICO BP4 -->
-            <div class="titulo-chascona-bp4">LA CHASCONA</div>
+            <div class="titulo-chascona-bp4 display-large">LA CHASCONA</div>
             
             <!-- Rectángulo naranja con letra japonesa -->
             <div class="rectangulo-naranja">美</div>
             
             <!-- Título ESTILO independiente BP0 - reducido 20% -->
-            <h2 class="titulo-estilo-bp0-independiente">ESTILO</h2>
+            <h2 class="titulo-estilo-bp0-independiente estilo-tiny">ESTILO</h2>
             
             <!-- Párrafo 1 ESTILO independiente BP0 - reducido 20% -->
-            <p class="parrafo1-estilo-bp0-independiente">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+            <p class="parrafo1-estilo-bp0-independiente caption-small">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
             
             <!-- Imagen modelo1 BP0 - bajo párrafo 1 -->
             <div class="imagen-modelo1-bp0"></div>
@@ -1968,7 +2335,7 @@
             <div class="imagen-modelo1-bw-bp0"></div>
             
             <!-- Párrafo 2 ESTILO independiente BP0 - a la izquierda de modelo1 b&n -->
-            <p class="parrafo2-estilo-bp0-independiente">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+            <p class="parrafo2-estilo-bp0-independiente caption-small">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             
             <!-- Imagen modelo5 BP0 - bajo modelo1 color -->
             <div class="imagen-modelo5-bp0"></div>
@@ -1988,9 +2355,9 @@
             
             <!-- Bloque ESTILO centralizado BP1 - funciona en todas las versiones -->
             <div class="estilo-centralizado-bp1">
-                <h2>ESTILO</h2>
-                <p>Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
-                <p>Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+                <h2 class="estilo-tiny">ESTILO</h2>
+                <p class="caption">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p class="caption">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP1: Mobile Pequeño (≤375px) - solo párrafo -->
@@ -2002,22 +2369,22 @@
             
             <!-- Bloque ESTILO BP2: Mobile Mediano (376px-599px) -->
             <div class="estilo-bp2">
-                <h2 class="estilo-titulo-bp2">ESTILO</h2>
-                <p class="estilo-parrafo-bp2">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente. Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+                <h2 class="estilo-titulo-bp2 estilo-small">ESTILO</h2>
+                <p class="estilo-parrafo-bp2 body-small">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente. Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP3: Mobile Grande/Phablet (600px-879px) -->
             <div class="estilo-bp3">
-                <h2 class="estilo-titulo-bp3">ESTILO</h2>
-                <p class="estilo-parrafo-bp3">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
-                <p class="estilo-parrafo-bp3">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+                <h2 class="estilo-titulo-bp3 estilo-medium">ESTILO</h2>
+                <p class="estilo-parrafo-bp3 body">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p class="estilo-parrafo-bp3 body">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Bloque ESTILO BP4: Desktop/Web (≥880px) -->
             <div class="estilo-bp4">
-                <h2 class="estilo-titulo-bp4">ESTILO</h2>
-                <p class="estilo-parrafo-bp4">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
-                <p class="estilo-parrafo-bp4">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
+                <h2 class="estilo-titulo-bp4 body-xl">ESTILO</h2>
+                <p class="estilo-parrafo-bp4 body-xl">Desde cortes arquitectónicos y coloraciones avanzadas hasta técnicas de balayage y ombré que realzan la personalidad única de cada cliente.</p>
+                <p class="estilo-parrafo-bp4 body-xl">Looks minimalistas hasta transformaciones dramáticas, adaptándonos siempre a tu estilo de vida y preferencias.</p>
             </div>
             
             <!-- Imagen modelo1 original -->
@@ -2046,6 +2413,18 @@
             
             <!-- Imagen modelo8 color BP1 específica -->
             <div class="imagen-modelo8-color-bp1"></div>
+            
+            <!-- Imagen modelo3 -->
+            <div class="imagen-modelo3"></div>
+            
+            <!-- Imagen modelo10 -->
+            <div class="imagen-modelo10"></div>
+            
+            <!-- Imagen modelo11 -->
+            <div class="imagen-modelo11"></div>
+            
+            <!-- Imagen modelo12 -->
+            <div class="imagen-modelo12"></div>
             
             
                 </main>
