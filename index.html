@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Chascona</title>
+    
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap');
         @import url('https://api.fontshare.com/v2/css?f[]=author@400,500,600,700&display=swap');
@@ -2438,6 +2442,164 @@
             background: #d13408;
         }
 
+        /* ========================================
+           POPUP SERVICIOS - ESTILOS
+           ======================================== */
+        
+        .servicios-popup {
+            max-width: 500px;
+            width: 95%;
+            position: relative; /* Para que el lottie-container.fullscreen se posicione correctamente */
+            overflow: hidden; /* Para mantener el border-radius */
+        }
+        
+        /* Ocultar header cuando animación está en fullscreen */
+        .servicios-popup.animation-playing .popup-header {
+            opacity: 0;
+            z-index: 5;
+        }
+        
+        .servicios-popup .popup-header {
+            transition: opacity 0.3s ease;
+            position: relative;
+            z-index: 15;
+        }
+        
+        .lottie-container {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.8s ease;
+        }
+        
+        /* Estado inicial: animación ocupa todo el pop-up */
+        .lottie-container.fullscreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--blanco);
+            z-index: 10;
+            margin-bottom: 0;
+            border-radius: 15px; /* Mantener el border-radius del popup */
+        }
+        
+        /* Estado final: animación pequeña */
+        .lottie-container.compact {
+            height: 120px;
+            margin-bottom: 20px;
+        }
+        
+        /* Título LA CHASCONA overlay */
+        .titulo-chascona-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--naranja);
+            font-weight: 400;
+            text-align: center;
+            opacity: 0;
+            z-index: 20;
+            transition: opacity 0.8s ease;
+            pointer-events: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Mostrar título */
+        .titulo-chascona-overlay.show {
+            opacity: 1;
+        }
+        
+        /* Ocultar título cuando la animación está compacta */
+        .lottie-container.compact .titulo-chascona-overlay {
+            display: none;
+        }
+        
+        .servicios-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        /* Mostrar servicios con animación */
+        .servicios-lista.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .servicio-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 10px;
+            border-left: 4px solid var(--naranja);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .servicio-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(235, 62, 14, 0.2);
+            background: #f0f0f0;
+        }
+        
+        .servicio-nombre {
+            font-family: 'Author', sans-serif;
+            font-size: 16px;
+            color: var(--negro);
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .servicio-precio {
+            font-family: 'Author', sans-serif;
+            font-size: 16px;
+            color: var(--naranja);
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 15px;
+        }
+        
+        /* Responsive para servicios popup */
+        @media (max-width: 480px) {
+            .servicios-popup {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .lottie-container {
+                height: 150px;
+            }
+            
+            .servicio-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .servicio-precio {
+                margin-left: 0;
+                align-self: flex-end;
+                font-size: 14px;
+            }
+            
+            .servicio-nombre {
+                font-size: 14px;
+            }
+        }
+
         /* ===============================
            BREAKPOINT POPUP: MOBILE
            max-width: 480px
@@ -2652,6 +2814,60 @@
             </div>
         </div>
         
+        <!-- Pop-up para servicios -->
+        <div id="popup-servicios" class="popup-overlay" style="display: none;">
+            <div class="popup-content servicios-popup">
+                <div class="popup-header">
+                    <h2>Nuestros Servicios</h2>
+                    <button class="close-popup close-servicios" type="button">&times;</button>
+                </div>
+                
+                <!-- Animación Lottie -->
+                <div id="lottie-animation" class="lottie-container">
+                    <div class="titulo-chascona-overlay">LA CHASCONA</div>
+                </div>
+                
+                <div class="servicios-lista">
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Corte de pelo</span>
+                        <span class="servicio-precio">$15.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Nano botox hidratante</span>
+                        <span class="servicio-precio">$25.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Bloque de color</span>
+                        <span class="servicio-precio">Desde $30.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Decoloración global</span>
+                        <span class="servicio-precio">Desde $60.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Color global</span>
+                        <span class="servicio-precio">Desde $40.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Babylights</span>
+                        <span class="servicio-precio">Desde $60.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Balayage</span>
+                        <span class="servicio-precio">Desde $75.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Alisado orgánico</span>
+                        <span class="servicio-precio">Desde $40.000</span>
+                    </div>
+                    <div class="servicio-item">
+                        <span class="servicio-nombre">Barrido de color</span>
+                        <span class="servicio-precio">Desde $20.000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Pop-up para agendar cita -->
         <div id="popup-agenda" class="popup-overlay" style="display: none;">
             <div class="popup-content">
@@ -2854,6 +3070,120 @@
                 popup.style.display = 'none';
                 form.style.display = 'block';
                 confirmationMessage.style.display = 'none';
+            });
+
+            // ========================================
+            // POPUP SERVICIOS - FUNCIONALIDAD
+            // ========================================
+            
+            const serviciosButton = document.querySelector('a[href="#servicios"]');
+            const popupServicios = document.getElementById('popup-servicios');
+            const closeServicios = document.querySelector('.close-servicios');
+            const lottieContainer = document.getElementById('lottie-animation');
+            const serviciosLista = document.querySelector('.servicios-lista');
+            const tituloOverlay = document.querySelector('.titulo-chascona-overlay');
+            let lottieAnimation = null;
+            
+            // Función para cargar y reproducir la animación Lottie
+            function loadLottieAnimation() {
+                if (lottieAnimation) {
+                    lottieAnimation.destroy();
+                }
+                
+                lottieAnimation = lottie.loadAnimation({
+                    container: lottieContainer,
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: './assets/ELEMENTOS PELUQUERIA.json'
+                });
+            }
+            
+            // Función para mostrar la secuencia de animación
+            function showServiciosSequence() {
+                // 1. Activar modo animación (oculta header) y mostrar animación ocupando todo el popup
+                popupServicios.querySelector('.popup-content').classList.add('animation-playing');
+                lottieContainer.classList.add('fullscreen');
+                
+                // 2. Después de 3 segundos: detener animación y mostrar título
+                setTimeout(() => {
+                    // Detener y ocultar la animación
+                    lottieAnimation.pause();
+                    lottieAnimation.hide();
+                    
+                    // Mostrar título LA CHASCONA en lugar de la animación
+                    tituloOverlay.classList.add('show');
+                    
+                    // 3. Después de 2 segundos más: achicar y mostrar servicios
+                    setTimeout(() => {
+                        // Remover modo animación (muestra header)
+                        popupServicios.querySelector('.popup-content').classList.remove('animation-playing');
+                        lottieContainer.classList.remove('fullscreen');
+                        lottieContainer.classList.add('compact');
+                        
+                        // Mostrar servicios con animación de despliegue
+                        setTimeout(() => {
+                            serviciosLista.classList.add('show');
+                        }, 400); // Esperar un poco para que termine la transición del contenedor
+                    }, 2000); // 2 segundos mostrando el título
+                }, 3000); // 3 segundos de animación
+            }
+            
+            // Abrir popup servicios
+            serviciosButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Resetear estados
+                popupServicios.querySelector('.popup-content').classList.remove('animation-playing');
+                lottieContainer.classList.remove('fullscreen', 'compact');
+                serviciosLista.classList.remove('show');
+                tituloOverlay.classList.remove('show');
+                
+                // Mostrar popup
+                popupServicios.style.display = 'flex';
+                
+                // Cargar animación y iniciar secuencia
+                loadLottieAnimation();
+                showServiciosSequence();
+            });
+            
+            // Cerrar popup servicios
+            function closeServiciosPopup() {
+                popupServicios.style.display = 'none';
+                
+                // Resetear estados
+                popupServicios.querySelector('.popup-content').classList.remove('animation-playing');
+                lottieContainer.classList.remove('fullscreen', 'compact');
+                serviciosLista.classList.remove('show');
+                tituloOverlay.classList.remove('show');
+                
+                if (lottieAnimation) {
+                    lottieAnimation.destroy();
+                    lottieAnimation = null;
+                }
+            }
+            
+            closeServicios.addEventListener('click', closeServiciosPopup);
+            
+            // Cerrar popup servicios al hacer click fuera
+            popupServicios.addEventListener('click', function(e) {
+                if (e.target === popupServicios) {
+                    closeServiciosPopup();
+                }
+            });
+            
+            // Hacer servicios clickeables para ir al popup de agenda
+            const servicioItems = document.querySelectorAll('.servicio-item');
+            servicioItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Cerrar popup de servicios
+                    closeServiciosPopup();
+                    
+                    // Abrir popup de agenda
+                    setTimeout(() => {
+                        popup.style.display = 'flex';
+                    }, 300); // Pequeño delay para suavizar la transición
+                });
             });
         });
     </script>
